@@ -394,8 +394,15 @@
 
   /* ================= МЕДИА ЗАПРОСЫ (МОБИЛЬНАЯ ВЕРСИЯ) ================= */
   @media (max-width: 900px) { 
-    .video-background { width: 100vw; mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 100%); } 
-    .video-overlay { background: radial-gradient(circle at center, rgba(20,24,16,0.85) 0%, rgba(20,24,16,0.98) 100%); } 
+    .video-background { 
+      width: 100vw; 
+      /* Отключаем тяжелую маску на мобильных, чтобы не было багов с отрисовкой */
+      mask-image: none !important; 
+      -webkit-mask-image: none !important; 
+    } 
+    .video-overlay { 
+      background: radial-gradient(circle at center, rgba(20,24,16,0.85) 0%, rgba(20,24,16,0.98) 100%); 
+    } 
   }
   
   @media (max-width: 768px) { 
@@ -430,6 +437,22 @@
     .service-detail__price { font-size: 1.4rem; } 
     
     .form-row { flex-direction: column; gap: 0; }
+
+    /* === КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ (Убираем пустые места и невидимые блоки) === */
+    
+    /* Отключаем тяжелый эффект размытия на карточках, из-за которого они могут исчезать */
+    .service, .review, .cosmetic-card, .contact-card {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: rgba(26, 31, 22, 0.95) !important;
+    }
+
+    /* Принудительно делаем все анимации видимыми, чтобы не было пустот, если скрипт не сработал */
+    .reveal {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      transition: none !important;
+    }
   }
 </style>
 </head>
@@ -477,9 +500,9 @@
       <br><br>Здесь вас не торопят. Здесь вас возвращают к себе.
     </p>
     <div class="tags">
-      <span class="tag">Ритуалы по-японски</span>
-      <span class="tag">Натуральные масла</span>
-      <span class="tag">Приватные кабинеты</span>
+      <span class="tag">Японские ритуалы</span>
+      <span class="tag">Индивидуальный подход</span>
+      <span class="tag">Приватный кабинет</span>
       <span class="tag">Опыт от 7 лет</span>
     </div>
     <button type="button" class="btn" id="hero-call-btn">Записаться на ритуал</button>
@@ -810,67 +833,84 @@
     document.getElementById('footer-phone').innerText = state.salon.phone || "";
 
     const servicesContainer = document.getElementById('services-container');
-    servicesContainer.innerHTML = state.services.map((s, index) => {
-      const isHidden = index >= 3 && !servicesExpanded;
-      const style = isHidden ? 'style="display: none;"' : '';
-      const activeClass = (index >= 3 && servicesExpanded) ? 'active' : '';
-      const hiddenClass = index >= 3 ? 'hidden-service' : '';
+    
+    if (state.services.length === 0) {
+        servicesContainer.innerHTML = '<p style="color:var(--text-muted); text-align:center; width:100%;">Услуги временно недоступны.</p>';
+    } else {
+        servicesContainer.innerHTML = state.services.map((s, index) => {
+          const isHidden = index >= 3 && !servicesExpanded;
+          const style = isHidden ? 'style="display: none;"' : '';
+          const activeClass = (index >= 3 && servicesExpanded) ? 'active' : '';
+          const hiddenClass = index >= 3 ? 'hidden-service' : '';
 
-      return `
-        <article class="service reveal ${hiddenClass} ${activeClass}" ${style} onclick="openServiceDetail('${s.id}')">
-          <div class="service__top">
-            <h3 class="service__name">${s.name}</h3>
-            <span class="service__price">${s.price}</span>
-          </div>
-          <p class="service__desc">${s.desc}</p>
-          <span class="service__time">${s.time}</span>
-        </article>
-      `;
-    }).join('');
+          return `
+            <article class="service reveal ${hiddenClass} ${activeClass}" ${style} onclick="openServiceDetail('${s.id}')">
+              <div class="service__top">
+                <h3 class="service__name">${s.name}</h3>
+                <span class="service__price">${s.price}</span>
+              </div>
+              <p class="service__desc">${s.desc}</p>
+              <span class="service__time">${s.time}</span>
+            </article>
+          `;
+        }).join('');
 
-    if (state.services.length > 3) {
-      servicesContainer.innerHTML += `
-        <div class="show-more-container reveal ${servicesExpanded ? 'active' : ''}">
-          <button type="button" class="show-more-btn ${servicesExpanded ? 'expanded' : ''}" id="showMoreServicesBtn" onclick="toggleServices()">
-            ${servicesExpanded ? 'Скрыть услуги' : 'Показать все услуги'}
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-      `;
+        if (state.services.length > 3) {
+          servicesContainer.innerHTML += `
+            <div class="show-more-container reveal ${servicesExpanded ? 'active' : ''}">
+              <button type="button" class="show-more-btn ${servicesExpanded ? 'expanded' : ''}" id="showMoreServicesBtn" onclick="toggleServices()">
+                ${servicesExpanded ? 'Скрыть услуги' : 'Показать все услуги'}
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+          `;
+        }
     }
 
     const reviewsContainer = document.getElementById('reviews-container');
     const REVIEWS_LIMIT = 3;
     
-    reviewsContainer.innerHTML = state.reviews.map((r, index) => {
-      const isHidden = index >= REVIEWS_LIMIT && !reviewsExpanded;
-      const style = isHidden ? 'style="display: none;"' : '';
-      const activeClass = (index >= REVIEWS_LIMIT && reviewsExpanded) ? 'active' : '';
-      const hiddenClass = index >= REVIEWS_LIMIT ? 'hidden-review' : '';
+    if (state.reviews.length === 0) {
+        reviewsContainer.innerHTML = '<p style="color:var(--text-muted); text-align:center; width:100%;">Пока нет отзывов.</p>';
+    } else {
+        reviewsContainer.innerHTML = state.reviews.map((r, index) => {
+          const isHidden = index >= REVIEWS_LIMIT && !reviewsExpanded;
+          const style = isHidden ? 'style="display: none;"' : '';
+          const activeClass = (index >= REVIEWS_LIMIT && reviewsExpanded) ? 'active' : '';
+          const hiddenClass = index >= REVIEWS_LIMIT ? 'hidden-review' : '';
 
-      return `
-        <article class="review reveal ${hiddenClass} ${activeClass}" ${style}>
-          <p class="review__name">Имя: ${r.name}</p>
-          <span class="review__date">${r.date}</span>
-          <p class="review__text">«${r.text}»</p>
-        </article>
-      `;
-    }).join('');
+          return `
+            <article class="review reveal ${hiddenClass} ${activeClass}" ${style}>
+              <p class="review__name">Имя: ${r.name}</p>
+              <span class="review__date">${r.date}</span>
+              <p class="review__text">«${r.text}»</p>
+            </article>
+          `;
+        }).join('');
 
-    if (state.reviews.length > REVIEWS_LIMIT) {
-      reviewsContainer.innerHTML += `
-        <div class="show-more-container reveal ${reviewsExpanded ? 'active' : ''}">
-          <button type="button" class="show-more-btn ${reviewsExpanded ? 'expanded' : ''}" id="showMoreReviewsBtn" onclick="toggleReviews()">
-            ${reviewsExpanded ? 'Скрыть отзывы' : 'Показать все отзывы'}
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-        </div>
-      `;
+        if (state.reviews.length > REVIEWS_LIMIT) {
+          reviewsContainer.innerHTML += `
+            <div class="show-more-container reveal ${reviewsExpanded ? 'active' : ''}">
+              <button type="button" class="show-more-btn ${reviewsExpanded ? 'expanded' : ''}" id="showMoreReviewsBtn" onclick="toggleReviews()">
+                ${reviewsExpanded ? 'Скрыть отзывы' : 'Показать все отзывы'}
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </div>
+          `;
+        }
     }
 
     document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
+    
+    // На мобильных устройствах анимация отключена через CSS, но на всякий случай добавляем класс active
     setTimeout(() => {
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      document.querySelectorAll('.reveal').forEach(el => {
+          if (window.innerWidth <= 768) {
+              el.classList.add('active');
+          } else {
+              observer.observe(el);
+          }
+      });
     }, 50);
   }
 
@@ -1357,10 +1397,9 @@
     });
   }, observerOptions);
 
-  // ================= PWA (УСТАНОВКА ПРИЛОЖЕНИЯ) =================
+  // PWA (УСТАНОВКА ПРИЛОЖЕНИЯ)
   let deferredPrompt;
   
-  // Динамически создаем manifest.json для PWA
   const manifest = {
       name: "NAGI HEAD SPA",
       short_name: "NAGI",
