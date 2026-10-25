@@ -13,13 +13,13 @@
   *, *::before, *::after { box-sizing: border-box; }
   
   :root { 
-    --bg-base: #1F241A; /* Более светлый оливковый фон */
-    --gold: #F1D498; /* Более яркое золото */
+    --bg-base: #1F241A; 
+    --gold: #F1D498; 
     --gold-muted: #C5A86B; 
     --gold-soft: #FFF0D4; 
     --text-main: #FFFFFF; 
-    --text-muted: #C4CDBB; /* Более светлый текст */
-    --card-bg: rgba(44, 53, 36, 0.9); /* Более светлые карточки */
+    --text-muted: #C4CDBB; 
+    --card-bg: rgba(44, 53, 36, 0.9); 
     --card-border: rgba(241, 212, 152, 0.25); 
     --radius: 20px; 
     --transition-med: all 0.3s ease; 
@@ -53,7 +53,7 @@
     width: 100%; height: 100%; 
     object-fit: cover; 
     object-position: right center; 
-    opacity: 0.5; /* Сделали видео более заметным */
+    opacity: 0.5; 
     filter: saturate(0.9) contrast(1.1); 
   }
   
@@ -158,6 +158,9 @@
   .service__price { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #fff; white-space: nowrap; }
   .service__desc { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); flex-grow: 1; }
   .service__time { display: inline-block; margin-top: 20px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+  /* Стили для абонементов */
+  .service__badge { position: absolute; top: -10px; right: 20px; background: var(--gold); color: var(--bg-base); font-size: 0.6rem; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 10px; letter-spacing: 0.1em; }
 
   /* Кнопка "Показать все" */
   .show-more-container { grid-column: 1 / -1; text-align: center; margin-top: 15px; }
@@ -335,27 +338,25 @@
 
   /* ================= МОБИЛЬНАЯ ВЕРСИЯ ================= */
   @media (max-width: 768px) { 
-    /* Делаем видео отдельным блоком сверху */
     .video-background {
-      position: relative; /* Убираем фиксацию */
-      height: 60vh; /* Занимает 60% высоты экрана */
+      position: relative; 
+      height: 60vh; 
       width: 100vw;
-      margin-top: -12px; /* Чуть-чуть поднимаем под шапку */
+      margin-top: -12px; 
       z-index: 1;
     }
     .video-background video {
-      opacity: 1; /* Максимальная видимость */
+      opacity: 1; 
       object-position: center;
     }
     .video-overlay {
-      display: none; /* Убираем затемнение, чтобы видеть чистый процесс */
+      display: none; 
     }
 
-    /* Главный экран теперь идет после видео и имеет сплошной фон */
     .hero { 
       padding: 40px 0 40px; 
       min-height: auto; 
-      background-color: var(--bg-base); /* Сплошной фон, чтобы не смешивалось */
+      background-color: var(--bg-base); 
       z-index: 2;
       position: relative;
       border-top: 1px solid var(--card-border);
@@ -441,7 +442,7 @@
 <span class="tag">Японские ритуалы</span>
       <span class="tag">Индивидуальный подход</span>
       <span class="tag">Приватный кабинет</span>
-      <span class="tag">Опыт от 7 лет</span>
+      <span class="tag">Опыт от 7 лет</span
     </div>
     <button type="button" class="btn" id="hero-call-btn">Записаться на ритуал</button>
   </div>
@@ -732,16 +733,67 @@
 <script>
   const API_URL = 'https://nagi-api.vercel-coder.workers.dev'; 
 
-  // РЕЗЕРВНЫЕ ДАННЫЕ
+  // === РЕЗЕРВНЫЕ ДАННЫЕ (ЕСЛИ СЕРВЕР НЕДОСТУПЕН) ===
   const FALLBACK_SALON = { name: "NAGI HEAD SPA", address: "Екатеринбург, ул. Горького, 51", phone: "8 999 288-34-36" };
+  
+  // СЮДА ДОБАВЛЕНЫ АБОНЕМЕНТЫ (Отредактируйте названия и цены под свои)
   const FALLBACK_SERVICES = [
-    { id: "1", name: "Японский хед-спа «NAGI»", price: "3 900 ₽", desc: "Классический ритуал: прогрев, работа по активным точкам головы, шеи и плеч.", details: "Этот ритуал — фундамент нашего салона. Мастер начинает с мягкого прогрева воротниковой зоны, чтобы снять первичное напряжение. Затем следуют глубокие, но деликатные нажатия на активные точки головы, стимулирующие кровообращение и снимающие усталость. Завершается всё тёплым маслом с ароматом юдзу и финальным расслаблением под успокаивающий шум воды. Идеально, если вы чувствуете накопленный за неделю стресс.", time: "60 минут", image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" },
-    { id: "2", name: "Хед-спа + массаж плеч", price: "5 500 ₽", desc: "Глубокое снятие напряжения с воротниковой зоны и затылка.", details: "Расширенная программа для тех, кто проводит много времени за компьютером. Мы уделяем особое внимание воротниковой зоне, лопаткам и затылку. Мастер использует технику миофасциального релиза, чтобы «разбить» окаменевшие мышцы. После такого сеанса улучшается осанка, проходит головная боль напряжения, а дыхание становится глубже. Включает в себя классический хед-спа.", time: "90 минут", image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800&auto=format&fit=crop" },
-    { id: "3", name: "Сухой хед-спа", price: "2 900 ₽", desc: "Деликатная проработка головы и шеи через ткань. Идеально, если нужно сразу вернуться к делам.", details: "Ритуал для тех, у кого нет времени на долгие сборы после салона. Процедура проходит без использования масел и воды — мастер работает через тонкую хлопковую ткань. Это деликатная, но очень эффективная проработка биологически активных точек. Вы почувствуете невероятную легкость в голове, а ваша прическа останется абсолютно нетронутой.", time: "45 минут", image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop" },
-    { id: "4", name: "Ароматический хед-спа", price: "4 500 ₽", desc: "Ритуал с индивидуально подобранной композицией: юдзу, кедр, сандал.", details: "Погружение в мир японских ароматов. Перед началом процедуры вы выбираете эфирное масло, которое откликается вашему состоянию: юдзу — для бодрости и ясности, кедр — для заземления, сандал — для глубокого расслабления. Мастер сочетает техники массажа с ароматерапией, воздействуя на обонятельные рецепторы и нервную систему. Это эмоциональная перезагрузка.", time: "75 минут", image: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=800&auto=format&fit=crop" },
-    { id: "5", name: "Глубокое очищение кожи головы", price: "2 500 ₽", desc: "Энзимная чистка, мягкий скраб и восстанавливающая маска.", details: "Здоровье волос начинается с кожи головы. Этот ритуал включает в себя профессиональную энзимную чистку, которая растворяет излишки себума и остатки стайлинга, мягкий абразивный скраб для стимуляции микроциркуляции и питательную маску. Вы почувствуете, как кожа головы буквально «дышит», а волосы обретают объем и блеск.", time: "40 минут", image: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=800&auto=format&fit=crop" },
-    { id: "6", name: "Японский массаж стоп", price: "2 700 ₽", desc: "Тёплая ванночка, работа по рефлекторным точкам стоп и голеней.", details: "Наши стопы — проекция всего тела. Ритуал начинается с расслабляющей тёплой ванночки с морской солью, затем мастер переходит к рефлекторному массажу. Проработка каждой точки на стопе помогает снять усталость не только ног, но и всего организма. Идеальное завершение долгого дня или восстановление после долгой ходьбы.", time: "40 минут", image: "https://images.unsplash.com/photo-1519824145371-296894a0daa9?q=80&w=800&auto=format&fit=crop" }
+    { 
+        id: "1", 
+        name: "Абонемент «Перезагрузка» (5 сеансов)", 
+        price: "15 000 ₽", 
+        desc: "5 сеансов классического хед-спа. Выгоднее на 20%. Идеально для регулярного снятия стресса.", 
+        details: "Этот абонемент дает вам право посетить 5 любых сеансов хед-спа «NAGI» в течение 3 месяцев. Вы экономите 20% от стоимости разовых процедур и получаете гарантированный результат — глубокое расслабление и здоровый сон.", 
+        time: "5 сеансов", 
+        image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" 
+    },
+    { 
+        id: "2", 
+        name: "Абонемент «Дзен» (10 сеансов)", 
+        price: "25 000 ₽", 
+        desc: "10 сеансов на выбор: хед-спа, массаж плеч или стоп. Максимальная выгода.", 
+        details: "Самый популярный абонемент. Позволяет выбрать любые 10 процедур из нашего меню. Действует в течение 6 месяцев. Отличный способ поддерживать тело в тонусе круглый год.", 
+        time: "10 сеансов", 
+        image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800&auto=format&fit=crop" 
+    },
+    { 
+        id: "3", 
+        name: "Японский хед-спа «NAGI»", 
+        price: "3 900 ₽", 
+        desc: "Классический ритуал: прогрев, работа по активным точкам головы, шеи и плеч.", 
+        details: "Этот ритуал — фундамент нашего салона. Мастер начинает с мягкого прогрева воротниковой зоны, чтобы снять первичное напряжение. Затем следуют глубокие, но деликатные нажатия на активные точки головы.", 
+        time: "60 минут", 
+        image: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=800&auto=format&fit=crop" 
+    },
+    { 
+        id: "4", 
+        name: "Хед-спа + массаж плеч", 
+        price: "5 500 ₽", 
+        desc: "Глубокое снятие напряжения с воротниковой зоны и затылка.", 
+        details: "Расширенная программа для тех, кто проводит много времени за компьютером. Мы уделяем особое внимание воротниковой зоне, лопаткам и затылку.", 
+        time: "90 минут", 
+        image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop" 
+    },
+    { 
+        id: "5", 
+        name: "Сухой хед-спа", 
+        price: "2 900 ₽", 
+        desc: "Деликатная проработка головы и шеи через ткань. Идеально, если нужно сразу вернуться к делам.", 
+        details: "Ритуал для тех, у кого нет времени на долгие сборы после салона. Процедура проходит без использования масел и воды.", 
+        time: "45 минут", 
+        image: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=800&auto=format&fit=crop" 
+    },
+    { 
+        id: "6", 
+        name: "Ароматический хед-спа", 
+        price: "4 500 ₽", 
+        desc: "Ритуал с индивидуально подобранной композицией: юдзу, кедр, сандал.", 
+        details: "Погружение в мир японских ароматов. Перед началом процедуры вы выбираете эфирное масло, которое откликается вашему состоянию.", 
+        time: "75 минут", 
+        image: "https://images.unsplash.com/photo-1519824145371-296894a0daa9?q=80&w=800&auto=format&fit=crop" 
+    }
   ];
+  
   const FALLBACK_REVIEWS = [
     { id: "1", name: "Анна М.", date: "14 марта 2025", text: "Пришла с жутким напряжением в шее после месяца дедлайнов. Ушла как будто из другой жизни — тело просто не помнит, что умеет так расслабляться." },
     { id: "2", name: "Дмитрий К.", date: "2 февраля 2025", text: "Хожу раз в две недели, как к врачу. Головные боли после работы за компьютером почти исчезли. Очень аккуратные мастера." },
@@ -820,8 +872,14 @@
         state.services.forEach((s, index) => {
             const isHidden = index >= 3 && !servicesExpanded;
             const hiddenClass = isHidden ? 'hidden-item' : '';
+            
+            // Определяем, абонемент это или нет, чтобы добавить плашку
+            const isSubscription = s.name.toLowerCase().includes('абонемент') || s.time.toLowerCase().includes('сеансов');
+            const badge = isSubscription ? `<div class="service__badge">Выгодно</div>` : '';
+
             html += `
                 <article class="service ${hiddenClass}" onclick="openServiceDetail('${s.id}')">
+                  ${badge}
                   <div class="service__top">
                     <h3 class="service__name">${s.name}</h3>
                     <span class="service__price">${s.price}</span>
@@ -888,6 +946,7 @@
     if (!reviewsExpanded) document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  // ОСТАЛЬНОЙ КОД (АДМИНКА И ЗАПИСЬ) - БЕЗ ИЗМЕНЕНИЙ
   document.getElementById('generateReviewsBtn').addEventListener('click', async () => {
     const count = parseInt(document.getElementById('gen-count').value);
     const kw1Chance = parseInt(document.getElementById('gen-kw1').value);
