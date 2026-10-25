@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>NAGI HEAD SPA | Японский спа-салон в Екатеринбурге</title>
+    <meta name="description" content="NAGI HEAD SPA — пространство тишины и гармонии в центре Екатеринбурга. Аутентичные японские ритуалы для головы, лица и тела. Онлайн-запись.">
+    <meta name="keywords" content="спа Екатеринбург, head spa, японский массаж головы, NAGI, спа-салон, массаж лица">
+    <link rel="canonical" href="https://nagi-spa.ru/">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NAGI HEAD SPA | Искусство тишины">
+    <meta property="og:description" content="Японские ритуалы для тела и разума в центре Екатеринбурга. Онлайн-запись.">
+    <meta property="og:url" content="https://nagi-spa.ru/">
+    <meta property="og:image" content="https://nagi-spa.ru/images/og-cover.jpg">
+    <meta property="og:locale" content="ru_RU">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230E100D'/%3E%3Ctext x='50' y='68' font-family='serif' font-size='48' fill='%23EBE9E1' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DaySpa",
+      "name": "NAGI HEAD SPA",
+      "description": "Японский спа-салон в Екатеринбурге. Ритуалы для головы, лица и тела.",
+      "url": "https://nagi-spa.ru",
+      "telephone": "+7-999-288-34-36",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Горького, 51",
+        "addressLocality": "Екатеринбург",
+        "addressCountry": "RU"
+      },
+      "openingHours": "Mo-Su 11:00-21:00",
+      "priceRange": "5000-20000 ₽",
+      "image": "https://nagi-spa.ru/images/og-cover.jpg"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zen: { bg: '#0E100D', surface: '#161914', light: '#262B23' },
+                        cream: '#EBE9E1',
+                        olive: { light: '#9CAB91', DEFAULT: '#6B7D5F', dark: '#3E4A35' },
+                        gold: { light: '#D9C29A', DEFAULT: '#C9A876', dark: '#A88554' },
+                        ember: { light: '#D89270', DEFAULT: '#C77454', dark: '#9D5739' },
+                        ink: { 800: '#12150F', 900: '#0A0C08' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { overflow-x: hidden; -webkit-tap-highlight-color: transparent; background: #0A0C08; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0E100D; }
+        ::-webkit-scrollbar-thumb { background: #3E4A35; border-radius: 4px; }
+
+        .btn-hover { transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 15px 30px -10px rgba(201, 168, 118, 0.3); }
+
+        .reveal-text { animation: revealText 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; opacity: 0; transform: translateY(30px); }
+        @keyframes revealText { to { opacity: 1; transform: translateY(0); } }
+
+        #menu-overlay { transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        #bg-layer {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+            background: radial-gradient(ellipse at 50% 0%, rgba(20, 24, 18, 1) 0%, transparent 60%), #0A0C08;
+        }
+        .bg-orb { position: absolute; border-radius: 50%; filter: blur(100px); will-change: transform; opacity: 0.85; }
+        .bg-orb-1 { width: 65vw; height: 65vw; max-width: 900px; max-height: 900px; background: radial-gradient(circle, rgba(201,168,118,0.18) 0%, rgba(201,168,118,0.05) 40%, transparent 70%); top: -15%; left: -12%; animation: drift-1 28s ease-in-out infinite; }
+        .bg-orb-2 { width: 55vw; height: 55vw; max-width: 750px; max-height: 750px; background: radial-gradient(circle, rgba(107,125,95,0.22) 0%, rgba(107,125,95,0.06) 40%, transparent 70%); bottom: -18%; right: -12%; animation: drift-2 34s ease-in-out infinite; }
+        .bg-orb-3 { width: 45vw; height: 45vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(199,116,84,0.14) 0%, rgba(199,116,84,0.04) 40%, transparent 70%); top: 45%; left: 45%; animation: drift-3 40s ease-in-out infinite; }
+        @keyframes drift-1 { 0%,100%{transform:translate(0,0) scale(1);} 25%{transform:translate(8vw,12vh) scale(1.12);} 50%{transform:translate(-4vw,6vh) scale(0.94);} 75%{transform:translate(5vw,-8vh) scale(1.05);} }
+        @keyframes drift-2 { 0%,100%{transform:translate(0,0) scale(1);} 30%{transform:translate(-10vw,-8vh) scale(1.08);} 60%{transform:translate(6vw,-12vh) scale(0.92);} }
+        @keyframes drift-3 { 0%,100%{transform:translate(-50%,-50%) scale(1);} 33%{transform:translate(-62%,-40%) scale(1.15);} 66%{transform:translate(-40%,-60%) scale(0.9);} }
+        .particle { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(217,194,154,1) 0%, rgba(217,194,154,0.4) 50%, transparent 70%); pointer-events: none; will-change: transform, opacity; animation: float-up linear infinite; }
+        @keyframes float-up { 0%{transform:translateY(105vh) translateX(0) scale(0.6);opacity:0;} 10%{opacity:0.7;} 50%{opacity:0.9;} 90%{opacity:0.7;} 100%{transform:translateY(-10vh) translateX(40px) scale(1);opacity:0;} }
+
+        main, footer { position: relative; z-index: 10; }
+        section, footer, header, main { border: none !important; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #EBE9E1 0%, #D9C29A 40%, #C9A876 60%, #9CAB91 100%);
+            background-size: 200% 200%; -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; animation: gradient-shift 8s ease infinite;
+        }
+        @keyframes gradient-shift { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
+
+        [data-reveal] { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.25,1,0.5,1), transform 1s cubic-bezier(0.25,1,0.5,1); }
+        [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+        [data-reveal="right"] { transform: translateX(50px); }
+        [data-reveal="scale"] { transform: scale(0.92); }
+        [data-reveal="scale"].is-visible { transform: scale(1); }
+        [data-delay="1"]{transition-delay:0.1s;} [data-delay="2"]{transition-delay:0.2s;} [data-delay="3"]{transition-delay:0.3s;} [data-delay="4"]{transition-delay:0.4s;} [data-delay="5"]{transition-delay:0.5s;} [data-delay="6"]{transition-delay:0.6s;}
+        [data-parallax] { will-change: transform; }
+
+        body::after {
+            content: ''; position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+            opacity: 0.025; pointer-events: none; z-index: 100; mix-blend-mode: overlay;
+        }
+
+        @keyframes float { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-25px) rotate(8deg);} }
+        .float { animation: float 8s ease-in-out infinite; }
+        @keyframes spin-slow { to { transform: rotate(360deg); } }
+        .spin-slow { animation: spin-slow 60s linear infinite; }
+        .spin-slow-reverse { animation: spin-slow 80s linear infinite reverse; }
+        @keyframes glow-pulse { 0%,100%{opacity:0.25;transform:scale(1);} 50%{opacity:0.5;transform:scale(1.1);} }
+        .glow-pulse { animation: glow-pulse 8s ease-in-out infinite; }
+        @keyframes scroll-bounce { 0%,100%{transform:translateY(0);opacity:1;} 50%{transform:translateY(10px);opacity:0.4;} }
+        .scroll-bounce { animation: scroll-bounce 2s ease-in-out infinite; }
+
+        .btn-shine { position: relative; overflow: hidden; }
+        .btn-shine::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: left 0.7s; }
+        .btn-shine:hover::after { left: 100%; }
+
+        @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+        .glow-border { position: relative; }
+        .glow-border::before {
+            content: ''; position: absolute; inset: -1px; border-radius: inherit;
+            background: conic-gradient(from var(--angle), transparent 0%, #C9A876 15%, transparent 30%, transparent 55%, #9CAB91 70%, transparent 85%);
+            animation: rotate-border 6s linear infinite; z-index: -1; opacity: 0; transition: opacity 0.5s; filter: blur(3px);
+        }
+        .glow-border:hover::before { opacity: 1; }
+        @keyframes rotate-border { to { --angle: 360deg; } }
+
+        @keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+        .marquee { overflow: hidden; }
+        .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+
+        .ornament { display: flex; align-items: center; gap: 1rem; color: #C9A876; }
+        .ornament::before, .ornament::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, currentColor 50%, transparent); opacity: 0.4; }
+
+        .faq-answer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.5s cubic-bezier(0.25,1,0.5,1), opacity 0.4s, padding-top 0.4s; }
+        .faq-item.open .faq-answer { max-height: 500px; opacity: 1; padding-top: 0.75rem; }
+        .faq-icon { transition: transform 0.4s; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+        .video-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; gap: 1.25rem; padding: 2rem 0; align-items: center; padding-left: calc(50vw - 130px); padding-right: calc(50vw - 130px); }
+        @media (min-width: 768px) { .video-slider { gap: 2rem; padding-left: calc(50vw - 180px); padding-right: calc(50vw - 180px); } }
+        .video-slider::-webkit-scrollbar { display: none; }
+        .video-slider { -ms-overflow-style: none; scrollbar-width: none; }
+        .video-slide { scroll-snap-align: center; scroll-snap-stop: always; flex: 0 0 auto; width: 260px; aspect-ratio: 9 / 16; border-radius: 1rem; transition: all 0.6s cubic-bezier(0.25,1,0.5,1); opacity: 0.3; transform: scale(0.85); filter: grayscale(100%) blur(3px); cursor: pointer; position: relative; }
+        @media (min-width: 768px) { .video-slide { width: 360px; } }
+        .video-slide.is-active { opacity: 1; transform: scale(1); filter: grayscale(0%) blur(0px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,168,118,0.15); cursor: default; z-index: 10; }
+
+        #cookie-banner { transition: transform 0.5s cubic-bezier(0.25,1,0.5,1), opacity 0.5s; }
+        #cookie-banner.hide { transform: translateY(100%); opacity: 0; pointer-events: none; }
+
+        .admin-tab-btn { transition: all 0.2s; }
+        .admin-tab-btn.active { background: rgba(201,168,118,0.15); color: #D9C29A; border-color: rgba(201,168,118,0.5); }
+
+        .admin-input {
+            width: 100%; padding: 0.6rem 0.9rem; border-radius: 0.5rem;
+            background: rgba(14, 16, 13, 0.7); border: 1px solid rgba(38, 43, 35, 1);
+            color: #EBE9E1; font-size: 0.875rem; outline: none;
+            transition: border-color 0.2s;
+        }
+        .admin-input:focus { border-color: rgba(201,168,118,0.6); }
+        .admin-label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(235, 233, 225, 0.5); margin-bottom: 0.35rem; }
+
+        .star { color: #C9A876; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bg-orb, .particle { animation: none !important; }
+            [data-parallax] { transform: none !important; }
+        }
+    </style>
+</head>
+
+<body class="text-cream font-sans antialiased selection:bg-gold selection:text-zen-bg">
+
+    <div id="bg-layer" aria-hidden="true">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div id="particles"></div>
+    </div>
+
+    <!-- ШАПКА -->
+    <header class="fixed w-full py-4 md:py-6 px-4 md:px-12 flex justify-between items-center z-50 mix-blend-difference">
+        <a href="#" class="flex items-center gap-4">
+            <img src="logotype.png" alt="NAGI HEAD SPA" class="h-8 md:h-10 w-auto object-contain brightness-0 invert" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span class="hidden text-xl font-serif tracking-widest">NAGI</span>
+        </a>
+        <div class="flex items-center gap-3 md:gap-6">
+            <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+                <a href="#about" class="text-white/70 hover:text-white transition-colors">О нас</a>
+                <a href="#programs" class="text-white/70 hover:text-white transition-colors">Программы</a>
+                <a href="#reviews" class="text-white/70 hover:text-white transition-colors">Отзывы</a>
+                <a href="#faq" class="text-white/70 hover:text-white transition-colors">Вопросы</a>
+            </nav>
+            <a id="header-phone" href="tel:+79992883436" class="hidden md:block text-sm tracking-widest text-white hover:text-gold-light transition-colors">+7 999 288 34 36</a>
+            <button id="auth-btn" onclick="onAuthClick()" class="hidden sm:flex items-center gap-2 text-xs md:text-sm tracking-wider uppercase text-white hover:text-gold-light transition-colors px-3 py-2 border border-white/20 rounded-full">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                <span id="auth-btn-text">Войти</span>
+            </button>
+            <button onclick="toggleMenu()" class="flex items-center gap-2 md:gap-3 text-xs md:text-sm tracking-widest uppercase text-white hover:text-gold-light transition-colors group" aria-label="Открыть меню">
+                <span>Меню</span>
+                <div class="w-5 h-3 md:w-6 md:h-4 flex flex-col justify-between group-hover:opacity-70 transition-opacity">
+                    <span class="w-full h-[1px] bg-white"></span>
+                    <span class="w-4/5 h-[1px] bg-white self-end"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- МЕНЮ -->
+    <div id="menu-overlay" class="fixed inset-0 bg-zen-surface/95 backdrop-blur-xl z-[60] opacity-0 invisible flex flex-col justify-center items-center">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 md:top-8 md:right-12 text-cream/50 hover:text-cream transition-colors p-2" aria-label="Закрыть меню">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <nav class="flex flex-col items-center gap-4 md:gap-5 text-center px-4">
+            <a href="#about" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">О нас</a>
+            <a href="#programs" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Программы</a>
+            <a href="#cosmetics" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Косметика</a>
+            <a href="#reviews" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Отзывы</a>
+            <a href="#space" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Пространство</a>
+            <a href="#faq" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Вопросы</a>
+            <a href="#rules" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Правила</a>
+            <button onclick="toggleMenu(); onAuthClick()" class="text-lg sm:text-xl md:text-2xl font-serif italic text-gold/80 hover:text-gold transition-colors mt-4">Войти / Админ-панель</button>
+        </nav>
+        <div class="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-4">
+            <p class="text-[10px] md:text-xs tracking-[0.2em] uppercase text-cream/40">Екатеринбург, Горького 51</p>
+            <div class="flex gap-6">
+                <a id="menu-vk" href="https://vk.ru/nagi_head_spa" target="_blank" rel="noopener" class="text-xs md:text-sm text-cream/60 hover:text-gold transition-colors">VK</a>
+                <a id="menu-tg" href="https://t.me/nagi_head_spa" target="_blank" rel="noopener" class="text-xs md:text-sm text-cream/60 hover:text-gold transition-colors">Telegram</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-20 pb-10">
+        <div class="absolute inset-0 z-0">
+            <img src="SkjsWhN3vfE.jpg" alt="Атмосфера NAGI HEAD SPA" class="w-full h-full object-cover object-center scale-110" data-parallax="0.15">
+            <div class="absolute inset-0 bg-gradient-to-b from-zen-bg/20 via-zen-bg/50 to-transparent"></div>
+            <div class="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] max-w-[900px] max-h-[900px] rounded-full bg-gold/15 blur-[140px] glow-pulse pointer-events-none"></div>
+            <div class="absolute -bottom-1/4 -left-1/4 w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full bg-olive/15 blur-[120px] glow-pulse pointer-events-none" style="animation-delay: 4s;"></div>
+        </div>
+        <div class="absolute top-24 right-8 md:top-32 md:right-20 w-24 h-24 md:w-40 md:h-40 border border-gold/25 rounded-full spin-slow pointer-events-none hidden sm:block">
+            <div class="absolute inset-4 border border-olive/25 rounded-full"></div>
+            <div class="absolute inset-8 border border-gold/15 rounded-full"></div>
+        </div>
+        <div class="absolute bottom-20 left-8 md:bottom-32 md:left-20 w-16 h-16 md:w-24 md:h-24 border border-olive/30 rounded-full spin-slow-reverse pointer-events-none hidden sm:block"></div>
+        <div class="relative z-10 flex flex-col items-center text-center px-5 md:px-6 max-w-4xl mt-10 md:mt-12">
+            <span class="reveal-text text-gold-light uppercase tracking-[0.3em] text-[10px] md:text-sm font-medium mb-6 md:mb-8 flex items-center gap-3">
+                <span class="w-8 h-[1px] bg-gold/50"></span>Добро пожаловать в NAGI<span class="w-8 h-[1px] bg-gold/50"></span>
+            </span>
+            <h1 class="reveal-text text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] text-cream mb-6 md:mb-8" style="animation-delay: 0.1s;">
+                Искусство<br><span class="italic gradient-text font-light">тишины</span>
+            </h1>
+            <p class="reveal-text text-sm sm:text-base md:text-lg text-cream/60 font-light max-w-xl leading-relaxed mb-8 md:mb-12" style="animation-delay: 0.2s;">
+                Погрузитесь в атмосферу абсолютного спокойствия. Уникальные японские ритуалы для восстановления баланса тела и разума.
+            </p>
+            <div class="reveal-text flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto px-4 sm:px-0" style="animation-delay: 0.3s;">
+                <button onclick="openOrderModal('service', 'Индивидуальная запись', '')" class="btn-shine bg-cream text-zen-bg px-8 py-4 rounded-full font-medium text-sm tracking-wide btn-hover text-center">Забронировать визит</button>
+                <a href="#certificates" class="bg-transparent border border-cream/30 text-cream px-8 py-4 rounded-full font-medium text-sm tracking-wide hover:bg-cream/10 hover:border-gold/60 transition-all text-center">Подарочный сертификат</a>
+            </div>
+        </div>
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-cream/40">
+            <span class="text-[10px] tracking-[0.3em] uppercase">Скролл</span>
+            <svg class="w-4 h-4 scroll-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <main>
+        <!-- ФИЛОСОФИЯ -->
+        <section id="about" class="py-16 md:py-24 px-5 md:px-12 max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-10 md:gap-12 items-start">
+                <div class="md:col-span-5 md:col-start-2">
+                    <h2 data-reveal class="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight mb-6 md:mb-8">Гармония<br><span class="gradient-text italic">во всем</span></h2>
+                    <div data-reveal data-delay="1" class="w-12 h-[1px] bg-gradient-to-r from-gold to-transparent mb-6 md:mb-8"></div>
+                    <p data-reveal data-delay="1" class="text-sm md:text-base text-cream/60 font-light leading-relaxed mb-6">Мы создали пространство, где время замедляется. NAGI — это не просто спа, это ритуал перезагрузки. Каждая деталь направлена на то, чтобы вернуть вам внутренний баланс.</p>
+                    <ul class="space-y-4 mt-8 md:mt-10">
+                        <li data-reveal data-delay="2" class="flex items-center gap-4 text-sm md:text-base text-cream/80"><span class="text-gold font-serif italic text-lg md:text-xl">01</span> Аутентичные японские техники</li>
+                        <li data-reveal data-delay="3" class="flex items-center gap-4 text-sm md:text-base text-cream/80"><span class="text-gold font-serif italic text-lg md:text-xl">02</span> Глубокое расслабление нервной системы</li>
+                        <li data-reveal data-delay="4" class="flex items-center gap-4 text-sm md:text-base text-cream/80"><span class="text-gold font-serif italic text-lg md:text-xl">03</span> Индивидуальный подход к каждому</li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 md:col-start-8 relative mt-4 md:mt-0" data-reveal="right" data-delay="2">
+                    <div class="aspect-[3/4] w-full max-w-[280px] mx-auto md:max-w-none rounded-t-full overflow-hidden border border-gold/20">
+                        <img src="SkjsWhN3vfE.jpg" alt="Детали" class="w-full h-full object-cover object-[20%_center] grayscale opacity-80 hover:grayscale-0 hover:scale-105 transition-all duration-1000">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 w-20 h-20 border border-gold/20 rounded-full float pointer-events-none hidden md:block"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СТАТИСТИКА -->
+        <section class="py-16 md:py-24 px-5 md:px-12">
+            <div class="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
+                <div data-reveal="scale"><div class="text-4xl md:text-6xl font-serif text-gold mb-2"><span data-count="5">0</span><span class="text-gold/60">+</span></div><p class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-cream/50">лет опыта</p></div>
+                <div data-reveal="scale" data-delay="1"><div class="text-4xl md:text-6xl font-serif text-gold mb-2"><span data-count="2000">0</span><span class="text-gold/60">+</span></div><p class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-cream/50">гостей</p></div>
+                <div data-reveal="scale" data-delay="2"><div class="text-4xl md:text-6xl font-serif text-gold mb-2"><span data-count="12">0</span></div><p class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-cream/50">ритуалов</p></div>
+                <div data-reveal="scale" data-delay="3"><div class="text-4xl md:text-6xl font-serif text-gold mb-2"><span data-count="49">0</span><span class="text-gold/60">★</span></div><p class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-cream/50">рейтинг</p></div>
+            </div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="marquee py-5 md:py-6 overflow-hidden">
+            <div class="marquee-track items-center gap-12 md:gap-16 text-cream/40">
+                <span class="text-lg md:text-2xl font-serif italic whitespace-nowrap">和み · NAGI</span><span class="text-gold/60">✦</span>
+                <span class="text-lg md:text-2xl font-serif whitespace-nowrap tracking-[0.3em]">ТИШИНА</span><span class="text-gold/60">✦</span>
+                <span class="text-lg md:text-2xl font-serif italic whitespace-nowrap">リラックス · RITUAL</span><span class="text-gold/60">✦</span>
+                <span class="text-lg md:text-2xl font-serif whitespace-nowrap tracking-[0.3em]">ГАРМОНИЯ</span><span class="text-gold/60">✦</span>
+                <span class="text-lg md:text-2xl font-serif italic whitespace-nowrap">東京 · TOKYO HEAD SPA</span><span class="text-gold/60">✦</span>
+                <span class="text-lg md:text-2xl font-serif whitespace-nowrap tracking-[0.3em]">ИСКУССТВО</span><span class="text-gold/60">✦</span>
+                <span class="text-lg md:text-2xl font-serif italic whitespace-nowrap">和み · NAGI</span><span class="text-gold/60">✦</span>
+                <span class="text-lg md:text-2xl font-serif whitespace-nowrap tracking-[0.3em]">ТИШИНА</span><span class="text-gold/60">✦</span>
+            </div>
+        </div>
+
+        <!-- ПРОГРАММЫ -->
+        <section id="programs" class="py-20 md:py-32 relative">
+            <div class="max-w-7xl mx-auto px-5 md:px-12">
+                <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+                    <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] md:text-xs font-semibold block mb-4">Выберите свой ритуал</span>
+                    <h2 data-reveal class="text-4xl md:text-5xl font-serif mb-4">Программы</h2>
+                    <p class="text-cream/50 font-light text-sm md:text-base">Мы разработали несколько направлений, чтобы вы могли подобрать идеальный уход.</p>
+                </div>
+                <div class="flex items-center gap-4 md:gap-8 mb-10 md:mb-12">
+                    <span class="h-[1px] bg-gradient-to-r from-transparent to-gold/40 flex-1"></span>
+                    <h3 class="text-xl md:text-2xl font-serif text-cream tracking-[0.1em] uppercase text-center">Услуги</h3>
+                    <span class="h-[1px] bg-gradient-to-l from-transparent to-gold/40 flex-1"></span>
+                </div>
+                <div id="services-grid" class="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto mb-20 md:mb-24"></div>
+                <div class="flex items-center gap-4 md:gap-8 mb-10 md:mb-12">
+                    <span class="h-[1px] bg-gradient-to-r from-transparent to-gold/40 flex-1"></span>
+                    <h3 class="text-xl md:text-2xl font-serif text-cream tracking-[0.1em] uppercase text-center">Абонементы</h3>
+                    <span class="h-[1px] bg-gradient-to-l from-transparent to-gold/40 flex-1"></span>
+                </div>
+                <div id="subs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto"></div>
+            </div>
+        </section>
+
+        <!-- КОСМЕТИКА -->
+        <section id="cosmetics" class="py-20 md:py-32 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-5 md:px-12">
+                <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+                    <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] md:text-xs font-semibold block mb-4">Что мы используем</span>
+                    <h2 data-reveal class="text-4xl md:text-5xl font-serif mb-4">Премиальная <span class="gradient-text italic">косметика</span></h2>
+                    <p class="text-cream/50 font-light text-sm md:text-base">Лучшие бренды из Франции, Испании и Японии.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div data-reveal="scale" data-delay="1" class="glow-border bg-zen-surface/40 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 group hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6"><svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg></div>
+                        <h3 class="text-xl font-serif mb-3">Selvert Thermal</h3>
+                        <p class="text-xs text-cream/50 leading-relaxed font-light">Испанский бренд премиум-класса. Термальная вода и пептиды. Глубокое увлажнение и защита.</p>
+                    </div>
+                    <div data-reveal="scale" data-delay="2" class="glow-border bg-zen-surface/40 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 group hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6"><svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></div>
+                        <h3 class="text-xl font-serif mb-3">Sothys</h3>
+                        <p class="text-xs text-cream/50 leading-relaxed font-light">Французская косметика. Фитотерапия и уникальные текстуры для сенсорного удовольствия.</p>
+                    </div>
+                    <div data-reveal="scale" data-delay="3" class="glow-border bg-zen-surface/40 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 group hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6"><svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                        <h3 class="text-xl font-serif mb-3">Tokio Head Spa</h3>
+                        <p class="text-xs text-cream/50 leading-relaxed font-light">Аутентичная японская линия ухода за кожей головы.</p>
+                    </div>
+                    <div data-reveal="scale" data-delay="4" class="glow-border bg-zen-surface/40 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 group hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6"><svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg></div>
+                        <h3 class="text-xl font-serif mb-3">TOKIO INKARAMI</h3>
+                        <p class="text-xs text-cream/50 leading-relaxed font-light">Уход за волосами из Японии с аминокислотами и шелком.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ОТЗЫВЫ -->
+        <section id="reviews" class="py-20 md:py-32 relative">
+            <div class="max-w-7xl mx-auto px-5 md:px-12">
+                <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+                    <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] md:text-xs font-semibold block mb-4">Отзывы гостей</span>
+                    <h2 data-reveal class="text-4xl md:text-5xl font-serif mb-4">Что о нас <span class="gradient-text italic">говорят</span></h2>
+                    <p class="text-cream/50 font-light text-sm md:text-base">Настоящие впечатления наших гостей после визита.</p>
+                </div>
+                <div id="reviews-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
+            </div>
+        </section>
+
+        <!-- ВИДЕО -->
+        <section id="space" class="py-12 md:py-20 overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-5 md:px-12 mb-6 md:mb-10">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-8">
+                    <div>
+                        <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] md:text-xs font-semibold block mb-2 md:mb-3">Атмосфера</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif">Ваш личный <span class="gradient-text italic">ритуал</span></h2>
+                    </div>
+                    <p class="text-cream/50 font-light max-w-sm text-xs md:text-sm">Перелистывайте кадры, чтобы увидеть наши сеансы.</p>
+                </div>
+            </div>
+            <div id="videoCarousel" class="video-slider w-full">
+                <div class="video-slide shadow-2xl"><video autoplay muted playsinline controls poster="SkjsWhN3vfE.jpg" class="w-full h-full object-cover pointer-events-none rounded-2xl"><source src="1.mp4" type="video/mp4"></video><div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none rounded-b-2xl"></div></div>
+                <div class="video-slide shadow-2xl"><video muted playsinline controls class="w-full h-full object-cover pointer-events-none rounded-2xl"><source src="2.mp4" type="video/mp4"></video><div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none rounded-b-2xl"></div></div>
+                <div class="video-slide shadow-2xl"><video muted playsinline controls class="w-full h-full object-cover pointer-events-none rounded-2xl"><source src="3.mp4" type="video/mp4"></video><div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none rounded-b-2xl"></div></div>
+                <div class="video-slide shadow-2xl"><video muted playsinline controls class="w-full h-full object-cover pointer-events-none rounded-2xl"><source src="4.mp4" type="video/mp4"></video><div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none rounded-b-2xl"></div></div>
+                <div class="video-slide shadow-2xl"><video muted playsinline controls class="w-full h-full object-cover pointer-events-none rounded-2xl"><source src="5.mp4" type="video/mp4"></video><div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none rounded-b-2xl"></div></div>
+                <div class="video-slide shadow-2xl"><video muted playsinline controls class="w-full h-full object-cover pointer-events-none rounded-2xl"><source src="6.mp4" type="video/mp4"></video><div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none rounded-b-2xl"></div></div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 md:py-32">
+            <div class="max-w-4xl mx-auto px-5 md:px-12">
+                <div class="text-center mb-16" data-reveal>
+                    <h2 class="text-3xl md:text-5xl font-serif mb-4">Что нужно знать,<br><span class="gradient-text italic">перед посещением?</span></h2>
+                    <div class="ornament max-w-xs mx-auto mt-6"><span class="text-gold text-lg">✦</span></div>
+                </div>
+                <div class="space-y-4 md:space-y-5">
+                    <div class="faq-item bg-zen-surface/40 backdrop-blur-md rounded-2xl border border-zen-light/20 hover:border-gold/30 transition-colors overflow-hidden" data-reveal>
+                        <button class="faq-trigger w-full p-6 md:p-8 flex items-center justify-between gap-4 text-left">
+                            <h3 class="text-lg md:text-xl font-serif text-cream flex items-start gap-3"><span class="text-gold mt-1">✦</span> Нужно ли брать с собой полотенце и тапочки?</h3>
+                            <svg class="faq-icon w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 md:px-8 pb-6 md:pb-8"><p class="text-sm md:text-base text-cream/60 font-light leading-relaxed pl-7">Нет, не нужно. Полотенце, тапочки и все необходимые принадлежности для процедуры мы предоставим.</p></div>
+                    </div>
+                    <div class="faq-item bg-zen-surface/40 backdrop-blur-md rounded-2xl border border-zen-light/20 hover:border-gold/30 transition-colors overflow-hidden" data-reveal data-delay="1">
+                        <button class="faq-trigger w-full p-6 md:p-8 flex items-center justify-between gap-4 text-left">
+                            <h3 class="text-lg md:text-xl font-serif text-cream flex items-start gap-3"><span class="text-gold mt-1">✦</span> Стоит ли приходить заранее?</h3>
+                            <svg class="faq-icon w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 md:px-8 pb-6 md:pb-8"><p class="text-sm md:text-base text-cream/60 font-light leading-relaxed pl-7">Рекомендуем прийти за 5-10 минут до процедуры, чтобы спокойно подготовиться.</p></div>
+                    </div>
+                    <div class="faq-item bg-zen-surface/40 backdrop-blur-md rounded-2xl border border-zen-light/20 hover:border-gold/30 transition-colors overflow-hidden" data-reveal data-delay="2">
+                        <button class="faq-trigger w-full p-6 md:p-8 flex items-center justify-between gap-4 text-left">
+                            <h3 class="text-lg md:text-xl font-serif text-cream flex items-start gap-3"><span class="text-gold mt-1">✦</span> Где вы находитесь?</h3>
+                            <svg class="faq-icon w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 md:px-8 pb-6 md:pb-8"><p class="text-sm md:text-base text-cream/60 font-light leading-relaxed pl-7">NAGI HEAD SPA находится в Екатеринбурге по адресу Горького 51.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПРАВИЛА -->
+        <section id="rules" class="py-20 md:py-32">
+            <div class="max-w-4xl mx-auto px-5 md:px-12">
+                <div class="text-center mb-16" data-reveal>
+                    <h2 class="text-3xl md:text-5xl font-serif mb-4">Правила NAGI</h2>
+                    <p class="text-cream/50 font-light text-sm md:text-base mt-4">Чтобы ваше пребывание было максимально комфортным.</p>
+                    <div class="ornament max-w-xs mx-auto mt-6"><span class="text-gold text-lg">✦</span></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                    <div class="flex gap-4" data-reveal data-delay="1"><div class="text-3xl font-serif italic text-gold/50 leading-none">01</div><div><h4 class="text-lg font-serif text-cream mb-2">Тишина и покой</h4><p class="text-sm text-cream/60 font-light leading-relaxed">Пожалуйста, отключите звук телефона и соблюдайте тишину.</p></div></div>
+                    <div class="flex gap-4" data-reveal data-delay="2"><div class="text-3xl font-serif italic text-gold/50 leading-none">02</div><div><h4 class="text-lg font-serif text-cream mb-2">Пунктуальность</h4><p class="text-sm text-cream/60 font-light leading-relaxed">Приходите за 5-10 минут до начала сеанса.</p></div></div>
+                    <div class="flex gap-4" data-reveal data-delay="3"><div class="text-3xl font-serif italic text-gold/50 leading-none">03</div><div><h4 class="text-lg font-serif text-cream mb-2">Здоровье</h4><p class="text-sm text-cream/60 font-light leading-relaxed">Сообщите мастеру об аллергиях и противопоказаниях.</p></div></div>
+                    <div class="flex gap-4" data-reveal data-delay="4"><div class="text-3xl font-serif italic text-gold/50 leading-none">04</div><div><h4 class="text-lg font-serif text-cream mb-2">Отмена записи</h4><p class="text-sm text-cream/60 font-light leading-relaxed">Сообщите минимум за 3-4 часа до визита.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СЕРТИФИКАТЫ -->
+        <section id="certificates" class="py-20 md:py-28 px-5 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14" data-reveal>
+                    <div class="ornament max-w-xs mx-auto mb-6"><span class="text-gold text-lg">✦</span></div>
+                    <h2 class="text-3xl md:text-5xl font-serif mb-4">Подарочные <span class="gradient-text italic">сертификаты</span></h2>
+                    <p class="text-cream/50 font-light text-sm md:text-base max-w-md mx-auto">Идеальный подарок для близких.</p>
+                </div>
+                <div id="certificates-grid" class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer id="contact" class="pt-16 md:pt-20 pb-8 px-5 md:px-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-10 md:mb-14">
+            <div class="sm:col-span-2">
+                <img src="logotype.png" alt="NAGI HEAD SPA" class="h-10 md:h-12 w-auto object-contain brightness-0 invert opacity-70 mb-4 md:mb-6" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span class="hidden text-2xl font-serif tracking-widest mb-4">NAGI</span>
+                <p class="text-xs md:text-sm text-cream/40 leading-relaxed font-light max-w-xs">Пространство тишины и гармонии в центре Екатеринбурга.</p>
+            </div>
+            <div>
+                <h3 class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gold-light mb-4 md:mb-6">Связаться</h3>
+                <a id="footer-phone" href="tel:+79992883436" class="block text-lg md:text-xl font-serif mb-3 md:mb-4 hover:text-gold transition-colors">+7 999 288 34 36</a>
+                <div class="flex flex-col gap-3">
+                    <a id="footer-vk" href="https://vk.ru/nagi_head_spa" target="_blank" rel="noopener" class="text-xs md:text-sm text-cream/50 hover:text-cream transition-colors">ВКонтакте</a>
+                    <a id="footer-tg" href="https://t.me/nagi_head_spa" target="_blank" rel="noopener" class="text-xs md:text-sm text-cream/50 hover:text-cream transition-colors">Telegram</a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gold-light mb-4 md:mb-6">Локация</h3>
+                <a id="footer-address" href="https://yandex.ru/maps/?text=Екатеринбург,%20улица%20Горького,%2051" target="_blank" rel="noopener" class="block text-lg md:text-xl font-serif mb-2 hover:text-gold transition-colors">Горького, 51</a>
+                <p id="footer-hours" class="text-xs md:text-sm text-cream/50 mb-4">Ежедневно 11:00 — 21:00</p>
+                <a id="footer-map-link" href="https://yandex.ru/maps/?text=Екатеринбург,%20улица%20Горького,%2051" target="_blank" rel="noopener" class="inline-block text-[10px] md:text-xs tracking-wider uppercase text-cream/40 border-b border-cream/20 pb-1 hover:text-gold transition-colors">На карте</a>
+            </div>
+        </div>
+        <div class="max-w-3xl mx-auto mb-10 md:mb-14">
+            <div class="h-[240px] md:h-[300px] w-full rounded-2xl overflow-hidden border border-zen-light/20">
+                <iframe id="map-iframe" src="https://yandex.ru/map-widget/v1/?text=Екатеринбург%2C%20улица%20Горького%2C%2051&z=16" width="100%" height="100%" frameborder="0" allowfullscreen loading="lazy" title="NAGI HEAD SPA на карте" class="w-full h-full block"></iframe>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-6 md:pt-8 border-t border-zen-light/10 text-center md:text-left text-[10px] md:text-xs text-cream/20 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>&copy; 2025 NAGI HEAD SPA.</p>
+            <button onclick="openPrivacy()" class="hover:text-cream transition-colors py-2">Политика конфиденциальности</button>
+        </div>
+    </footer>
+
+    <!-- МОДАЛКА: ВХОД / РЕГИСТРАЦИЯ -->
+    <div id="login-modal" class="modal hidden-modal fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target === this) closeLogin()">
+        <div class="bg-zen-surface max-w-md w-full rounded-2xl border border-zen-light/30 p-8 relative">
+            <button onclick="closeLogin()" class="absolute top-4 right-4 text-cream/60 hover:text-cream p-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h2 class="text-2xl font-serif mb-1" id="login-modal-title">Вход</h2>
+            <p class="text-cream/50 text-xs mb-6" id="login-modal-subtitle">Войдите в личный кабинет</p>
+            <form id="login-form" class="space-y-4" onsubmit="handleLogin(event)">
+                <div><label class="admin-label">Логин</label><input id="login-user" type="text" class="admin-input" placeholder="Введите логин" required autocomplete="username"></div>
+                <div><label class="admin-label">Пароль</label><input id="login-pass" type="password" class="admin-input" placeholder="Введите пароль" required autocomplete="current-password"></div>
+                <p id="login-error" class="hidden text-xs text-red-400"></p>
+                <button type="submit" class="w-full bg-gold text-zen-bg px-6 py-3 rounded-full font-medium text-sm hover:bg-cream transition-colors">Войти</button>
+            </form>
+            <div class="text-center text-xs text-cream/40 mt-5">
+                <span id="toggle-auth-text">Нет аккаунта?</span>
+                <button onclick="toggleAuthMode()" class="text-gold hover:underline ml-1" id="toggle-auth-btn">Зарегистрироваться</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛКА: ЗАКАЗ -->
+    <div id="order-modal" class="modal hidden-modal fixed inset-0 z-[105] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target === this) closeOrderModal()">
+        <div class="bg-zen-surface max-w-md w-full rounded-2xl border border-zen-light/30 p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-cream/60 hover:text-cream p-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h2 class="text-2xl font-serif mb-1" id="order-modal-title">Оформление заказа</h2>
+            <p class="text-cream/50 text-xs mb-1" id="order-modal-subtitle">Заполните форму — мы свяжемся с вами</p>
+            <p class="text-gold text-sm mb-6" id="order-modal-item"></p>
+            <form id="order-form" onsubmit="submitOrder(event)" class="space-y-4">
+                <div><label class="admin-label">Ваше имя *</label><input id="order-name" type="text" class="admin-input" placeholder="Как к вам обращаться" required></div>
+                <div><label class="admin-label">Телефон *</label><input id="order-phone" type="tel" class="admin-input" placeholder="+7 (___) ___-__-__" required></div>
+                <div id="order-datetime-block">
+                    <label class="admin-label">Дата и время *</label>
+                    <input id="order-datetime" type="datetime-local" class="admin-input" required>
+                </div>
+                <div>
+                    <label class="admin-label">Комментарий</label>
+                    <textarea id="order-comment" class="admin-input" rows="2" placeholder="Пожелания или вопросы"></textarea>
+                </div>
+                <p id="order-error" class="hidden text-xs text-red-400"></p>
+                <button type="submit" id="order-submit-btn" class="w-full bg-gold text-zen-bg px-6 py-3 rounded-full font-medium text-sm hover:bg-cream transition-colors">Отправить заявку</button>
+                <p class="text-[10px] text-cream/30 text-center">Нажимая кнопку, вы соглашаетесь с <button type="button" onclick="openPrivacy()" class="underline">политикой конфиденциальности</button></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- АДМИН-ПАНЕЛЬ -->
+    <div id="admin-modal" class="modal hidden-modal fixed inset-0 z-[110] bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 md:p-6" onclick="if(event.target === this) closeAdmin()">
+        <div class="bg-zen-surface w-full max-w-6xl h-[95vh] md:h-[90vh] rounded-2xl border border-zen-light/30 flex flex-col overflow-hidden">
+            <div class="flex items-center justify-between px-5 md:px-8 py-4 border-b border-zen-light/20">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-serif">Админ-панель</h2>
+                    <p class="text-[10px] md:text-xs text-cream/40 mt-1">NAGI HEAD SPA — управление контентом</p>
+                </div>
+                <button onclick="closeAdmin()" class="text-cream/60 hover:text-cream p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="flex flex-wrap gap-2 px-5 md:px-8 py-3 border-b border-zen-light/20 bg-zen-bg/40">
+                <button class="admin-tab-btn active px-3 md:px-4 py-2 rounded-full border border-zen-light/30 text-xs md:text-sm" onclick="switchAdminTab('services')">Услуги</button>
+                <button class="admin-tab-btn px-3 md:px-4 py-2 rounded-full border border-zen-light/30 text-xs md:text-sm" onclick="switchAdminTab('subscriptions')">Абонементы</button>
+                <button class="admin-tab-btn px-3 md:px-4 py-2 rounded-full border border-zen-light/30 text-xs md:text-sm" onclick="switchAdminTab('certificates')">Сертификаты</button>
+                <button class="admin-tab-btn px-3 md:px-4 py-2 rounded-full border border-zen-light/30 text-xs md:text-sm" onclick="switchAdminTab('reviews')">Отзывы</button>
+                <button class="admin-tab-btn px-3 md:px-4 py-2 rounded-full border border-zen-light/30 text-xs md:text-sm" onclick="switchAdminTab('contacts')">Контакты</button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-5 md:px-8 py-6">
+                <div id="admin-edit-panel" class="hidden mb-6 bg-zen-bg/60 border border-gold/30 rounded-xl p-5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 id="admin-edit-title" class="text-lg font-serif text-gold">Редактирование</h3>
+                        <button onclick="cancelEdit()" class="text-cream/40 hover:text-cream text-xs">Отмена ✕</button>
+                    </div>
+                    <div id="admin-edit-fields" class="grid md:grid-cols-2 gap-4"></div>
+                    <div class="flex gap-2 mt-5">
+                        <button onclick="saveEdit()" class="bg-gold text-zen-bg px-6 py-2 rounded-full font-medium text-sm hover:bg-cream transition-colors">Сохранить</button>
+                        <button onclick="cancelEdit()" class="border border-zen-light/40 text-cream/70 px-6 py-2 rounded-full text-sm hover:bg-zen-light/20 transition-colors">Отмена</button>
+                    </div>
+                </div>
+                <div id="admin-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПОЛИТИКА -->
+    <div id="privacy-modal" class="modal hidden-modal fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target === this) closePrivacy()">
+        <div class="bg-zen-surface max-w-3xl w-full max-h-[85vh] overflow-y-auto rounded-2xl border border-zen-light/30 p-6 md:p-10 relative">
+            <button onclick="closePrivacy()" class="absolute top-4 right-4 text-cream/60 hover:text-cream p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h2 class="text-2xl md:text-3xl font-serif mb-6 pr-10">Политика конфиденциальности</h2>
+            <div class="text-cream/70 font-light text-sm leading-relaxed space-y-4">
+                <p>Настоящая Политика обработки персональных данных разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+                <h3 class="text-base font-serif text-cream mt-6 mb-2">1. Общие положения</h3>
+                <p>Оператор ставит своей важнейшей целью соблюдение прав и свобод человека при обработке персональных данных.</p>
+                <h3 class="text-base font-serif text-cream mt-6 mb-2">2. Какие данные мы собираем</h3>
+                <p>ФИО, телефон, email, данные о записях. Также собираются обезличенные данные (cookie).</p>
+                <h3 class="text-base font-serif text-cream mt-6 mb-2">3. Цели обработки</h3>
+                <p>Информирование Пользователя, заключение и исполнение договоров, предоставление доступа к сервисам сайта.</p>
+                <h3 class="text-base font-serif text-cream mt-6 mb-2">4. Права пользователя</h3>
+                <p>Пользователь может отозвать своё согласие, направив уведомление на <span id="privacy-email">info@nagi-spa.ru</span>.</p>
+                <p class="mt-8 text-cream/40 text-xs">Дата последнего обновления: 25 октября 2026 г.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- СПАСИБО -->
+    <div id="thanks-modal" class="modal hidden-modal fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target === this) closeThanks()">
+        <div class="bg-zen-surface max-w-md w-full rounded-2xl border border-zen-light/30 p-8 text-center relative">
+            <button onclick="closeThanks()" class="absolute top-4 right-4 text-cream/60 hover:text-cream p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-8 h-8 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h2 id="thanks-title" class="text-2xl font-serif mb-3">Спасибо!</h2>
+            <p id="thanks-text" class="text-cream/60 font-light text-sm mb-6">Ваша заявка принята. Мы свяжемся с вами в ближайшее время.</p>
+            <a id="thanks-phone" href="tel:+79992883436" class="inline-block bg-gold text-zen-bg px-6 py-3 rounded-full font-medium text-sm hover:bg-cream transition-all">+7 999 288 34 36</a>
+        </div>
+    </div>
+
+    <!-- COOKIE -->
+    <div id="cookie-banner" class="hide fixed bottom-0 left-0 right-0 z-[90] bg-zen-surface/95 backdrop-blur-md border-t border-zen-light/30 px-4 md:px-8 py-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-xs md:text-sm text-cream/60 font-light text-center md:text-left">
+                Мы используем cookie для улучшения работы сайта.
+                <button onclick="openPrivacy()" class="underline hover:text-cream transition-colors">Подробнее</button>
+            </p>
+            <button onclick="acceptCookies()" class="bg-gold text-zen-bg px-6 py-2 rounded-full text-sm font-medium hover:bg-cream transition-colors whitespace-nowrap">Принять</button>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // ДАННЫЕ И LOCALSTORAGE
+        // ============================================
+        const DATA_KEY = 'nagi_data_v1';
+        const USER_KEY = 'nagi_user_v1';
+        const ORDERS_KEY = 'nagi_orders_v1';
+
+        const DEFAULTS = {
+            services: [
+                { id: 's1', tag: 'Флагманский уход', title: 'Tokyo Head SPA', desc: 'Глубокий японский ритуал для головы и волос. Полное очищение, массаж и перезагрузка нервной системы.', features: ['Массаж шейно-воротниковой зоны', 'Глубокое очищение кожи головы', 'Увлажняющая маска для волос'], duration: '90 минут', price: '6 500 ₽' },
+                { id: 's2', tag: 'Для лица', title: 'Japanese Face', desc: 'Скульптурный массаж лица по древним японским техникам. Возвращает тонус, сияние и четкий овал.', features: ['Лимфодренажный массаж', 'Глубокое очищение и пилинг', 'Альгинатная маска'], duration: '60 минут', price: '5 000 ₽' }
+            ],
+            subscriptions: [
+                { id: 'sub1', tag: 'Курс процедур', title: 'Classic Head SPA', desc: 'Абонемент на 5 классических сеансов. Идеальное решение для поддержания долгосрочного результата.', features: ['5 сеансов (45 мин)', 'Действует 3 месяца', 'Заморозка абонемента'], benefit: 'до 15%', price: '20 000 ₽', badge: 'Выгодно' }
+            ],
+            certificates: [
+                { id: 'c1', title: 'Сертификат 5 000 ₽', desc: 'Подарочный сертификат на любые услуги салона номиналом 5 000 ₽.', price: '5 000 ₽' },
+                { id: 'c2', title: 'Сертификат 10 000 ₽', desc: 'Идеальный подарок — сертификат на 10 000 ₽ для любого ритуала.', price: '10 000 ₽' },
+                { id: 'c3', title: 'Сертификат 20 000 ₽', desc: 'Премиальный подарок — сертификат на полный курс процедур.', price: '20 000 ₽' }
+            ],
+            reviews: [
+                { id: 'r1', name: 'Анна', date: '15 октября 2025', rating: 5, text: 'Невероятный ритуал! Вышла как будто заново родилась. Мастер очень внимательный, атмосфера волшебная.' },
+                { id: 'r2', name: 'Екатерина', date: '2 октября 2025', rating: 5, text: 'Хожу в NAGI уже полгода. Это моё место силы. После Tokyo Head SPA голова просто светлая. Рекомендую всем.' },
+                { id: 'r3', name: 'Мария', date: '18 сентября 2025', rating: 5, text: 'Подарила маме сертификат — она в восторге! Отдельное спасибо за чуткость и внимание к деталям.' }
+            ],
+            contacts: {
+                phone: '+7 999 288 34 36',
+                phoneRaw: '+79992883436',
+                addressShort: 'Горького, 51',
+                addressFull: 'Екатеринбург, улица Горького, 51',
+                hours: 'Ежедневно 11:00 — 21:00',
+                vk: 'https://vk.ru/nagi_head_spa',
+                telegram: 'https://t.me/nagi_head_spa',
+                whatsapp: '',
+                email: 'info@nagi-spa.ru'
+            },
+            users: [
+                { login: 'admin', password: 'admin123', isAdmin: true }
+            ]
+        };
+
+        function loadData() {
+            try {
+                const raw = localStorage.getItem(DATA_KEY);
+                if (!raw) {
+                    localStorage.setItem(DATA_KEY, JSON.stringify(DEFAULTS));
+                    return JSON.parse(JSON.stringify(DEFAULTS));
+                }
+                const parsed = JSON.parse(raw);
+                return { ...JSON.parse(JSON.stringify(DEFAULTS)), ...parsed };
+            } catch (e) {
+                console.warn('Ошибка загрузки:', e);
+                return JSON.parse(JSON.stringify(DEFAULTS));
+            }
+        }
+
+        function saveData(data) {
+            try { localStorage.setItem(DATA_KEY, JSON.stringify(data)); }
+            catch (e) { console.error('Ошибка сохранения:', e); }
+        }
+
+        function getCurrentUser() {
+            try { const raw = localStorage.getItem(USER_KEY); return raw ? JSON.parse(raw) : null; }
+            catch (e) { return null; }
+        }
+
+        function setCurrentUser(user) {
+            if (user) localStorage.setItem(USER_KEY, JSON.stringify(user));
+            else localStorage.removeItem(USER_KEY);
+            updateAuthUI();
+        }
+
+        let DATA = loadData();
+
+        function escapeHtml(str) {
+            if (str == null) return '';
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+        }
+
+        // ============================================
+        // РЕНДЕР
+        // ============================================
+        function renderServices() {
+            const grid = document.getElementById('services-grid');
+            if (!grid) return;
+            grid.innerHTML = DATA.services.map(s => `
+                <div data-reveal="scale" class="glow-border bg-zen-bg/60 backdrop-blur-md rounded-3xl p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors"></div>
+                    <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-4">${escapeHtml(s.tag)}</span>
+                    <h3 class="text-2xl md:text-3xl font-serif mb-4">${escapeHtml(s.title)}</h3>
+                    <p class="text-sm text-cream/50 font-light mb-8 flex-1">${escapeHtml(s.desc)}</p>
+                    <ul class="space-y-3 mb-8">
+                        ${(s.features || []).map(f => `<li class="flex items-start gap-3 text-sm text-cream/80"><svg class="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('')}
+                    </ul>
+                    <div class="flex items-end justify-between mb-6">
+                        <div><span class="block text-[10px] uppercase tracking-widest text-cream/40 mb-1">Длительность</span><span class="text-sm font-medium">${escapeHtml(s.duration)}</span></div>
+                        <div class="text-right"><span class="block text-[10px] uppercase tracking-widest text-cream/40 mb-1">Стоимость</span><span class="text-2xl font-serif text-gold">${escapeHtml(s.price)}</span></div>
+                    </div>
+                    <button onclick="openOrderModal('service', '${escapeHtml(s.title).replace(/'/g,"\\'")}', '${escapeHtml(s.price).replace(/'/g,"\\'")}')" class="w-full py-4 rounded-full border border-gold text-cream font-medium text-sm hover:bg-gold hover:text-zen-bg transition-colors">Записаться</button>
+                </div>
+            `).join('');
+        }
+
+        function renderSubs() {
+            const grid = document.getElementById('subs-grid');
+            if (!grid) return;
+            grid.innerHTML = DATA.subscriptions.map(s => `
+                <div data-reveal="scale" class="glow-border bg-zen-bg/60 backdrop-blur-md rounded-3xl p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors"></div>
+                    ${s.badge ? `<div class="absolute top-6 right-6 bg-gold/20 text-gold-light text-[10px] uppercase tracking-wider px-3 py-1 rounded-full border border-gold/30">${escapeHtml(s.badge)}</div>` : ''}
+                    <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-4">${escapeHtml(s.tag)}</span>
+                    <h3 class="text-2xl md:text-3xl font-serif mb-4">${escapeHtml(s.title)}</h3>
+                    <p class="text-sm text-cream/50 font-light mb-8 flex-1">${escapeHtml(s.desc)}</p>
+                    <ul class="space-y-3 mb-8">
+                        ${(s.features || []).map(f => `<li class="flex items-start gap-3 text-sm text-cream/80"><svg class="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('')}
+                    </ul>
+                    <div class="flex items-end justify-between mb-6">
+                        <div><span class="block text-[10px] uppercase tracking-widest text-cream/40 mb-1">Выгода</span><span class="text-sm font-medium text-gold-light">${escapeHtml(s.benefit)}</span></div>
+                        <div class="text-right"><span class="block text-[10px] uppercase tracking-widest text-cream/40 mb-1">Стоимость</span><span class="text-2xl font-serif text-gold">${escapeHtml(s.price)}</span></div>
+                    </div>
+                    <button onclick="openOrderModal('subscription', '${escapeHtml(s.title).replace(/'/g,"\\'")}', '${escapeHtml(s.price).replace(/'/g,"\\'")}')" class="w-full py-4 rounded-full bg-gold text-zen-bg font-medium text-sm hover:bg-cream transition-colors">Купить абонемент</button>
+                </div>
+            `).join('');
+        }
+
+        function renderReviews() {
+            const grid = document.getElementById('reviews-grid');
+            if (!grid) return;
+            if (!DATA.reviews.length) {
+                grid.innerHTML = '<p class="text-cream/40 text-center col-span-full">Пока нет отзывов.</p>';
+                return;
+            }
+            grid.innerHTML = DATA.reviews.map(r => `
+                <div data-reveal="scale" class="glow-border bg-zen-surface/40 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 hover:border-gold/40 transition-all group">
+                    <div class="flex items-center gap-1 mb-3">${renderStars(r.rating)}</div>
+                    <p class="text-sm text-cream/70 font-light leading-relaxed mb-6">"${escapeHtml(r.text)}"</p>
+                    <div class="flex items-center justify-between border-t border-zen-light/20 pt-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center text-gold font-serif">${escapeHtml(r.name.charAt(0))}</div>
+                            <div>
+                                <p class="text-sm text-cream font-medium">${escapeHtml(r.name)}</p>
+                                <p class="text-[10px] text-cream/40">${escapeHtml(r.date)}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderStars(n) {
+            n = Math.max(0, Math.min(5, Number(n) || 0));
+            let s = '';
+            for (let i = 0; i < 5; i++) s += i < n ? '★' : '☆';
+            return `<span class="star text-lg">${s}</span>`;
+        }
+
+        function renderCertificates() {
+            const grid = document.getElementById('certificates-grid');
+            if (!grid) return;
+            grid.innerHTML = DATA.certificates.map(c => `
+                <div data-reveal="scale" class="glow-border bg-zen-surface/40 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 hover:border-gold/40 transition-all group flex flex-col">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-5"><span class="text-gold text-xl">✦</span></div>
+                    <h3 class="text-xl font-serif mb-3">${escapeHtml(c.title)}</h3>
+                    <p class="text-sm text-cream/50 font-light mb-6 flex-1">${escapeHtml(c.desc)}</p>
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-zen-light/20">
+                        <span class="text-2xl font-serif text-gold">${escapeHtml(c.price)}</span>
+                        <button onclick="openOrderModal('certificate', '${escapeHtml(c.title).replace(/'/g,"\\'")}', '${escapeHtml(c.price).replace(/'/g,"\\'")}')" class="text-xs text-gold hover:text-cream border border-gold/40 hover:border-gold px-4 py-2 rounded-full transition-colors">Купить</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderContacts() {
+            const c = DATA.contacts;
+            document.getElementById('header-phone').textContent = c.phone;
+            document.getElementById('header-phone').href = 'tel:' + c.phoneRaw;
+            document.getElementById('footer-phone').textContent = c.phone;
+            document.getElementById('footer-phone').href = 'tel:' + c.phoneRaw;
+            document.getElementById('footer-address').textContent = c.addressShort;
+            document.getElementById('footer-hours').textContent = c.hours;
+            document.getElementById('footer-vk').href = c.vk;
+            document.getElementById('footer-tg').href = c.telegram;
+            document.getElementById('menu-vk').href = c.vk;
+            document.getElementById('menu-tg').href = c.telegram;
+            const mapUrl = 'https://yandex.ru/maps/?text=' + encodeURIComponent(c.addressFull);
+            document.getElementById('footer-address').href = mapUrl;
+            document.getElementById('footer-map-link').href = mapUrl;
+            document.getElementById('map-iframe').src = 'https://yandex.ru/map-widget/v1/?text=' + encodeURIComponent(c.addressFull) + '&z=16';
+            document.getElementById('thanks-phone').textContent = c.phone;
+            document.getElementById('thanks-phone').href = 'tel:' + c.phoneRaw;
+            document.getElementById('privacy-email').textContent = c.email;
+        }
+
+        function renderAll() {
+            renderServices();
+            renderSubs();
+            renderReviews();
+            renderCertificates();
+            renderContacts();
+            observeReveals();
+        }
+
+        let revealObserver;
+        function observeReveals() {
+            if (revealObserver) revealObserver.disconnect();
+            revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+            document.querySelectorAll('[data-reveal]:not(.is-visible)').forEach(el => revealObserver.observe(el));
+        }
+
+        // ============================================
+        // ФОРМА ЗАКАЗА
+        // ============================================
+        let currentOrder = { type: '', title: '', price: '' };
+
+        function openOrderModal(type, title, price) {
+            currentOrder = { type, title, price };
+
+            const titleEl = document.getElementById('order-modal-title');
+            const subtitleEl = document.getElementById('order-modal-subtitle');
+            const itemEl = document.getElementById('order-modal-item');
+            const datetimeBlock = document.getElementById('order-datetime-block');
+            const datetimeInput = document.getElementById('order-datetime');
+            const modal = document.getElementById('order-modal');
+
+            if (type === 'service') {
+                titleEl.textContent = 'Запись на услугу';
+                subtitleEl.textContent = 'Выберите удобное время — мы подтвердим визит';
+                datetimeBlock.classList.remove('hidden');
+                datetimeInput.required = true;
+            } else if (type === 'subscription') {
+                titleEl.textContent = 'Покупка абонемента';
+                subtitleEl.textContent = 'Оставьте заявку — мы свяжемся для оформления';
+                datetimeBlock.classList.remove('hidden');
+                datetimeInput.required = true;
+            } else if (type === 'certificate') {
+                titleEl.textContent = 'Заказ сертификата';
+                subtitleEl.textContent = 'Оставьте контакты — мы свяжемся для оплаты';
+                datetimeBlock.classList.add('hidden');
+                datetimeInput.required = false;
+            }
+
+            itemEl.textContent = title + (price ? ' · ' + price : '');
+
+            document.getElementById('order-form').reset();
+            document.getElementById('order-error').classList.add('hidden');
+
+            modal.classList.remove('hidden-modal');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => document.getElementById('order-name').focus(), 100);
+        }
+
+        function closeOrderModal() {
+            document.getElementById('order-modal').classList.add('hidden-modal');
+            document.body.style.overflow = 'auto';
+        }
+
+        function generateOrderId() {
+            return 'A' + Math.floor(10000 + Math.random() * 90000);
+        }
+
+        async function submitOrder(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('order-name').value.trim();
+            const phone = document.getElementById('order-phone').value.trim();
+            const comment = document.getElementById('order-comment').value.trim();
+            const datetimeInput = document.getElementById('order-datetime');
+            const datetime = currentOrder.type !== 'certificate' ? datetimeInput.value : '';
+
+            const errorEl = document.getElementById('order-error');
+
+            if (name.length < 2) {
+                errorEl.textContent = 'Пожалуйста, укажите имя';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            if (phone.replace(/\D/g, '').length < 10) {
+                errorEl.textContent = 'Укажите корректный номер телефона';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            if (currentOrder.type !== 'certificate' && !datetime) {
+                errorEl.textContent = 'Выберите дату и время';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            const btn = document.getElementById('order-submit-btn');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Отправка...';
+
+            const payload = {
+                type: currentOrder.type,
+                title: currentOrder.title,
+                price: currentOrder.price,
+                name,
+                phone,
+                datetime,
+                comment
+            };
+
+            const orderId = generateOrderId();
+            let sentToServer = false;
+
+            try {
+                const response = await fetch('/api/order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    const result = await response.json().catch(() => ({}));
+                    sentToServer = true;
+                    saveOrderLocally({ ...payload, orderId: result.orderId || orderId, sent: true });
+                    closeOrderModal();
+                    showOrderSuccess(result.orderId || orderId, name, true);
+                    return;
+                } else {
+                    throw new Error('Сервер вернул ошибку');
+                }
+            } catch (err) {
+                console.warn('Сервер недоступен, сохраняем локально:', err);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+
+            // Фолбэк — сервер недоступен
+            saveOrderLocally({ ...payload, orderId, sent: false });
+            closeOrderModal();
+            showOrderSuccess(orderId, name, false);
+        }
+
+        function saveOrderLocally(order) {
+            try {
+                const orders = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+                orders.push({ ...order, createdAt: new Date().toISOString() });
+                localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+            } catch (e) { console.warn('Не удалось сохранить заказ локально:', e); }
+        }
+
+        function showOrderSuccess(orderId, clientName, sent) {
+            const titleEl = document.getElementById('thanks-title');
+            const textEl = document.getElementById('thanks-text');
+            const modal = document.getElementById('thanks-modal');
+
+            titleEl.textContent = 'Заявка принята!';
+            if (sent) {
+                textEl.innerHTML = `Спасибо, ${escapeHtml(clientName)}!<br>Номер вашего заказа: <span class="text-gold font-mono">${orderId}</span><br>Мы свяжемся с вами в ближайшее время.`;
+            } else {
+                textEl.innerHTML = `Спасибо, ${escapeHtml(clientName)}!<br>Номер вашего заказа: <span class="text-gold font-mono">${orderId}</span><br><span class="text-amber-400/80 text-xs">Уведомление не доставлено на сервер — позвоните нам, чтобы подтвердить запись.</span>`;
+            }
+
+            modal.classList.remove('hidden-modal');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ============================================
+        // АВТОРИЗАЦИЯ
+        // ============================================
+        let authMode = 'login';
+
+        function onAuthClick() {
+            const user = getCurrentUser();
+            if (user) {
+                if (user.isAdmin) openAdmin();
+                else if (confirm('Вы вошли как ' + user.login + '. Выйти?')) setCurrentUser(null);
+            } else {
+                openLogin();
+            }
+        }
+
+        function openLogin() {
+            authMode = 'login';
+            updateAuthModal();
+            document.getElementById('login-modal').classList.remove('hidden-modal');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => document.getElementById('login-user').focus(), 100);
+        }
+
+        function closeLogin() {
+            document.getElementById('login-modal').classList.add('hidden-modal');
+            document.body.style.overflow = 'auto';
+            document.getElementById('login-error').classList.add('hidden');
+            document.getElementById('login-form').reset();
+        }
+
+        function toggleAuthMode() {
+            authMode = authMode === 'login' ? 'register' : 'login';
+            updateAuthModal();
+        }
+
+        function updateAuthModal() {
+            const isReg = authMode === 'register';
+            document.getElementById('login-modal-title').textContent = isReg ? 'Регистрация' : 'Вход';
+            document.getElementById('login-modal-subtitle').textContent = isReg ? 'Создайте личный кабинет' : 'Войдите в личный кабинет';
+            document.getElementById('toggle-auth-text').textContent = isReg ? 'Уже есть аккаунт?' : 'Нет аккаунта?';
+            document.getElementById('toggle-auth-btn').textContent = isReg ? 'Войти' : 'Зарегистрироваться';
+            document.getElementById('login-error').classList.add('hidden');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const login = document.getElementById('login-user').value.trim();
+            const pass = document.getElementById('login-pass').value;
+
+            if (authMode === 'register') {
+                if (login.length < 3) return showLoginError('Логин должен быть минимум 3 символа');
+                if (pass.length < 6) return showLoginError('Пароль должен быть минимум 6 символов');
+                if (DATA.users.find(u => u.login === login)) return showLoginError('Такой логин уже существует');
+
+                DATA.users.push({ login, password: pass, isAdmin: false });
+                saveData(DATA);
+                setCurrentUser({ login, isAdmin: false });
+                closeLogin();
+                alert('Регистрация успешна!');
+            } else {
+                const user = DATA.users.find(u => u.login === login && u.password === pass);
+                if (!user) return showLoginError('Неверный логин или пароль');
+                setCurrentUser({ login: user.login, isAdmin: !!user.isAdmin });
+                closeLogin();
+                if (user.isAdmin) openAdmin();
+                else alert('Добро пожаловать, ' + user.login + '!');
+            }
+        }
+
+        function showLoginError(msg) {
+            const err = document.getElementById('login-error');
+            err.textContent = msg;
+            err.classList.remove('hidden');
+        }
+
+        function updateAuthUI() {
+            const user = getCurrentUser();
+            const btnText = document.getElementById('auth-btn-text');
+            if (!btnText) return;
+            btnText.textContent = user ? (user.isAdmin ? 'Админка' : user.login) : 'Войти';
+        }
+
+        // ============================================
+        // АДМИН-ПАНЕЛЬ
+        // ============================================
+        let adminTab = 'services';
+        let editState = null;
+
+        function openAdmin() {
+            if (!getCurrentUser()?.isAdmin) {
+                alert('Доступ только для администратора');
+                return;
+            }
+            document.getElementById('admin-modal').classList.remove('hidden-modal');
+            document.body.style.overflow = 'hidden';
+            cancelEdit();
+            switchAdminTab('services');
+        }
+
+        function closeAdmin() {
+            document.getElementById('admin-modal').classList.add('hidden-modal');
+            document.body.style.overflow = 'auto';
+            cancelEdit();
+        }
+
+        function switchAdminTab(tab) {
+            adminTab = tab;
+            const map = { 'Услуги': 'services', 'Абонементы': 'subscriptions', 'Сертификаты': 'certificates', 'Отзывы': 'reviews', 'Контакты': 'contacts' };
+            document.querySelectorAll('.admin-tab-btn').forEach(b => {
+                b.classList.toggle('active', map[b.textContent.trim()] === tab);
+            });
+            cancelEdit();
+            renderAdminContent();
+        }
+
+        function renderAdminContent() {
+            const el = document.getElementById('admin-content');
+            if (!el) return;
+
+            if (adminTab === 'contacts') {
+                const c = DATA.contacts;
+                el.innerHTML = `
+                    <h3 class="text-xl font-serif mb-4 text-gold">Контакты и соцсети</h3>
+                    <div class="grid md:grid-cols-2 gap-4 max-w-2xl">
+                        <div><label class="admin-label">Телефон</label><input class="admin-input" id="c-phone" value="${escapeHtml(c.phone)}"></div>
+                        <div><label class="admin-label">Телефон (tel:)</label><input class="admin-input" id="c-phoneRaw" value="${escapeHtml(c.phoneRaw)}"></div>
+                        <div><label class="admin-label">Адрес (короткий)</label><input class="admin-input" id="c-addressShort" value="${escapeHtml(c.addressShort)}"></div>
+                        <div><label class="admin-label">Адрес (полный)</label><input class="admin-input" id="c-addressFull" value="${escapeHtml(c.addressFull)}"></div>
+                        <div><label class="admin-label">Часы</label><input class="admin-input" id="c-hours" value="${escapeHtml(c.hours)}"></div>
+                        <div><label class="admin-label">Email</label><input class="admin-input" id="c-email" value="${escapeHtml(c.email)}"></div>
+                        <div><label class="admin-label">VK</label><input class="admin-input" id="c-vk" value="${escapeHtml(c.vk)}"></div>
+                        <div><label class="admin-label">Telegram</label><input class="admin-input" id="c-telegram" value="${escapeHtml(c.telegram)}"></div>
+                        <div class="md:col-span-2"><label class="admin-label">WhatsApp (необязательно)</label><input class="admin-input" id="c-whatsapp" value="${escapeHtml(c.whatsapp || '')}"></div>
+                    </div>
+                    <div class="mt-6"><button onclick="saveContacts()" class="bg-gold text-zen-bg px-6 py-2 rounded-full font-medium text-sm hover:bg-cream transition-colors">Сохранить контакты</button></div>
+                `;
+                return;
+            }
+
+            const labels = { services: 'Услуги', subscriptions: 'Абонементы', certificates: 'Сертификаты', reviews: 'Отзывы' };
+            const list = DATA[adminTab] || [];
+            const titleField = adminTab === 'reviews' ? 'name' : 'title';
+
+            el.innerHTML = `
+                <div class="flex justify-between items-center mb-5">
+                    <h3 class="text-xl font-serif text-gold">${labels[adminTab]} <span class="text-cream/30 text-sm">(${list.length})</span></h3>
+                    <button onclick="startEdit('${adminTab}', null)" class="bg-gold text-zen-bg px-5 py-2 rounded-full font-medium text-sm hover:bg-cream transition-colors">+ Добавить</button>
+                </div>
+                <div class="space-y-3">
+                    ${list.map(item => `
+                        <div class="bg-zen-bg/50 border border-zen-light/20 rounded-lg p-4 flex justify-between items-center gap-4 hover:border-gold/30 transition-colors">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm text-cream truncate">${escapeHtml(item[titleField])} ${item.price ? `<span class="text-gold/70 ml-2">${escapeHtml(item.price)}</span>` : ''}</p>
+                                ${item.desc ? `<p class="text-xs text-cream/40 truncate mt-1">${escapeHtml(item.desc)}</p>` : ''}
+                                ${item.text ? `<p class="text-xs text-cream/40 truncate mt-1">${escapeHtml(item.text)}</p>` : ''}
+                            </div>
+                            <div class="flex gap-2 shrink-0">
+                                <button onclick='startEdit("${adminTab}", "${item.id}")' class="text-xs text-gold border border-gold/30 hover:border-gold px-3 py-1.5 rounded-full">Изменить</button>
+                                <button onclick='deleteItem("${adminTab}", "${item.id}")' class="text-xs text-red-400 border border-red-400/30 hover:border-red-400 px-3 py-1.5 rounded-full">Удалить</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                    ${list.length === 0 ? '<p class="text-cream/40 text-sm text-center py-8">Нет элементов. Нажмите «+ Добавить».</p>' : ''}
+                </div>
+            `;
+        }
+
+        function saveContacts() {
+            DATA.contacts = {
+                phone: document.getElementById('c-phone').value,
+                phoneRaw: document.getElementById('c-phoneRaw').value,
+                addressShort: document.getElementById('c-addressShort').value,
+                addressFull: document.getElementById('c-addressFull').value,
+                hours: document.getElementById('c-hours').value,
+                email: document.getElementById('c-email').value,
+                vk: document.getElementById('c-vk').value,
+                telegram: document.getElementById('c-telegram').value,
+                whatsapp: document.getElementById('c-whatsapp').value
+            };
+            saveData(DATA);
+            renderContacts();
+            alert('Контакты сохранены');
+        }
+
+        function startEdit(type, id) {
+            const item = id ? DATA[type].find(x => x.id === id) : null;
+            editState = { type, id, data: item ? JSON.parse(JSON.stringify(item)) : createEmpty(type) };
+            const panel = document.getElementById('admin-edit-panel');
+            panel.classList.remove('hidden');
+            document.getElementById('admin-edit-title').textContent = item ? 'Редактировать: ' + (item.title || item.name) : 'Добавить новый элемент';
+            renderEditFields();
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function createEmpty(type) {
+            const base = { id: 'n' + Date.now() };
+            if (type === 'services') return { ...base, tag: '', title: '', desc: '', features: [], duration: '', price: '' };
+            if (type === 'subscriptions') return { ...base, tag: '', title: '', desc: '', features: [], benefit: '', price: '', badge: '' };
+            if (type === 'certificates') return { ...base, title: '', desc: '', price: '' };
+            if (type === 'reviews') return { ...base, name: '', date: '', rating: 5, text: '' };
+            return base;
+        }
+
+        function renderEditFields() {
+            const container = document.getElementById('admin-edit-fields');
+            const type = editState.type;
+            const d = editState.data;
+
+            if (type === 'services' || type === 'subscriptions') {
+                container.innerHTML = `
+                    <div><label class="admin-label">Категория</label><input class="admin-input" id="e-tag" value="${escapeHtml(d.tag)}"></div>
+                    <div><label class="admin-label">Название</label><input class="admin-input" id="e-title" value="${escapeHtml(d.title)}"></div>
+                    <div class="md:col-span-2"><label class="admin-label">Описание</label><textarea class="admin-input" id="e-desc" rows="2">${escapeHtml(d.desc)}</textarea></div>
+                    <div class="md:col-span-2"><label class="admin-label">Что входит (по пункту на строку)</label><textarea class="admin-input" id="e-features" rows="3">${escapeHtml((d.features || []).join('\n'))}</textarea></div>
+                    ${type === 'services' ? `<div><label class="admin-label">Длительность</label><input class="admin-input" id="e-duration" value="${escapeHtml(d.duration || '')}"></div>` : ''}
+                    ${type === 'subscriptions' ? `<div><label class="admin-label">Выгода</label><input class="admin-input" id="e-benefit" value="${escapeHtml(d.benefit || '')}"></div>` : ''}
+                    ${type === 'subscriptions' ? `<div><label class="admin-label">Бейдж</label><input class="admin-input" id="e-badge" value="${escapeHtml(d.badge || '')}"></div>` : ''}
+                    <div><label class="admin-label">Стоимость</label><input class="admin-input" id="e-price" value="${escapeHtml(d.price || '')}"></div>
+                `;
+            } else if (type === 'certificates') {
+                container.innerHTML = `
+                    <div class="md:col-span-2"><label class="admin-label">Название</label><input class="admin-input" id="e-title" value="${escapeHtml(d.title)}"></div>
+                    <div class="md:col-span-2"><label class="admin-label">Описание</label><textarea class="admin-input" id="e-desc" rows="2">${escapeHtml(d.desc)}</textarea></div>
+                    <div><label class="admin-label">Стоимость</label><input class="admin-input" id="e-price" value="${escapeHtml(d.price)}"></div>
+                `;
+            } else if (type === 'reviews') {
+                container.innerHTML = `
+                    <div><label class="admin-label">Имя</label><input class="admin-input" id="e-name" value="${escapeHtml(d.name)}"></div>
+                    <div><label class="admin-label">Дата</label><input class="admin-input" id="e-date" value="${escapeHtml(d.date)}"></div>
+                    <div><label class="admin-label">Оценка 1-5</label><input class="admin-input" id="e-rating" type="number" min="1" max="5" value="${escapeHtml(d.rating || 5)}"></div>
+                    <div class="md:col-span-2"><label class="admin-label">Текст</label><textarea class="admin-input" id="e-text" rows="3">${escapeHtml(d.text)}</textarea></div>
+                `;
+            }
+        }
+
+        function saveEdit() {
+            const t = editState.type;
+            const d = { ...editState.data };
+            const val = (id) => { const el = document.getElementById(id); return el ? el.value : ''; };
+
+            if (t === 'services') {
+                d.tag = val('e-tag'); d.title = val('e-title'); d.desc = val('e-desc');
+                d.features = val('e-features').split('\n').map(s => s.trim()).filter(Boolean);
+                d.duration = val('e-duration'); d.price = val('e-price');
+            } else if (t === 'subscriptions') {
+                d.tag = val('e-tag'); d.title = val('e-title'); d.desc = val('e-desc');
+                d.features = val('e-features').split('\n').map(s => s.trim()).filter(Boolean);
+                d.benefit = val('e-benefit'); d.badge = val('e-badge'); d.price = val('e-price');
+            } else if (t === 'certificates') {
+                d.title = val('e-title'); d.desc = val('e-desc'); d.price = val('e-price');
+            } else if (t === 'reviews') {
+                d.name = val('e-name'); d.date = val('e-date');
+                d.rating = parseInt(val('e-rating'), 10) || 5; d.text = val('e-text');
+            }
+
+            const titleField = t === 'reviews' ? 'name' : 'title';
+            if (!d[titleField]) { alert('Заполните название'); return; }
+
+            if (editState.id) {
+                const idx = DATA[t].findIndex(x => x.id === editState.id);
+                if (idx >= 0) DATA[t][idx] = d;
+            } else {
+                DATA[t].push(d);
+            }
+            saveData(DATA);
+            cancelEdit();
+            renderAdminContent();
+            renderAll();
+        }
+
+        function cancelEdit() {
+            editState = null;
+            document.getElementById('admin-edit-panel').classList.add('hidden');
+        }
+
+        function deleteItem(type, id) {
+            if (!confirm('Удалить этот элемент?')) return;
+            DATA[type] = DATA[type].filter(x => x.id !== id);
+            saveData(DATA);
+            renderAdminContent();
+            renderAll();
+        }
+
+        // ============================================
+        // ОБЩИЕ ФУНКЦИИ
+        // ============================================
+        function toggleMenu() {
+            const menu = document.getElementById('menu-overlay');
+            if (menu.classList.contains('opacity-0')) {
+                menu.classList.remove('opacity-0', 'invisible');
+                menu.classList.add('opacity-100', 'visible');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('opacity-100', 'visible');
+                menu.classList.add('opacity-0', 'invisible');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function openPrivacy() { document.getElementById('privacy-modal').classList.remove('hidden-modal'); document.body.style.overflow = 'hidden'; }
+        function closePrivacy() { document.getElementById('privacy-modal').classList.add('hidden-modal'); document.body.style.overflow = 'auto'; }
+        function openThanks() { document.getElementById('thanks-modal').classList.remove('hidden-modal'); document.body.style.overflow = 'hidden'; }
+        function closeThanks() { document.getElementById('thanks-modal').classList.add('hidden-modal'); document.body.style.overflow = 'auto'; }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') { closePrivacy(); closeThanks(); closeLogin(); closeAdmin(); closeOrderModal(); }
+        });
+
+        function acceptCookies() {
+            localStorage.setItem('nagi_cookies_accepted', '1');
+            document.getElementById('cookie-banner').classList.add('hide');
+        }
+        window.addEventListener('load', () => {
+            if (!localStorage.getItem('nagi_cookies_accepted')) {
+                setTimeout(() => document.getElementById('cookie-banner').classList.remove('hide'), 1500);
+            }
+        });
+
+        (function generateParticles() {
+            const container = document.getElementById('particles');
+            if (!container) return;
+            const isMobile = window.matchMedia('(max-width: 767px)').matches;
+            const count = isMobile ? 15 : 30;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = 2 + Math.random() * 4;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                p.style.left = (Math.random() * 100) + '%';
+                p.style.bottom = '0';
+                p.style.animationDuration = (22 + Math.random() * 30) + 's';
+                p.style.animationDelay = '-' + (Math.random() * 25) + 's';
+                container.appendChild(p);
+            }
+        })();
+
+        // Видео
+        const slider = document.getElementById('videoCarousel');
+        const slides = document.querySelectorAll('.video-slide');
+        const allVideos = document.querySelectorAll('.video-slide video');
+        const totalSlides = slides.length;
+
+        function scrollSlideToCenter(slide) {
+            const sr = slider.getBoundingClientRect();
+            const slr = slide.getBoundingClientRect();
+            slider.scrollTo({ left: slider.scrollLeft + (slr.left - sr.left) - (sr.width - slr.width) / 2, behavior: 'smooth' });
+        }
+
+        if (slider && slides.length) {
+            slides.forEach(s => s.addEventListener('click', () => { if (!s.classList.contains('is-active')) scrollSlideToCenter(s); }));
+            allVideos.forEach(v => v.addEventListener('play', () => allVideos.forEach(o => { if (o !== v && !o.paused) o.pause(); })));
+            allVideos.forEach((v, i) => v.addEventListener('ended', () => {
+                let n = (i + 1) % totalSlides;
+                scrollSlideToCenter(slides[n]);
+                setTimeout(() => { const nv = slides[n].querySelector('video'); if (nv) { nv.currentTime = 0; nv.play().catch(() => {}); } }, 600);
+            }));
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    const v = e.target.querySelector('video');
+                    if (e.isIntersecting) { e.target.classList.add('is-active'); if (v && v.paused && v.readyState >= 2) v.play().catch(() => {}); }
+                    else { e.target.classList.remove('is-active'); if (v && !v.paused) v.pause(); }
+                });
+            }, { root: slider, rootMargin: '0px -45% 0px -45%', threshold: 0 });
+            slides.forEach(s => obs.observe(s));
+        }
+
+        // Параллакс
+        const parallaxEls = document.querySelectorAll('[data-parallax]');
+        if (parallaxEls.length) {
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        const scrolled = window.scrollY;
+                        parallaxEls.forEach(el => {
+                            const speed = parseFloat(el.dataset.parallax) || 0.15;
+                            el.style.transform = `translate3d(0, ${scrolled * speed}px, 0) scale(1.1)`;
+                        });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        // Счётчики
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const el = e.target;
+                    const target = parseInt(el.dataset.count, 10);
+                    const start = performance.now();
+                    const animate = (now) => {
+                        const p = Math.min((now - start) / 2000, 1);
+                        el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+                        if (p < 1) requestAnimationFrame(animate);
+                        else el.textContent = target;
+                    };
+                    requestAnimationFrame(animate);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+        // FAQ
+        document.querySelectorAll('.faq-trigger').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(o => { if (o !== item) o.classList.remove('open'); });
+                item.classList.toggle('open', !isOpen);
+            });
+        });
+
+        // INIT
+        renderAll();
+        updateAuthUI();
+    </script>
+
+</body>
+</html>
