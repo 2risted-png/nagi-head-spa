@@ -19,10 +19,9 @@
     --gold-soft: #F5E6C4; 
     --text-main: #F7F7F5; 
     --text-muted: #A8B09A; 
-    --card-bg: rgba(26, 31, 22, 0.6); 
+    --card-bg: rgba(26, 31, 22, 0.85); /* Сделал фон плотнее для мобильных */
     --card-border: rgba(229, 197, 128, 0.15); 
     --radius: 20px; 
-    --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
     --transition-med: all 0.3s ease; 
   }
   
@@ -54,7 +53,7 @@
     width: 100%; height: 100%; 
     object-fit: cover; 
     object-position: right center; 
-    opacity: 0.4; 
+    opacity: 0.3; 
     filter: saturate(0.8) contrast(1.1); 
   }
   
@@ -70,16 +69,12 @@
   
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   
-  /* Класс для появления на ПК */
-  .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition-slow); }
-  .reveal.active { opacity: 1; transform: translateY(0); }
-
-  /* Класс для скрытия лишних карточек */
-  .hidden-item { display: none !important; }
+  /* Анимация только для заголовков */
+  .section__head { animation: fadeInUp 0.8s ease forwards; }
 
   /* ================= ВЕРХНЯЯ ПАНЕЛЬ ================= */
   .topbar { 
-    background: rgba(20, 24, 16, 0.8); 
+    background: rgba(20, 24, 16, 0.9); 
     border-bottom: 1px solid rgba(255,255,255,0.05); 
     backdrop-filter: blur(20px); 
     -webkit-backdrop-filter: blur(20px); 
@@ -93,10 +88,8 @@
   .topbar__brand:hover .topbar__logo { transform: scale(1.05); }
   
   .topbar__info { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .topbar__item { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-main); text-decoration: none; transition: var(--transition-med); }
-  .topbar__item:hover { color: var(--gold-soft); }
-  .topbar__item svg { width: 16px; height: 16px; stroke: var(--gold); flex-shrink: 0; transition: var(--transition-med); }
-  .topbar__item:hover svg { stroke: var(--gold-soft); }
+  .topbar__item { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-main); text-decoration: none; }
+  .topbar__item svg { width: 16px; height: 16px; stroke: var(--gold); flex-shrink: 0; }
   
   .topbar__actions { display: flex; align-items: center; gap: 15px; }
   .topbar__hours { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
@@ -113,13 +106,7 @@
     letter-spacing: 0.05em; 
     transition: var(--transition-med); 
   }
-  .btn-login:hover { 
-    background: rgba(229, 197, 128, 0.1); 
-    border-color: var(--gold); 
-    color: #fff; 
-    transform: translateY(-2px); 
-    box-shadow: 0 4px 15px rgba(229, 197, 128, 0.15); 
-  }
+  .btn-login:hover { background: rgba(229, 197, 128, 0.1); border-color: var(--gold); color: #fff; }
 
   /* ================= ГЛАВНЫЙ ЭКРАН ================= */
   .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 0 60px; }
@@ -147,12 +134,7 @@
     font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; 
     transition: var(--transition-med); cursor: pointer; backdrop-filter: blur(10px); 
   }
-  .btn:hover { 
-    background: linear-gradient(135deg, rgba(229, 197, 128, 0.4), rgba(229, 197, 128, 0.15)); 
-    border-color: var(--gold-soft); color: #fff; 
-    transform: translateY(-2px); 
-    box-shadow: 0 15px 30px -10px rgba(229, 197, 128, 0.3); 
-  }
+  .btn:hover { background: linear-gradient(135deg, rgba(229, 197, 128, 0.4), rgba(229, 197, 128, 0.15)); border-color: var(--gold-soft); color: #fff; transform: translateY(-2px); }
 
   /* ================= СЕКЦИИ ================= */
   .section { padding: 80px 0; scroll-margin-top: 60px; position: relative; }
@@ -168,27 +150,15 @@
     border-radius: var(--radius); 
     background: var(--card-bg); 
     border: 1px solid var(--card-border); 
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-    transition: var(--transition-med); cursor: pointer; overflow: hidden; display: flex; flex-direction: column; 
+    transition: var(--transition-med); cursor: pointer; display: flex; flex-direction: column; 
   }
-  .service::after {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at top right, rgba(229, 197, 128, 0.08), transparent 70%); 
-    opacity: 0; transition: var(--transition-med); pointer-events: none;
-  }
-  .service:hover { 
-    transform: translateY(-5px); 
-    border-color: rgba(229, 197, 128, 0.4); 
-    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.6); 
-    background: rgba(30, 36, 24, 0.8); 
-  }
-  .service:hover::after { opacity: 1; }
+  .service:hover { border-color: rgba(229, 197, 128, 0.4); background: rgba(36, 44, 30, 0.95); }
   
-  .service__top { display: flex; align-items: baseline; justify-content: space-between; gap: 15px; position: relative; z-index: 1; margin-bottom: 12px; }
+  .service__top { display: flex; align-items: baseline; justify-content: space-between; gap: 15px; margin-bottom: 12px; }
   .service__name { margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.5rem; line-height: 1.2; color: var(--gold-soft); }
   .service__price { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: #fff; white-space: nowrap; }
-  .service__desc { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); position: relative; z-index: 1; flex-grow: 1; }
-  .service__time { display: inline-block; margin-top: 20px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); position: relative; z-index: 1; font-weight: 500; }
+  .service__desc { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); flex-grow: 1; }
+  .service__time { display: inline-block; margin-top: 20px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
 
   /* Кнопка "Показать все" */
   .show-more-container { grid-column: 1 / -1; text-align: center; margin-top: 15px; }
@@ -198,7 +168,7 @@
     font-family: 'Manrope', sans-serif; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; 
     display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: var(--transition-med); width: 100%; max-width: 300px;
   }
-  .show-more-btn:hover { border-color: var(--gold); color: var(--gold-soft); background: rgba(229, 197, 128, 0.15); transform: translateY(-2px); }
+  .show-more-btn:hover { border-color: var(--gold); color: var(--gold-soft); background: rgba(229, 197, 128, 0.15); }
   .show-more-btn svg { width: 14px; height: 14px; transition: transform 0.4s ease; }
   .show-more-btn.expanded svg { transform: rotate(180deg); }
 
@@ -207,12 +177,9 @@
   .cosmetic-card { 
     padding: 35px 25px; border-radius: var(--radius); 
     background: var(--card-bg); border: 1px solid var(--card-border); 
-    backdrop-filter: blur(16px); text-align: center; transition: var(--transition-med); 
+    text-align: center; transition: var(--transition-med); 
   }
-  .cosmetic-card:hover { 
-    transform: translateY(-5px); border-color: rgba(229, 197, 128, 0.4); 
-    background: rgba(30, 36, 24, 0.8); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.6); 
-  }
+  .cosmetic-card:hover { border-color: rgba(229, 197, 128, 0.4); background: rgba(36, 44, 30, 0.95); }
   .cosmetic-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; color: var(--gold); margin: 0 0 15px; letter-spacing: 0.05em; }
   .cosmetic-card p { margin: 0; font-size: 0.9rem; line-height: 1.7; color: var(--text-muted); }
 
@@ -221,16 +188,13 @@
   .review { 
     position: relative; padding: 30px; border-radius: var(--radius); 
     background: var(--card-bg); border: 1px solid var(--card-border); 
-    backdrop-filter: blur(16px); transition: var(--transition-med); display: block; 
+    transition: var(--transition-med); display: block; 
   }
-  .review:hover { 
-    border-color: rgba(229, 197, 128, 0.4); transform: translateY(-4px); 
-    background: rgba(30, 36, 24, 0.8); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.5); 
-  }
+  .review:hover { border-color: rgba(229, 197, 128, 0.4); background: rgba(36, 44, 30, 0.95); }
   .review__name { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; color: var(--gold-soft); }
   .review__date { display: block; margin-top: 5px; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold-muted); font-weight: 500; }
   .review__date::after { content: ""; display: block; width: 30px; height: 1px; margin-top: 12px; background: linear-gradient(90deg, rgba(229, 197, 128, 0.4), transparent); }
-  .review__text { margin: 15px 0 0; font-size: 0.9rem; line-height: 1.7; color: var(--text-main); font-style: italic; opacity: 0.9; }
+  .review__text { margin: 15px 0 0; font-size: 0.9rem; line-height: 1.7; color: var(--text-main); font-style: italic; }
 
   /* ================= КОНТАКТЫ ================= */
   .contacts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 20px; max-width: 800px; margin: 0 auto; }
@@ -238,27 +202,21 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center; 
     background: var(--card-bg); border: 1px solid var(--card-border); 
     border-radius: var(--radius); padding: 40px 20px; text-align: center; 
-    backdrop-filter: blur(16px); transition: var(--transition-med); text-decoration: none; color: inherit; 
+    transition: var(--transition-med); text-decoration: none; color: inherit; 
   }
-  .contact-card:hover { 
-    border-color: var(--gold); transform: translateY(-5px); 
-    background: rgba(30, 36, 24, 0.8); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.6); 
-  }
-  .contact-card__icon { font-size: 1.6rem; margin-bottom: 15px; transition: var(--transition-med); }
-  .contact-card:hover .contact-card__icon { transform: scale(1.1) translateY(-3px); }
+  .contact-card:hover { border-color: var(--gold); background: rgba(36, 44, 30, 0.95); }
+  .contact-card__icon { font-size: 1.6rem; margin-bottom: 15px; }
   .contact-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.7rem; color: var(--gold-soft); margin: 0 0 10px; }
-  .contact-card__value { font-size: 1rem; color: var(--text-main); transition: var(--transition-med); font-weight: 500; }
-  .contact-card:hover .contact-card__value { color: var(--gold); }
+  .contact-card__value { font-size: 1rem; color: var(--text-main); font-weight: 500; }
 
   /* ================= ФОРМЫ И МОДАЛЬНЫЕ ОКНА ================= */
   .inline-login-box { display: flex; justify-content: center; margin-bottom: 30px; }
   .inline-login-box .btn { margin-top: 0; }
   
   .review-form-container { 
-    background: rgba(20, 25, 15, 0.95); border: 1px solid var(--gold-muted); 
+    background: #1A1F16; border: 1px solid var(--gold-muted); 
     border-radius: var(--radius); padding: 30px 20px; max-width: 500px; margin: 0 auto 40px; 
-    display: none; animation: fadeInUp 0.6s ease forwards; backdrop-filter: blur(20px); 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
+    display: none; box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
   }
   
   .form-group { margin-bottom: 15px; }
@@ -270,47 +228,40 @@
     color: #fff; 
     font-family: 'Manrope', sans-serif; 
     font-size: 0.9rem; 
-    transition: var(--transition-med); outline: none; 
+    outline: none; 
   }
-  .form-group input:focus, .form-group textarea:focus, .form-group select:focus, .admin-form-grid input:focus, .admin-form-grid textarea:focus { 
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { 
     border-color: var(--gold); background: rgba(0, 0, 0, 0.5); 
-    box-shadow: 0 0 15px rgba(229, 197, 128, 0.1); 
   }
   .form-group textarea { resize: vertical; min-height: 100px; }
   .form-group select option { background: #141810; color: #fff; }
   .form-row { display: flex; gap: 10px; }
   .form-row .form-group { flex: 1; }
 
-  .modal { display: none; position: fixed; inset: 0; background: rgba(10, 12, 8, 0.9); backdrop-filter: blur(10px); z-index: 1000; align-items: center; justify-content: center; opacity: 0; transition: var(--transition-med); padding: 15px; }
-  .modal.active { display: flex; opacity: 1; }
+  .modal { display: none; position: fixed; inset: 0; background: rgba(10, 12, 8, 0.95); z-index: 1000; align-items: center; justify-content: center; padding: 15px; }
+  .modal.active { display: flex; }
   .modal__content { 
     background: #1A1F16; border: 1px solid rgba(229, 197, 128, 0.3); 
     border-radius: var(--radius); padding: 30px 20px; width: 100%; max-width: 450px; 
-    position: relative; transform: translateY(20px); transition: var(--transition-slow); 
-    box-shadow: 0 30px 60px rgba(0,0,0,0.8); max-height: 90vh; overflow-y: auto; 
+    position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.8); max-height: 90vh; overflow-y: auto; 
   }
-  .modal.active .modal__content { transform: translateY(0); }
-  .modal__close { position: absolute; top: 12px; right: 15px; background: none; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: var(--transition-med); line-height: 1; }
-  .modal__close:hover { color: var(--gold); transform: rotate(90deg); }
+  .modal__close { position: absolute; top: 12px; right: 15px; background: none; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; }
   .modal__title { font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--gold-soft); font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; text-align: center; letter-spacing: 0.05em; }
   
   .auth-tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .auth-tab { flex: 1; background: none; border: none; color: var(--text-muted); font-family: 'Manrope', sans-serif; font-size: 0.9rem; cursor: pointer; padding: 10px; transition: var(--transition-med); border-bottom: 2px solid transparent; letter-spacing: 0.05em; font-weight: 500; }
+  .auth-tab { flex: 1; background: none; border: none; color: var(--text-muted); font-family: 'Manrope', sans-serif; font-size: 0.9rem; cursor: pointer; padding: 10px; border-bottom: 2px solid transparent; font-weight: 500; }
   .auth-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
   /* ================= ДЕТАЛИ УСЛУГИ ================= */
-  .service-detail-modal { display: none; position: fixed; inset: 0; background: rgba(10, 12, 8, 0.9); backdrop-filter: blur(15px); z-index: 2000; align-items: center; justify-content: center; opacity: 0; transition: var(--transition-med); padding: 15px; }
-  .service-detail-modal.active { display: flex; opacity: 1; }
+  .service-detail-modal { display: none; position: fixed; inset: 0; background: rgba(10, 12, 8, 0.95); z-index: 2000; align-items: center; justify-content: center; padding: 15px; }
+  .service-detail-modal.active { display: flex; }
   .service-detail-content { 
     background: #1A1F16; border: 1px solid rgba(229, 197, 128, 0.2); 
     border-radius: var(--radius); width: 100%; max-width: 900px; display: flex; overflow: hidden; 
-    position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.9); 
-    transform: translateY(30px); transition: var(--transition-slow); max-height: 90vh; 
+    position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.9); max-height: 90vh; 
   }
-  .service-detail-modal.active .service-detail-content { transform: translateY(0); }
   .service-detail__img-wrapper { width: 45%; flex-shrink: 0; position: relative; background: #000; }
-  .service-detail__img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 10s ease; }
-  .service-detail-modal.active .service-detail__img { transform: scale(1.05); }
+  .service-detail__img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
   .service-detail__info { width: 55%; padding: 35px; overflow-y: auto; display: flex; flex-direction: column; }
   .service-detail__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; margin-bottom: 10px; }
   .service-detail__title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--gold-soft); margin: 0; font-weight: 400; line-height: 1.2; }
@@ -320,38 +271,30 @@
   .service-detail__desc { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
   .service-detail__actions { margin-top: auto; padding-top: 15px; }
   .service-detail__actions .btn { margin-top: 0; width: 100%; }
-  .service-detail__close { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer; transition: var(--transition-med); z-index: 10; }
-  .service-detail__close:hover { background: var(--gold); color: var(--bg-base); border-color: var(--gold); transform: rotate(90deg); }
+  .service-detail__close { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; cursor: pointer; z-index: 10; }
 
   /* ================= АДМИН-ПАНЕЛЬ ================= */
-  .admin-overlay { position: fixed; inset: 0; background: rgba(10, 12, 8, 0.95); backdrop-filter: blur(15px); z-index: 3000; overflow-y: auto; display: none; }
+  .admin-overlay { position: fixed; inset: 0; background: rgba(10, 12, 8, 0.95); z-index: 3000; overflow-y: auto; display: none; }
   .admin-overlay.active { display: block; }
   .admin-container { max-width: 800px; margin: 20px auto; padding: 30px 20px; background: #1A1F16; border: 1px solid rgba(229, 197, 128, 0.2); border-radius: var(--radius); position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
-  .admin-close { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: var(--transition-med); line-height: 1; }
-  .admin-close:hover { color: var(--gold); transform: rotate(90deg); }
+  .admin-close { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; }
   .admin-tabs { display: flex; gap: 8px; margin-bottom: 25px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px; }
-  .admin-tab { background: none; border: none; color: var(--text-muted); font-family: 'Manrope', sans-serif; font-size: 0.85rem; cursor: pointer; padding: 8px 15px; transition: var(--transition-med); border-radius: 8px; letter-spacing: 0.03em; font-weight: 500; }
+  .admin-tab { background: none; border: none; color: var(--text-muted); font-family: 'Manrope', sans-serif; font-size: 0.85rem; cursor: pointer; padding: 8px 15px; border-radius: 8px; font-weight: 500; }
   .admin-tab.active { background: rgba(229, 197, 128, 0.1); color: var(--gold-soft); }
-  .admin-tab:hover:not(.active) { color: #fff; background: rgba(255,255,255,0.03); }
   .admin-section { display: none; }
-  .admin-section.active { display: block; animation: fadeInUp 0.4s ease; }
+  .admin-section.active { display: block; }
   .admin-form-grid { display: grid; gap: 15px; margin-bottom: 30px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.03); }
   .admin-form-grid label { font-size: 0.8rem; color: var(--gold-soft); letter-spacing: 0.05em; margin-bottom: -8px; }
   .admin-list { display: grid; gap: 12px; }
-  .admin-item { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; transition: var(--transition-med); }
-  .admin-item:hover { border-color: rgba(229, 197, 128, 0.2); background: rgba(0,0,0,0.4); }
+  .admin-item { background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; }
   .admin-item-info { flex: 1; }
   .admin-item-info h4 { margin: 0 0 5px; color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; }
   .admin-item-info p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
   .admin-item-actions { display: flex; gap: 8px; }
-  .btn-sm { padding: 6px 12px; font-size: 0.7rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); color: #fff; cursor: pointer; transition: var(--transition-med); letter-spacing: 0.05em; }
-  .btn-sm:hover { background: rgba(255,255,255,0.08); }
+  .btn-sm { padding: 6px 12px; font-size: 0.7rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); color: #fff; cursor: pointer; }
   .btn-edit { border-color: rgba(90, 122, 154, 0.4); color: #9ABCE0; }
-  .btn-edit:hover { background: rgba(90, 122, 154, 0.15); border-color: #9ABCE0; }
   .btn-delete { border-color: rgba(154, 90, 90, 0.4); color: #E09A9A; }
-  .btn-delete:hover { background: rgba(154, 90, 90, 0.15); border-color: #E09A9A; }
 
-  /* Генератор отзывов */
   .generator-box { border: 1px solid rgba(229, 197, 128, 0.3); padding: 20px; border-radius: 12px; margin-bottom: 25px; background: rgba(229, 197, 128, 0.03); }
   .generator-box h4 { margin-top: 0; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; }
   .range-group { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; flex-wrap: wrap; }
@@ -359,8 +302,8 @@
   .range-group input[type="range"] { flex: 1; accent-color: var(--gold); }
   .range-value { min-width: 45px; text-align: right; color: var(--gold-soft); font-weight: 600; font-size: 0.9rem; }
 
-  /* ================= ПОДВАЛ И КНОПКА ПРИЛОЖЕНИЯ ================= */
-  .footer { border-top: 1px solid rgba(255,255,255,0.05); background: rgba(10, 12, 8, 0.95); padding: 40px 0; backdrop-filter: blur(10px); }
+  /* ================= ПОДВАЛ ================= */
+  .footer { border-top: 1px solid rgba(255,255,255,0.05); background: rgba(10, 12, 8, 0.95); padding: 40px 0; }
   .footer__inner { display: flex; flex-direction: column; align-items: center; gap: 25px; text-align: center; }
   .footer__brand { display: flex; flex-direction: column; align-items: center; gap: 10px; }
   .footer__logo { height: 40px; width: auto; object-fit: contain; border-radius: 8px; opacity: 0.8; }
@@ -368,7 +311,6 @@
   .footer__contacts { display: flex; flex-direction: column; gap: 10px; align-items: center; }
   .footer__contacts span { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.03em; }
   
-  /* Кнопка установки приложения */
   .install-app-container { margin-top: 20px; text-align: center; width: 100%; }
   .install-app-btn {
     background: linear-gradient(135deg, rgba(229, 197, 128, 0.15), rgba(229, 197, 128, 0.05));
@@ -384,30 +326,16 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    transition: var(--transition-med);
-  }
-  .install-app-btn:hover {
-    background: linear-gradient(135deg, rgba(229, 197, 128, 0.3), rgba(229, 197, 128, 0.1));
-    box-shadow: 0 10px 20px -10px rgba(229, 197, 128, 0.4);
-    transform: translateY(-2px);
   }
   
-  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(26, 31, 22, 0.95); border: 1px solid var(--gold); color: var(--gold-soft); padding: 14px 24px; border-radius: 30px; font-size: 0.9rem; z-index: 5000; opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; box-shadow: 0 15px 40px rgba(0,0,0,0.8); text-align: center; display: flex; align-items: center; gap: 10px; backdrop-filter: blur(10px); width: max-content; max-width: 90vw; }
+  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(26, 31, 22, 0.95); border: 1px solid var(--gold); color: var(--gold-soft); padding: 14px 24px; border-radius: 30px; font-size: 0.9rem; z-index: 5000; opacity: 0; transition: all 0.4s ease; pointer-events: none; text-align: center; display: flex; align-items: center; gap: 10px; width: max-content; max-width: 90vw; }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .toast svg { stroke: var(--gold); width: 18px; height: 18px; flex-shrink: 0; }
 
-  /* ================= МЕДИА ЗАПРОСЫ (МОБИЛЬНАЯ ВЕРСИЯ) ================= */
-  @media (max-width: 900px) { 
-    .video-background { 
-      width: 100vw; 
-      mask-image: none !important; 
-      -webkit-mask-image: none !important; 
-    } 
-    .video-overlay { 
-      background: radial-gradient(circle at center, rgba(20,24,16,0.85) 0%, rgba(20,24,16,0.98) 100%); 
-    } 
-  }
-  
+  /* Класс для скрытия */
+  .hidden-item { display: none !important; }
+
+  /* ================= МОБИЛЬНАЯ ВЕРСИЯ ================= */
   @media (max-width: 768px) { 
     .topbar__inner { justify-content: center; } 
     .topbar__info { display: none; } 
@@ -440,22 +368,6 @@
     .service-detail__price { font-size: 1.4rem; } 
     
     .form-row { flex-direction: column; gap: 0; }
-
-    /* === КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ (Отключаем тяжелые эффекты) === */
-    
-    .service, .review, .cosmetic-card, .contact-card {
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      background: rgba(26, 31, 22, 0.95) !important;
-      transform: none !important; /* Убираем возможные сдвиги */
-    }
-
-    /* На мобильных ВСЕГДА показываем контент без анимаций */
-    .reveal {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
   }
 </style>
 </head>
@@ -515,24 +427,26 @@
 <!-- УСЛУГИ -->
 <section class="section" id="services">
   <div class="container">
-    <div class="section__head reveal">
+    <div class="section__head">
       <p class="section__kicker">Ритуалы и уход</p>
       <h2 class="section__title">Услуги салона</h2>
       <p class="section__sub">Нажмите на карточку, чтобы узнать подробности о ритуале.</p>
     </div>
-    <div class="services" id="services-container"></div>
+    <div class="services" id="services-container">
+      <!-- Сюда рендерятся услуги -->
+    </div>
   </div>
 </section>
 
 <!-- КОСМЕТИКА -->
 <section class="section" id="cosmetics">
   <div class="container">
-    <div class="section__head reveal">
+    <div class="section__head">
       <p class="section__kicker">Качество и доверие</p>
       <h2 class="section__title">Косметика, которой мы доверяем</h2>
       <p class="section__sub">Мы используем только профессиональные средства с доказанной эффективностью.</p>
     </div>
-    <div class="cosmetics reveal">
+    <div class="cosmetics">
       <div class="cosmetic-card">
         <h3>TOKIO INKARAMI</h3>
         <p>Легендарный японский бренд, специализирующийся на глубоком восстановлении и реконструкции волос. Их средства проникают в структуру, возвращая невероятный блеск, плотность и шелковистость даже самым поврежденным волосам.</p>
@@ -552,13 +466,13 @@
 <!-- ОТЗЫВЫ -->
 <section class="section" id="reviews">
   <div class="container">
-    <div class="section__head reveal">
+    <div class="section__head">
       <p class="section__kicker">Нам доверяют</p>
       <h2 class="section__title">Отзывы гостей</h2>
       <p class="section__sub">Несколько слов от тех, кто уже был у нас в гостях.</p>
     </div>
 
-    <div class="inline-login-box reveal">
+    <div class="inline-login-box">
       <button type="button" class="btn" id="toggleReviewBtn">Вход, чтобы оставить отзыв</button>
     </div>
 
@@ -573,19 +487,21 @@
       <button type="button" class="btn" style="width:100%; margin-top:5px;" id="submitReviewBtn">Отправить</button>
     </div>
 
-    <div class="reviews" id="reviews-container"></div>
+    <div class="reviews" id="reviews-container">
+      <!-- Сюда рендерятся отзывы -->
+    </div>
   </div>
 </section>
 
 <!-- КОНТАКТЫ -->
 <section class="section" id="contacts">
   <div class="container">
-    <div class="section__head reveal">
+    <div class="section__head">
       <p class="section__kicker">Свяжитесь с нами</p>
       <h2 class="section__title">Контакты</h2>
       <p class="section__sub">Мы всегда рады ответить на ваши вопросы и помочь с выбором ритуала.</p>
     </div>
-    <div class="contacts-grid reveal">
+    <div class="contacts-grid">
       <a href="tel:89992883436" class="contact-card">
         <div class="contact-card__icon">📞</div>
         <h3>Телефон</h3>
@@ -821,7 +737,12 @@
 
       renderSite();
       if(document.getElementById('adminPanel').classList.contains('active')) loadAdminData();
-    } catch (error) { console.error('Ошибка загрузки данных:', error); }
+    } catch (error) { 
+        console.error('Ошибка загрузки данных:', error);
+        // Показываем ошибку в интерфейсе, если что-то упало
+        document.getElementById('services-container').innerHTML = '<p style="color:#ff6b6b; text-align:center; width:100%;">Ошибка загрузки услуг. Проверьте соединение.</p>';
+        document.getElementById('reviews-container').innerHTML = '<p style="color:#ff6b6b; text-align:center; width:100%;">Ошибка загрузки отзывов. Проверьте соединение.</p>';
+    }
   }
 
   function renderSite() {
@@ -835,132 +756,85 @@
     document.getElementById('footer-address').innerText = state.salon.address || "";
     document.getElementById('footer-phone').innerText = state.salon.phone || "";
 
+    // --- УСЛУГИ ---
     const servicesContainer = document.getElementById('services-container');
     
-    if (state.services.length === 0) {
+    if (!state.services || state.services.length === 0) {
         servicesContainer.innerHTML = '<p style="color:var(--text-muted); text-align:center; width:100%;">Услуги временно недоступны.</p>';
     } else {
-        servicesContainer.innerHTML = state.services.map((s, index) => {
-          const isHidden = index >= 3 && !servicesExpanded;
-          const hiddenClass = isHidden ? 'hidden-item' : '';
-
-          return `
-            <article class="service reveal ${hiddenClass}" onclick="openServiceDetail('${s.id}')">
-              <div class="service__top">
-                <h3 class="service__name">${s.name}</h3>
-                <span class="service__price">${s.price}</span>
-              </div>
-              <p class="service__desc">${s.desc}</p>
-              <span class="service__time">${s.time}</span>
-            </article>
-          `;
-        }).join('');
+        let html = '';
+        state.services.forEach((s, index) => {
+            const isHidden = index >= 3 && !servicesExpanded;
+            const hiddenClass = isHidden ? 'hidden-item' : '';
+            html += `
+                <article class="service ${hiddenClass}" onclick="openServiceDetail('${s.id}')">
+                  <div class="service__top">
+                    <h3 class="service__name">${s.name}</h3>
+                    <span class="service__price">${s.price}</span>
+                  </div>
+                  <p class="service__desc">${s.desc}</p>
+                  <span class="service__time">${s.time}</span>
+                </article>
+            `;
+        });
 
         if (state.services.length > 3) {
-          servicesContainer.innerHTML += `
-            <div class="show-more-container reveal">
-              <button type="button" class="show-more-btn ${servicesExpanded ? 'expanded' : ''}" id="showMoreServicesBtn" onclick="toggleServices()">
-                ${servicesExpanded ? 'Скрыть услуги' : 'Показать все услуги'}
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-              </button>
-            </div>
-          `;
+            html += `
+                <div class="show-more-container">
+                  <button type="button" class="show-more-btn ${servicesExpanded ? 'expanded' : ''}" id="showMoreServicesBtn" onclick="toggleServices()">
+                    ${servicesExpanded ? 'Скрыть услуги' : 'Показать все услуги'}
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </div>
+            `;
         }
+        servicesContainer.innerHTML = html;
     }
 
+    // --- ОТЗЫВЫ ---
     const reviewsContainer = document.getElementById('reviews-container');
     const REVIEWS_LIMIT = 3;
     
-    if (state.reviews.length === 0) {
+    if (!state.reviews || state.reviews.length === 0) {
         reviewsContainer.innerHTML = '<p style="color:var(--text-muted); text-align:center; width:100%;">Пока нет отзывов.</p>';
     } else {
-        reviewsContainer.innerHTML = state.reviews.map((r, index) => {
-          const isHidden = index >= REVIEWS_LIMIT && !reviewsExpanded;
-          const hiddenClass = isHidden ? 'hidden-item' : '';
-
-          return `
-            <article class="review reveal ${hiddenClass}">
-              <p class="review__name">Имя: ${r.name}</p>
-              <span class="review__date">${r.date}</span>
-              <p class="review__text">«${r.text}»</p>
-            </article>
-          `;
-        }).join('');
+        let html = '';
+        state.reviews.forEach((r, index) => {
+            const isHidden = index >= REVIEWS_LIMIT && !reviewsExpanded;
+            const hiddenClass = isHidden ? 'hidden-item' : '';
+            html += `
+                <article class="review ${hiddenClass}">
+                  <p class="review__name">Имя: ${r.name}</p>
+                  <span class="review__date">${r.date}</span>
+                  <p class="review__text">«${r.text}»</p>
+                </article>
+            `;
+        });
 
         if (state.reviews.length > REVIEWS_LIMIT) {
-          reviewsContainer.innerHTML += `
-            <div class="show-more-container reveal">
-              <button type="button" class="show-more-btn ${reviewsExpanded ? 'expanded' : ''}" id="showMoreReviewsBtn" onclick="toggleReviews()">
-                ${reviewsExpanded ? 'Скрыть отзывы' : 'Показать все отзывы'}
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-              </button>
-            </div>
-          `;
+            html += `
+                <div class="show-more-container">
+                  <button type="button" class="show-more-btn ${reviewsExpanded ? 'expanded' : ''}" id="showMoreReviewsBtn" onclick="toggleReviews()">
+                    ${reviewsExpanded ? 'Скрыть отзывы' : 'Показать все отзывы'}
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </div>
+            `;
         }
-    }
-
-    // Анимация появления
-    document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
-    
-    // На мобильных устройствах ничего не ждем и не анимируем, просто показываем
-    if (window.innerWidth <= 768) {
-        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-    } else {
-        setTimeout(() => {
-          document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        }, 50);
+        reviewsContainer.innerHTML = html;
     }
   }
 
   window.toggleServices = () => {
     servicesExpanded = !servicesExpanded;
-    
-    // Просто переключаем классы
-    const services = document.querySelectorAll('.service');
-    services.forEach((el, index) => {
-        if (index >= 3) {
-            if (servicesExpanded) {
-                el.classList.remove('hidden-item');
-            } else {
-                el.classList.add('hidden-item');
-            }
-        }
-    });
-
-    const btn = document.getElementById('showMoreServicesBtn');
-    if (servicesExpanded) {
-      btn.innerHTML = `Скрыть услуги <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><path d="M6 9l6 6 6-6"/></svg>`;
-      btn.classList.add('expanded');
-    } else {
-      btn.innerHTML = `Показать все услуги <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
-      btn.classList.remove('expanded');
-      document.getElementById('services').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    renderSite(); // Просто перерисовываем весь блок заново
+    if (!servicesExpanded) document.getElementById('services').scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   window.toggleReviews = () => {
     reviewsExpanded = !reviewsExpanded;
-    
-    const reviews = document.querySelectorAll('.review');
-    reviews.forEach((el, index) => {
-        if (index >= 3) {
-            if (reviewsExpanded) {
-                el.classList.remove('hidden-item');
-            } else {
-                el.classList.add('hidden-item');
-            }
-        }
-    });
-
-    const btn = document.getElementById('showMoreReviewsBtn');
-    if (reviewsExpanded) {
-      btn.innerHTML = `Скрыть отзывы <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><path d="M6 9l6 6 6-6"/></svg>`;
-      btn.classList.add('expanded');
-    } else {
-      btn.innerHTML = `Показать все отзывы <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
-      btn.classList.remove('expanded');
-      document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    renderSite(); // Просто перерисовываем весь блок заново
+    if (!reviewsExpanded) document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   // ОСТАЛЬНОЙ КОД БЕЗ ИЗМЕНЕНИЙ
@@ -1392,16 +1266,6 @@
       try { await fetch(`${API_URL}/api/bookings/${id}`, { method: 'DELETE' }); loadData(); } catch(e) { alert('Ошибка'); }
     }
   };
-
-  const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
 
   // PWA (УСТАНОВКА ПРИЛОЖЕНИЯ)
   let deferredPrompt;
