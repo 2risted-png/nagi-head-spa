@@ -19,7 +19,7 @@
     --gold-soft: #F5E6C4; 
     --text-main: #F7F7F5; 
     --text-muted: #A8B09A; 
-    --card-bg: rgba(26, 31, 22, 0.85); /* Сделал фон плотнее для мобильных */
+    --card-bg: rgba(26, 31, 22, 0.85); 
     --card-border: rgba(229, 197, 128, 0.15); 
     --radius: 20px; 
     --transition-med: all 0.3s ease; 
@@ -69,7 +69,6 @@
   
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   
-  /* Анимация только для заголовков */
   .section__head { animation: fadeInUp 0.8s ease forwards; }
 
   /* ================= ВЕРХНЯЯ ПАНЕЛЬ ================= */
@@ -332,7 +331,6 @@
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .toast svg { stroke: var(--gold); width: 18px; height: 18px; flex-shrink: 0; }
 
-  /* Класс для скрытия */
   .hidden-item { display: none !important; }
 
   /* ================= МОБИЛЬНАЯ ВЕРСИЯ ================= */
@@ -415,7 +413,7 @@
       <br><br>Здесь вас не торопят. Здесь вас возвращают к себе.
     </p>
     <div class="tags">
-      <span class="tag">Японские ритуалы</span>
+<span class="tag">Японские ритуалы</span>
       <span class="tag">Индивидуальный подход</span>
       <span class="tag">Приватный кабинет</span>
       <span class="tag">Опыт от 7 лет</span>
@@ -709,6 +707,24 @@
 <script>
   const API_URL = 'https://nagi-api.vercel-coder.workers.dev'; 
 
+  // === РЕЗЕРВНЫЕ ДАННЫЕ (ЕСЛИ СЕРВЕР НЕДОСТУПЕН) ===
+  const FALLBACK_SALON = { name: "NAGI HEAD SPA", address: "Екатеринбург, ул. Горького, 51", phone: "8 999 288-34-36" };
+  const FALLBACK_SERVICES = [
+    { id: "1", name: "Японский хед-спа «NAGI»", price: "3 900 ₽", desc: "Классический ритуал: прогрев, работа по активным точкам головы, шеи и плеч.", details: "Этот ритуал — фундамент нашего салона. Мастер начинает с мягкого прогрева воротниковой зоны, чтобы снять первичное напряжение. Затем следуют глубокие, но деликатные нажатия на активные точки головы, стимулирующие кровообращение и снимающие усталость. Завершается всё тёплым маслом с ароматом юдзу и финальным расслаблением под успокаивающий шум воды. Идеально, если вы чувствуете накопленный за неделю стресс.", time: "60 минут", image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" },
+    { id: "2", name: "Хед-спа + массаж плеч", price: "5 500 ₽", desc: "Глубокое снятие напряжения с воротниковой зоны и затылка.", details: "Расширенная программа для тех, кто проводит много времени за компьютером. Мы уделяем особое внимание воротниковой зоне, лопаткам и затылку. Мастер использует технику миофасциального релиза, чтобы «разбить» окаменевшие мышцы. После такого сеанса улучшается осанка, проходит головная боль напряжения, а дыхание становится глубже. Включает в себя классический хед-спа.", time: "90 минут", image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800&auto=format&fit=crop" },
+    { id: "3", name: "Сухой хед-спа", price: "2 900 ₽", desc: "Деликатная проработка головы и шеи через ткань. Идеально, если нужно сразу вернуться к делам.", details: "Ритуал для тех, у кого нет времени на долгие сборы после салона. Процедура проходит без использования масел и воды — мастер работает через тонкую хлопковую ткань. Это деликатная, но очень эффективная проработка биологически активных точек. Вы почувствуете невероятную легкость в голове, а ваша прическа останется абсолютно нетронутой.", time: "45 минут", image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop" },
+    { id: "4", name: "Ароматический хед-спа", price: "4 500 ₽", desc: "Ритуал с индивидуально подобранной композицией: юдзу, кедр, сандал.", details: "Погружение в мир японских ароматов. Перед началом процедуры вы выбираете эфирное масло, которое откликается вашему состоянию: юдзу — для бодрости и ясности, кедр — для заземления, сандал — для глубокого расслабления. Мастер сочетает техники массажа с ароматерапией, воздействуя на обонятельные рецепторы и нервную систему. Это эмоциональная перезагрузка.", time: "75 минут", image: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=800&auto=format&fit=crop" },
+    { id: "5", name: "Глубокое очищение кожи головы", price: "2 500 ₽", desc: "Энзимная чистка, мягкий скраб и восстанавливающая маска.", details: "Здоровье волос начинается с кожи головы. Этот ритуал включает в себя профессиональную энзимную чистку, которая растворяет излишки себума и остатки стайлинга, мягкий абразивный скраб для стимуляции микроциркуляции и питательную маску. Вы почувствуете, как кожа головы буквально «дышит», а волосы обретают объем и блеск.", time: "40 минут", image: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=800&auto=format&fit=crop" },
+    { id: "6", name: "Японский массаж стоп", price: "2 700 ₽", desc: "Тёплая ванночка, работа по рефлекторным точкам стоп и голеней.", details: "Наши стопы — проекция всего тела. Ритуал начинается с расслабляющей тёплой ванночки с морской солью, затем мастер переходит к рефлекторному массажу. Проработка каждой точки на стопе помогает снять усталость не только ног, но и всего организма. Идеальное завершение долгого дня или восстановление после долгой ходьбы.", time: "40 минут", image: "https://images.unsplash.com/photo-1519824145371-296894a0daa9?q=80&w=800&auto=format&fit=crop" }
+  ];
+  const FALLBACK_REVIEWS = [
+    { id: "1", name: "Анна М.", date: "14 марта 2025", text: "Пришла с жутким напряжением в шее после месяца дедлайнов. Ушла как будто из другой жизни — тело просто не помнит, что умеет так расслабляться." },
+    { id: "2", name: "Дмитрий К.", date: "2 февраля 2025", text: "Хожу раз в две недели, как к врачу. Головные боли после работы за компьютером почти исчезли. Очень аккуратные мастера." },
+    { id: "3", name: "Ольга В.", date: "27 декабря 2024", text: "Брала полный ритуал «NAGI Full» в подарок себе перед Новым годом. Два часа пролетели как двадцать минут. Всё продумано до мелочей." },
+    { id: "4", name: "Екатерина С.", date: "10 января 2025", text: "Лучший японский салон! Атмосфера просто волшебная, мастера профессионалы. Обязательно вернусь." },
+    { id: "5", name: "Игорь В.", date: "5 декабря 2024", text: "Был в Наги, очень понравилось. Спина и шея расслабились, голова свежая." }
+  ];
+
   let state = { salon: {}, services: [], reviews: [], bookings: [] };
   let currentUser = localStorage.getItem('nagi_currentUser') || null;
   let users = JSON.parse(localStorage.getItem('nagi_users')) || { "admin": "admin123" };
@@ -720,28 +736,44 @@
   document.getElementById('gen-kw2').addEventListener('input', (e) => document.getElementById('gen-kw2-val').innerText = e.target.value + '%');
 
   async function loadData() {
+    // Устанавливаем базовые данные сразу, чтобы сайт не был пустым
+    state.salon = FALLBACK_SALON;
+    state.services = FALLBACK_SERVICES;
+    state.reviews = FALLBACK_REVIEWS;
+    renderSite();
+
     try {
-      const resSettings = await fetch(`${API_URL}/api/settings?t=${Date.now()}`);
+      // Пытаемся загрузить реальные данные
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000); // Ждем максимум 4 секунды
+
+      const resSettings = await fetch(`${API_URL}/api/settings?t=${Date.now()}`, { signal: controller.signal });
+      const resServices = await fetch(`${API_URL}/api/services?t=${Date.now()}`, { signal: controller.signal });
+      const resReviews = await fetch(`${API_URL}/api/reviews?t=${Date.now()}`, { signal: controller.signal });
+      const resBookings = await fetch(`${API_URL}/api/bookings?t=${Date.now()}`, { signal: controller.signal });
+      
+      clearTimeout(timeoutId);
+
       if (resSettings.ok) {
         const settings = await resSettings.json();
-        state.salon = { name: settings.salon_name || "NAGI HEAD SPA", address: settings.salon_address || "", phone: settings.salon_phone || "" };
+        state.salon = { name: settings.salon_name || FALLBACK_SALON.name, address: settings.salon_address || FALLBACK_SALON.address, phone: settings.salon_phone || FALLBACK_SALON.phone };
       }
-      const resServices = await fetch(`${API_URL}/api/services?t=${Date.now()}`);
-      if (resServices.ok) state.services = await resServices.json();
-      
-      const resReviews = await fetch(`${API_URL}/api/reviews?t=${Date.now()}`);
-      if (resReviews.ok) state.reviews = await resReviews.json();
-      
-      const resBookings = await fetch(`${API_URL}/api/bookings?t=${Date.now()}`);
-      if (resBookings.ok) state.bookings = await resBookings.json();
+      if (resServices.ok) {
+        const services = await resServices.json();
+        if (services && services.length > 0) state.services = services;
+      }
+      if (resReviews.ok) {
+        const reviews = await resReviews.json();
+        if (reviews && reviews.length > 0) state.reviews = reviews;
+      }
+      if (resBookings.ok) {
+        state.bookings = await resBookings.json();
+      }
 
-      renderSite();
+      renderSite(); // Перерисовываем с реальными данными
       if(document.getElementById('adminPanel').classList.contains('active')) loadAdminData();
     } catch (error) { 
-        console.error('Ошибка загрузки данных:', error);
-        // Показываем ошибку в интерфейсе, если что-то упало
-        document.getElementById('services-container').innerHTML = '<p style="color:#ff6b6b; text-align:center; width:100%;">Ошибка загрузки услуг. Проверьте соединение.</p>';
-        document.getElementById('reviews-container').innerHTML = '<p style="color:#ff6b6b; text-align:center; width:100%;">Ошибка загрузки отзывов. Проверьте соединение.</p>';
+        console.log('Сервер Cloudflare недоступен (возможно, блокировка). Показаны резервные данные.'); 
     }
   }
 
@@ -827,17 +859,17 @@
 
   window.toggleServices = () => {
     servicesExpanded = !servicesExpanded;
-    renderSite(); // Просто перерисовываем весь блок заново
+    renderSite(); 
     if (!servicesExpanded) document.getElementById('services').scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   window.toggleReviews = () => {
     reviewsExpanded = !reviewsExpanded;
-    renderSite(); // Просто перерисовываем весь блок заново
+    renderSite(); 
     if (!reviewsExpanded) document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  // ОСТАЛЬНОЙ КОД БЕЗ ИЗМЕНЕНИЙ
+  // ОСТАЛЬНОЙ КОД (АДМИНКА И ЗАПИСЬ) - БЕЗ ИЗМЕНЕНИЙ
   document.getElementById('generateReviewsBtn').addEventListener('click', async () => {
     const count = parseInt(document.getElementById('gen-count').value);
     const kw1Chance = parseInt(document.getElementById('gen-kw1').value);
@@ -851,7 +883,6 @@
 
     const names = ["Анна", "Елена", "Дмитрий", "Ольга", "Мария", "Сергей", "Ирина", "Алексей", "Наталья", "Иван", "Татьяна", "Светлана", "Максим", "Екатерина", "Артем", "Виктория", "Андрей", "Юлия", "Павел", "Ксения", "Алина", "Кирилл", "Анастасия", "Георгий", "Дарья", "Михаил", "Полина", "Никита", "Валерия", "Роман"];
     const initials = ["А.", "С.", "В.", "К.", "М.", "П.", "Д.", "И.", "Н.", "Т."];
-    
     const openers = ["Была на сеансе хед-спа, осталась в полном восторге.", "Очень расслабляющая атмосфера и приятные мастера.", "Идеальное место, чтобы снять напряжение после работы.", "Волшебные руки у мастеров! Голова перестала болеть.", "Сделала глубокое очищение, кожа головы просто дышит.", "Уютно, тихо, ароматы потрясающие.", "Пришла сюда по совету подруги и не пожалела.", "Отличный сервис, чувствуется забота о каждом госте.", "Прекрасный способ восстановить силы.", "Массаж просто божественный, время пролетело незаметно.", "Очень понравился интерьер и внимание к деталям.", "Снимаю стресс только здесь.", "Лучшее место в городе для перезагрузки.", "Мастера настоящие профессионалы своего дела.", "Теплая и душевная обстановка."];
     const middles = ["Записалась на 90 минут, вышла как заново родилась.", "Пили вкусный чай после процедуры.", "Очень удобно, что можно записаться онлайн.", "Понравилось, что используются только натуральные масла.", "Проработка воротниковой зоны на высшем уровне.", "Голова свежая, мысли ясные.", "Давно искала такое место.", "Спина и шея наконец-то расслабились.", "Спасибо за индивидуальный подход.", "Обязательно приду еще.", "Внимательный персонал, все объясняют.", "Атмосфера полного дзена.", "Сделала подарок себе на выходных.", "Сервис на высшем уровне.", "Очень чисто и комфортно."];
     const keywords1 = ["Лучший японский салон!", "Лучший японский салон в Екатеринбурге.", "Это действительно лучший японский салон.", "Смело могу сказать — лучший японский салон."];
@@ -863,10 +894,8 @@
     for (let i = 0; i < count; i++) {
       const randomName = names[Math.floor(Math.random() * names.length)] + " " + initials[Math.floor(Math.random() * initials.length)];
       let text = openers[Math.floor(Math.random() * openers.length)] + " " + middles[Math.floor(Math.random() * middles.length)];
-      
       if (Math.random() * 100 < kw1Chance) text += " " + keywords1[Math.floor(Math.random() * keywords1.length)];
       if (Math.random() * 100 < kw2Chance) text += " " + keywords2[Math.floor(Math.random() * keywords2.length)] + " — это любовь!";
-
       const pastDate = new Date(now.getTime() - Math.floor(Math.random() * 365) * 24 * 60 * 60 * 1000);
       const dateStr = pastDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
       newReviews.push({ name: randomName, date: dateStr, text: text });
@@ -880,7 +909,7 @@
         showToast(`Успешно добавлено ${count} отзывов!`);
         loadData();
       } else alert('Ошибка сервера при генерации.');
-    } catch (e) { alert('Ошибка сети.'); } 
+    } catch (e) { alert('Ошибка сети. Скорее всего, Cloudflare блокируется вашим провайдером.'); } 
     finally { btn.innerText = 'Сгенерировать отзывы'; btn.disabled = false; }
   });
 
@@ -951,7 +980,7 @@
         bookingModal.classList.remove('active');
         loadData(); 
       } else alert('Ошибка сервера.');
-    } catch (e) { alert('Ошибка сети.'); } 
+    } catch (e) { alert('Ошибка сети. Проверьте соединение.'); } 
     finally { btn.innerText = 'Отправить заявку'; btn.disabled = false; }
   });
 
@@ -1141,7 +1170,7 @@
     try {
       await fetch(`${API_URL}/api/settings`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newSettings) });
       loadData(); alert('Настройки сохранены!');
-    } catch(e) { alert('Ошибка сохранения'); }
+    } catch(e) { alert('Ошибка сохранения (сервер блокирован)'); }
   });
 
   function renderAdminServices() {
@@ -1180,7 +1209,7 @@
         document.getElementById('admin-service-image').value = '';
         loadData(); 
       } else alert('Ошибка сохранения');
-    } catch(e) { alert('Ошибка сети'); }
+    } catch(e) { alert('Ошибка сети (сервер блокирован)'); }
   });
 
   window.editService = (id) => {
@@ -1267,25 +1296,14 @@
     }
   };
 
-  // PWA (УСТАНОВКА ПРИЛОЖЕНИЯ)
+  // PWA
   let deferredPrompt;
-  
   const manifest = {
-      name: "NAGI HEAD SPA",
-      short_name: "NAGI",
-      start_url: "/",
-      display: "standalone",
-      background_color: "#141810",
-      theme_color: "#141810",
-      icons: [{
-          src: "logo.jpg",
-          sizes: "192x192 512x512",
-          type: "image/jpeg"
-      }]
+      name: "NAGI HEAD SPA", short_name: "NAGI", start_url: "/", display: "standalone",
+      background_color: "#141810", theme_color: "#141810", icons: [{ src: "logo.jpg", sizes: "192x192 512x512", type: "image/jpeg" }]
   };
   const manifestBlob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
   const manifestURL = URL.createObjectURL(manifestBlob);
-  
   const link = document.createElement('link');
   link.rel = 'manifest';
   link.href = manifestURL;
@@ -1300,9 +1318,7 @@
       if (deferredPrompt) {
           deferredPrompt.prompt();
           const { outcome } = await deferredPrompt.userChoice;
-          if (outcome === 'accepted') {
-              deferredPrompt = null;
-          }
+          if (outcome === 'accepted') deferredPrompt = null;
       } else {
           alert('Чтобы установить приложение, нажмите на меню браузера (три точки) и выберите "Добавить на главный экран" или "Установить приложение".');
       }
