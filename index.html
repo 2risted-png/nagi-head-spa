@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* СТИЛИ ОСТАВЛЕНЫ БЕЗ ИЗМЕНЕНИЙ */
   *, *::before, *::after { box-sizing: border-box; }
   :root { --bg-base: #12140E; --gold: #C9A96A; --gold-muted: #9E8453; --gold-soft: #E2CB9B; --text-main: #FFFFFF; --text-muted: #D1D5C9; --glass-bg: rgba(20, 25, 15, 0.45); --glass-border: rgba(201, 169, 106, 0.2); --radius: 16px; --transition-slow: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); --transition-med: all 0.4s ease-out; }
   html { scroll-behavior: smooth; }
@@ -476,11 +475,11 @@
   let currentUser = localStorage.getItem('nagi_currentUser') || null;
   let users = JSON.parse(localStorage.getItem('nagi_users')) || { "admin": "admin123" };
 
-  // ================= ЗАГРУЗКА ДАННЫХ С СЕРВЕРА =================
+  // ================= ЗАГРУЗКА ДАННЫХ С СЕРВЕРА (С ЗАЩИТОЙ ОТ КЭША) =================
   async function loadData() {
     try {
       // 1. Настройки
-      const resSettings = await fetch(`${API_URL}/api/settings`);
+      const resSettings = await fetch(`${API_URL}/api/settings?t=${Date.now()}`);
       if (resSettings.ok) {
         const settings = await resSettings.json();
         state.salon = { 
@@ -491,19 +490,17 @@
       }
 
       // 2. Услуги
-      const resServices = await fetch(`${API_URL}/api/services`);
+      const resServices = await fetch(`${API_URL}/api/services?t=${Date.now()}`);
       if (resServices.ok) {
         state.services = await resServices.json();
-        // Если в базе пусто, покажем заглушку
-        if(state.services.length === 0) alert("Внимание: База данных услуг пуста. Добавьте их в админке или выполните SQL запрос.");
       }
 
       // 3. Отзывы
-      const resReviews = await fetch(`${API_URL}/api/reviews`);
+      const resReviews = await fetch(`${API_URL}/api/reviews?t=${Date.now()}`);
       if (resReviews.ok) state.reviews = await resReviews.json();
 
       // 4. Заявки
-      const resBookings = await fetch(`${API_URL}/api/bookings`);
+      const resBookings = await fetch(`${API_URL}/api/bookings?t=${Date.now()}`);
       if (resBookings.ok) state.bookings = await resBookings.json();
 
       renderSite();
@@ -511,7 +508,7 @@
         loadAdminData();
       }
     } catch (error) {
-      console.error('Ошибка загрузки данных (проверьте API_URL и БД):', error);
+      console.error('Ошибка загрузки данных:', error);
     }
   }
 
@@ -830,7 +827,7 @@
       await fetch(`${API_URL}/api/settings`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newSettings)
       });
-      loadData(); // Перезапрашиваем данные с сервера
+      loadData(); 
       alert('Настройки сохранены!');
     } catch(e) { alert('Ошибка сохранения настроек'); }
   });
@@ -875,7 +872,7 @@
         document.getElementById('admin-service-details').value = '';
         document.getElementById('admin-service-time').value = '';
         document.getElementById('admin-service-image').value = '';
-        loadData(); // Загружаем заново
+        loadData(); 
       } else alert('Ошибка сохранения');
     } catch(e) { alert('Ошибка сети'); }
   });
