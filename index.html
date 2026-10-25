@@ -12,13 +12,17 @@
   :root { --bg-base: #12140E; --gold: #C9A96A; --gold-muted: #9E8453; --gold-soft: #E2CB9B; --text-main: #FFFFFF; --text-muted: #D1D5C9; --glass-bg: rgba(20, 25, 15, 0.45); --glass-border: rgba(201, 169, 106, 0.2); --radius: 16px; --transition-slow: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); --transition-med: all 0.4s ease-out; }
   html { scroll-behavior: smooth; }
   body { margin: 0; font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 300; color: var(--text-main); background-color: var(--bg-base); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  
   .video-background { position: fixed; top: 0; right: 0; width: 65vw; height: 100vh; z-index: -2; pointer-events: none; overflow: hidden; mask-image: linear-gradient(to right, transparent 0%, black 40%, black 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%, black 100%); }
   .video-background video { width: 100%; height: 100%; object-fit: cover; object-position: right center; opacity: 0.6; filter: saturate(0.85); }
   .video-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(90deg, rgba(18, 20, 14, 0.95) 0%, rgba(18, 20, 14, 0.8) 50%, rgba(18, 20, 14, 0.2) 100%); z-index: -1; }
+  
   .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition-slow); }
   .reveal.active { opacity: 1; transform: translateY(0); }
+
+  /* ================= ВЕРХНЯЯ ПАНЕЛЬ ================= */
   .topbar { background: rgba(18, 20, 14, 0.6); border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); position: fixed; top: 0; left: 0; width: 100%; z-index: 100; transition: var(--transition-med); }
   .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 16px 24px; }
   .topbar__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -33,6 +37,8 @@
   .topbar__hours { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
   .btn-login { background: rgba(201, 169, 106, 0.1); border: 1px solid rgba(201, 169, 106, 0.5); color: var(--gold-soft); padding: 10px 24px; border-radius: 30px; cursor: pointer; font-family: 'Manrope', sans-serif; font-size: 0.8rem; letter-spacing: 0.05em; transition: var(--transition-med); }
   .btn-login:hover { background: rgba(201, 169, 106, 0.25); border-color: var(--gold); color: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(201, 169, 106, 0.2); }
+
+  /* ================= ГЛАВНЫЙ ЭКРАН ================= */
   .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 0 80px; }
   .hero__inner { position: relative; z-index: 1; max-width: 900px; }
   .hero__kicker { margin: 0 0 24px; font-size: 0.75rem; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); animation: fadeInUp 1.2s ease forwards; }
@@ -48,11 +54,15 @@
   .tag:hover { background: rgba(201, 169, 106, 0.2); color: var(--gold-soft); border-color: var(--gold); }
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; margin-top: 50px; padding: 18px 48px; border: 1px solid var(--gold); border-radius: 40px; background: rgba(201, 169, 106, 0.15); color: var(--gold-soft); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: var(--transition-med); cursor: pointer; backdrop-filter: blur(5px); }
   .btn:hover { background: var(--gold); color: var(--bg-base); transform: translateY(-3px); box-shadow: 0 15px 30px -10px rgba(201, 169, 106, 0.4); }
+
+  /* ================= СЕКЦИИ ================= */
   .section { padding: 100px 0; scroll-margin-top: 80px; position: relative; }
   .section__head { text-align: center; margin-bottom: 60px; }
   .section__kicker { margin: 0 0 16px; font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
   .section__title { margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.5rem, 5vw, 3.5rem); letter-spacing: 0.08em; color: #fff; }
   .section__sub { margin: 20px auto 0; max-width: 560px; font-size: 1rem; line-height: 1.8; color: var(--text-muted); }
+
+  /* ================= УСЛУГИ ================= */
   .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
   .service { position: relative; padding: 36px; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: var(--transition-med); cursor: pointer; overflow: hidden; display: flex; flex-direction: column; }
   .service::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top right, rgba(201, 169, 106, 0.15), transparent 60%); opacity: 0; transition: var(--transition-med); }
@@ -63,11 +73,28 @@
   .service__price { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: #fff; white-space: nowrap; }
   .service__desc { margin: 0; font-size: 0.95rem; line-height: 1.8; color: var(--text-muted); position: relative; z-index: 1; flex-grow: 1; }
   .service__time { display: inline-block; margin-top: 24px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); position: relative; z-index: 1; }
+
+  /* Кнопка "Показать все услуги" */
+  .show-more-container { grid-column: 1 / -1; text-align: center; margin-top: 20px; }
+  .show-more-btn {
+    background: transparent; border: 1px solid var(--gold-muted); color: var(--gold);
+    padding: 14px 32px; border-radius: 40px; cursor: pointer;
+    font-family: 'Manrope', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 12px;
+    transition: var(--transition-med);
+  }
+  .show-more-btn:hover { border-color: var(--gold); color: var(--gold-soft); background: rgba(201, 169, 106, 0.1); }
+  .show-more-btn svg { width: 16px; height: 16px; transition: transform 0.4s ease; }
+  .show-more-btn.expanded svg { transform: rotate(180deg); }
+
+  /* ================= КОСМЕТИКА ================= */
   .cosmetics { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
   .cosmetic-card { padding: 48px 36px; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); text-align: center; transition: var(--transition-med); }
   .cosmetic-card:hover { transform: translateY(-8px); border-color: rgba(201, 169, 106, 0.5); background: rgba(30, 36, 23, 0.6); box-shadow: 0 25px 50px -15px rgba(0,0,0,0.8); }
   .cosmetic-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 2rem; color: var(--gold); margin: 0 0 24px; letter-spacing: 0.05em; }
   .cosmetic-card p { margin: 0; font-size: 0.95rem; line-height: 1.9; color: var(--text-muted); }
+
+  /* ================= ОТЗЫВЫ ================= */
   .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
   .review { position: relative; padding: 36px; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: var(--transition-med); }
   .review:hover { border-color: rgba(201, 169, 106, 0.4); transform: translateY(-5px); background: rgba(30, 36, 23, 0.6); }
@@ -75,6 +102,8 @@
   .review__date { display: block; margin-top: 8px; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--gold-muted); }
   .review__date::after { content: ""; display: block; width: 40px; height: 1px; margin-top: 16px; background: var(--glass-border); }
   .review__text { margin: 20px 0 0; font-size: 0.95rem; line-height: 1.9; color: var(--text-main); font-style: italic; }
+
+  /* ================= КОНТАКТЫ ================= */
   .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
   .contact-card { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 40px; text-align: center; backdrop-filter: blur(12px); transition: var(--transition-med); text-decoration: none; color: inherit; }
   .contact-card:hover { border-color: var(--gold); transform: translateY(-5px); background: rgba(30, 36, 23, 0.6); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
@@ -83,6 +112,8 @@
   .contact-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; color: var(--gold-soft); margin: 0 0 12px; }
   .contact-card__value { font-size: 1.1rem; color: var(--text-main); transition: var(--transition-med); }
   .contact-card:hover .contact-card__value { color: var(--gold); }
+
+  /* ================= ФОРМЫ И МОДАЛЬНЫЕ ОКНА ================= */
   .inline-login-box { display: flex; justify-content: center; margin-bottom: 50px; }
   .inline-login-box .btn { margin-top: 0; }
   .review-form-container { background: rgba(20, 25, 15, 0.8); border: 1px solid var(--gold); border-radius: var(--radius); padding: 40px; max-width: 500px; margin: 0 auto 50px; display: none; animation: fadeInUp 0.6s ease forwards; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
@@ -103,6 +134,8 @@
   .auth-tabs { display: flex; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); }
   .auth-tab { flex: 1; background: none; border: none; color: var(--text-muted); font-family: 'Manrope', sans-serif; font-size: 0.95rem; cursor: pointer; padding: 12px; transition: var(--transition-med); border-bottom: 2px solid transparent; letter-spacing: 0.05em; }
   .auth-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ================= ДЕТАЛИ УСЛУГИ ================= */
   .service-detail-modal { display: none; position: fixed; inset: 0; background: rgba(5, 8, 3, 0.85); backdrop-filter: blur(20px); z-index: 2000; align-items: center; justify-content: center; opacity: 0; transition: var(--transition-med); padding: 20px; }
   .service-detail-modal.active { display: flex; opacity: 1; }
   .service-detail-content { background: rgba(20, 25, 15, 0.95); border: 1px solid var(--glass-border); border-radius: var(--radius); width: 100%; max-width: 950px; display: flex; overflow: hidden; position: relative; box-shadow: 0 30px 80px rgba(0,0,0,0.95); transform: translateY(30px); transition: var(--transition-slow); max-height: 85vh; }
@@ -121,6 +154,8 @@
   .service-detail__actions .btn { margin-top: 0; width: 100%; }
   .service-detail__close { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; transition: var(--transition-med); z-index: 10; }
   .service-detail__close:hover { background: var(--gold); color: var(--bg-base); border-color: var(--gold); transform: rotate(90deg); }
+
+  /* ================= АДМИН-ПАНЕЛЬ ================= */
   .admin-overlay { position: fixed; inset: 0; background: rgba(5, 8, 3, 0.95); backdrop-filter: blur(20px); z-index: 3000; overflow-y: auto; display: none; }
   .admin-overlay.active { display: block; }
   .admin-container { max-width: 900px; margin: 40px auto; padding: 48px; background: rgba(20, 25, 15, 0.95); border: 1px solid var(--glass-border); border-radius: var(--radius); position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.9); }
@@ -147,6 +182,8 @@
   .btn-edit:hover { background: rgba(90, 122, 154, 0.2); border-color: #9ABCE0; }
   .btn-delete { border-color: rgba(154, 90, 90, 0.5); color: #E09A9A; }
   .btn-delete:hover { background: rgba(154, 90, 90, 0.2); border-color: #E09A9A; }
+
+  /* ================= ПОДВАЛ ================= */
   .footer { border-top: 1px solid rgba(255,255,255,0.1); background: rgba(10, 12, 8, 0.9); padding: 48px 0; backdrop-filter: blur(10px); }
   .footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
   .footer__brand { display: flex; align-items: center; gap: 16px; }
@@ -158,6 +195,7 @@
   .toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(30px); background: rgba(20, 25, 15, 0.95); border: 1px solid var(--gold); color: var(--gold-soft); padding: 16px 32px; border-radius: 30px; font-size: 1rem; z-index: 5000; opacity: 0; transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1); pointer-events: none; box-shadow: 0 15px 40px rgba(0,0,0,0.9); text-align: center; display: flex; align-items: center; gap: 12px; backdrop-filter: blur(10px); }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .toast svg { stroke: var(--gold); width: 20px; height: 20px; }
+
   @media (max-width: 900px) { .video-background { width: 100vw; mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 100%); } .video-overlay { background: radial-gradient(circle at center, rgba(18,20,14,0.85) 0%, rgba(18,20,14,0.95) 100%); } }
   @media (max-width: 768px) { .topbar__inner { justify-content: center; text-align: center; } .topbar__info { display: none; } .topbar__actions { flex-direction: row; width: 100%; justify-content: space-between; align-items: center; } .hero { padding: 100px 0 60px; } .section { padding: 60px 0; } .footer__inner { flex-direction: column; align-items: center; text-align: center; } .footer__contacts { flex-direction: column; gap: 16px; } .admin-container { padding: 24px; margin: 20px 10px; } .admin-item { flex-direction: column; align-items: flex-start; } .modal__content { padding: 32px 24px; margin: 20px; } .form-row { flex-direction: column; gap: 0; } .service-detail-content { flex-direction: column; max-height: 90vh; } .service-detail__img-wrapper { width: 100%; height: 300px; } .service-detail__info { width: 100%; padding: 30px 24px; } .service-detail__title { font-size: 1.8rem; } .service-detail__price { font-size: 1.5rem; } }
 </style>
@@ -462,62 +500,43 @@
 </div>
 
 <script>
-  // =====================================================================
-  // ВАЖНО: Вставьте сюда ссылку на ваш Worker (без слэша в конце)
+  // ВАЖНО: Убедитесь, что ссылка правильная
   const API_URL = 'https://nagi-api.vercel-coder.workers.dev'; 
-  // =====================================================================
-
-  if (API_URL.includes('ВАШ_СУБДОМЕН')) {
-      alert('ВНИМАНИЕ! Вы не заменили API_URL в коде index.html. Данные не будут сохраняться!');
-  }
 
   let state = { salon: {}, services: [], reviews: [], bookings: [] };
   let currentUser = localStorage.getItem('nagi_currentUser') || null;
   let users = JSON.parse(localStorage.getItem('nagi_users')) || { "admin": "admin123" };
+  
+  // Переменная состояния для раскрытия услуг
+  let servicesExpanded = false;
 
-  // ================= ЗАГРУЗКА ДАННЫХ С СЕРВЕРА (С ЗАЩИТОЙ ОТ КЭША) =================
+  // ================= ЗАГРУЗКА ДАННЫХ =================
   async function loadData() {
     try {
-      // 1. Настройки
       const resSettings = await fetch(`${API_URL}/api/settings?t=${Date.now()}`);
       if (resSettings.ok) {
         const settings = await resSettings.json();
-        state.salon = { 
-          name: settings.salon_name || "NAGI HEAD SPA",
-          address: settings.salon_address || "Екатеринбург, ул. Горького, 51",
-          phone: settings.salon_phone || "8 999 288-34-36"
-        };
+        state.salon = { name: settings.salon_name || "NAGI HEAD SPA", address: settings.salon_address || "", phone: settings.salon_phone || "" };
       }
-
-      // 2. Услуги
       const resServices = await fetch(`${API_URL}/api/services?t=${Date.now()}`);
-      if (resServices.ok) {
-        state.services = await resServices.json();
-      }
-
-      // 3. Отзывы
+      if (resServices.ok) state.services = await resServices.json();
+      
       const resReviews = await fetch(`${API_URL}/api/reviews?t=${Date.now()}`);
       if (resReviews.ok) state.reviews = await resReviews.json();
-
-      // 4. Заявки
+      
       const resBookings = await fetch(`${API_URL}/api/bookings?t=${Date.now()}`);
       if (resBookings.ok) state.bookings = await resBookings.json();
 
       renderSite();
-      if(document.getElementById('adminPanel').classList.contains('active')) {
-        loadAdminData();
-      }
-    } catch (error) {
-      console.error('Ошибка загрузки данных:', error);
-    }
+      if(document.getElementById('adminPanel').classList.contains('active')) loadAdminData();
+    } catch (error) { console.error('Ошибка загрузки данных:', error); }
   }
 
   // ================= ОТРИСОВКА САЙТА =================
   function renderSite() {
     document.title = `${state.salon.name} — японский спа-салон`;
     const nameParts = (state.salon.name || "NAGI HEAD SPA").split(' ');
-    document.getElementById('hero-title').innerHTML = nameParts.length > 1 
-      ? `${nameParts[0]}<span>${nameParts.slice(1).join(' ')}</span>` : state.salon.name;
+    document.getElementById('hero-title').innerHTML = nameParts.length > 1 ? `${nameParts[0]}<span>${nameParts.slice(1).join(' ')}</span>` : state.salon.name;
 
     document.getElementById('header-address-text').innerText = state.salon.address || "";
     document.getElementById('header-phone-text').innerText = state.salon.phone || "";
@@ -525,18 +544,40 @@
     document.getElementById('footer-address').innerText = state.salon.address || "";
     document.getElementById('footer-phone').innerText = state.salon.phone || "";
 
+    // Отрисовка услуг с логикой "Показать все"
     const servicesContainer = document.getElementById('services-container');
-    servicesContainer.innerHTML = state.services.map(s => `
-      <article class="service reveal" onclick="openServiceDetail('${s.id}')">
-        <div class="service__top">
-          <h3 class="service__name">${s.name}</h3>
-          <span class="service__price">${s.price}</span>
-        </div>
-        <p class="service__desc">${s.desc}</p>
-        <span class="service__time">${s.time}</span>
-      </article>
-    `).join('');
+    servicesContainer.innerHTML = state.services.map((s, index) => {
+      // Скрываем элементы после 3-го, если они не раскрыты
+      const isHidden = index >= 3 && !servicesExpanded;
+      const style = isHidden ? 'style="display: none;"' : '';
+      const activeClass = (index >= 3 && servicesExpanded) ? 'active' : '';
+      const hiddenClass = index >= 3 ? 'hidden-service' : '';
 
+      return `
+        <article class="service reveal ${hiddenClass} ${activeClass}" ${style} onclick="openServiceDetail('${s.id}')">
+          <div class="service__top">
+            <h3 class="service__name">${s.name}</h3>
+            <span class="service__price">${s.price}</span>
+          </div>
+          <p class="service__desc">${s.desc}</p>
+          <span class="service__time">${s.time}</span>
+        </article>
+      `;
+    }).join('');
+
+    // Добавляем кнопку, если услуг больше 3
+    if (state.services.length > 3) {
+      servicesContainer.innerHTML += `
+        <div class="show-more-container reveal ${servicesExpanded ? 'active' : ''}">
+          <button type="button" class="show-more-btn ${servicesExpanded ? 'expanded' : ''}" id="showMoreServicesBtn" onclick="toggleServices()">
+            ${servicesExpanded ? 'Скрыть услуги' : 'Показать все услуги'}
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+      `;
+    }
+
+    // Отрисовка отзывов
     const reviewsContainer = document.getElementById('reviews-container');
     reviewsContainer.innerHTML = state.reviews.map(r => `
       <article class="review reveal">
@@ -546,11 +587,40 @@
       </article>
     `).join('');
 
+    // Перезапуск анимации появления
     document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
     setTimeout(() => {
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }, 50);
   }
+
+  // ================= ЛОГИКА РАСКРЫТИЯ УСЛУГ =================
+  window.toggleServices = () => {
+    servicesExpanded = !servicesExpanded;
+    
+    if (servicesExpanded) {
+      // Плавно показываем
+      document.querySelectorAll('.hidden-service').forEach(el => {
+        el.style.display = 'flex';
+        setTimeout(() => el.classList.add('active'), 50);
+      });
+      const btn = document.getElementById('showMoreServicesBtn');
+      btn.innerHTML = `Скрыть услуги <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><path d="M6 9l6 6 6-6"/></svg>`;
+      btn.classList.add('expanded');
+    } else {
+      // Плавно скрываем
+      document.querySelectorAll('.hidden-service').forEach(el => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+      });
+      const btn = document.getElementById('showMoreServicesBtn');
+      btn.innerHTML = `Показать все услуги <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
+      btn.classList.remove('expanded');
+      
+      // Прокручиваем к началу секции услуг
+      document.getElementById('services').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   // ================= ДЕТАЛЬНЫЙ ПРОСМОТР УСЛУГИ =================
   const serviceDetailModal = document.getElementById('serviceDetailModal');
@@ -577,9 +647,7 @@
   const bookingServiceSelect = document.getElementById('bookingService');
 
   function openBookingModal(preselectedId = null) {
-    bookingServiceSelect.innerHTML = state.services.map(s => 
-      `<option value="${s.id}">${s.name} — ${s.price}</option>`
-    ).join('');
+    bookingServiceSelect.innerHTML = state.services.map(s => `<option value="${s.id}">${s.name} — ${s.price}</option>`).join('');
     if (preselectedId) bookingServiceSelect.value = preselectedId;
     bookingModal.classList.add('active');
   }
@@ -611,9 +679,7 @@
 
     try {
       const response = await fetch(`${API_URL}/api/bookings`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newBooking)
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newBooking)
       });
       if (response.ok) {
         showToast('Заявка ' + bookingNumber + ' отправлена! Ожидайте ответа.');
@@ -624,8 +690,8 @@
         document.getElementById('bookingComment').value = '';
         bookingModal.classList.remove('active');
         loadData(); 
-      } else alert('Ошибка сервера при отправке заявки.');
-    } catch (e) { alert('Ошибка сети. Проверьте соединение.'); } 
+      } else alert('Ошибка сервера.');
+    } catch (e) { alert('Ошибка сети.'); } 
     finally { btn.innerText = 'Отправить заявку'; btn.disabled = false; }
   });
 
@@ -664,7 +730,6 @@
   });
 
   document.getElementById('closeAuthBtn').addEventListener('click', () => authModal.classList.remove('active'));
-
   document.getElementById('tabLogin').addEventListener('click', () => {
     document.getElementById('tabLogin').classList.add('active');
     document.getElementById('tabRegister').classList.remove('active');
@@ -734,20 +799,14 @@
   document.getElementById('submitReviewBtn').addEventListener('click', async () => {
     const text = document.getElementById('reviewTextInput').value.trim();
     if (!text) return alert('Пожалуйста, напишите текст отзыва.');
-
     const dateOptions = { day: 'numeric', month: 'long', year: 'numeric' };
     const currentDate = new Date().toLocaleDateString('ru-RU', dateOptions);
     const newReview = { name: currentUser, date: currentDate, text: text };
-
     const btn = document.getElementById('submitReviewBtn');
-    btn.innerText = 'Отправка...';
-    btn.disabled = true;
-
+    btn.innerText = 'Отправка...'; btn.disabled = true;
     try {
       const response = await fetch(`${API_URL}/api/reviews`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newReview)
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newReview)
       });
       if (response.ok) {
         document.getElementById('reviewTextInput').value = '';
@@ -816,7 +875,6 @@
     renderAdminBookings();
   }
 
-  // СОХРАНЕНИЕ НАСТРОЕК
   document.getElementById('saveSettingsBtn').addEventListener('click', async () => {
     const newSettings = {
       salon_name: document.getElementById('admin-salon-name').value,
@@ -824,15 +882,11 @@
       salon_phone: document.getElementById('admin-salon-phone').value
     };
     try {
-      await fetch(`${API_URL}/api/settings`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newSettings)
-      });
-      loadData(); 
-      alert('Настройки сохранены!');
-    } catch(e) { alert('Ошибка сохранения настроек'); }
+      await fetch(`${API_URL}/api/settings`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newSettings) });
+      loadData(); alert('Настройки сохранены!');
+    } catch(e) { alert('Ошибка сохранения'); }
   });
 
-  // УСЛУГИ
   function renderAdminServices() {
     const list = document.getElementById('admin-services-list');
     list.innerHTML = state.services.map(s => `
@@ -854,15 +908,10 @@
     const details = document.getElementById('admin-service-details').value;
     const time = document.getElementById('admin-service-time').value;
     const image = document.getElementById('admin-service-image').value;
-
     if (!name || !price) return alert('Заполните название и цену');
-
     const newService = { id: id ? parseInt(id) : Date.now(), name, price, desc, details, time, image };
-
     try {
-      const response = await fetch(`${API_URL}/api/services`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newService)
-      });
+      const response = await fetch(`${API_URL}/api/services`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newService) });
       if (response.ok) {
         alert('Услуга сохранена!');
         document.getElementById('edit-service-id').value = '';
@@ -891,36 +940,26 @@
 
   window.deleteService = async (id) => {
     if (confirm('Удалить услугу?')) {
-      try {
-        await fetch(`${API_URL}/api/services/${id}`, { method: 'DELETE' });
-        loadData();
-      } catch(e) { alert('Ошибка удаления'); }
+      try { await fetch(`${API_URL}/api/services/${id}`, { method: 'DELETE' }); loadData(); } catch(e) { alert('Ошибка'); }
     }
   };
 
-  // ОТЗЫВЫ
   function renderAdminReviews() {
     const list = document.getElementById('admin-reviews-list');
     list.innerHTML = state.reviews.map(r => `
       <div class="admin-item">
         <div class="admin-item-info"><h4>${r.name} <span style="font-size:0.8rem; color:var(--text-muted);">${r.date}</span></h4><p>${r.text.substring(0, 60)}...</p></div>
-        <div class="admin-item-actions">
-          <button type="button" class="btn-sm btn-delete" onclick="deleteReview(${r.id})">Удал.</button>
-        </div>
+        <div class="admin-item-actions"><button type="button" class="btn-sm btn-delete" onclick="deleteReview(${r.id})">Удал.</button></div>
       </div>
     `).join('');
   }
   
   window.deleteReview = async (id) => {
     if (confirm('Удалить отзыв?')) {
-      try {
-        await fetch(`${API_URL}/api/reviews/${id}`, { method: 'DELETE' });
-        loadData();
-      } catch(e) { alert('Ошибка удаления'); }
+      try { await fetch(`${API_URL}/api/reviews/${id}`, { method: 'DELETE' }); loadData(); } catch(e) { alert('Ошибка'); }
     }
   };
 
-  // ЗАЯВКИ
   function renderAdminBookings() {
     const list = document.getElementById('admin-bookings-list');
     if (state.bookings.length === 0) {
@@ -936,19 +975,14 @@
           ${b.comment ? `<p><strong>Комментарий:</strong> ${b.comment}</p>` : ''}
           <p style="margin-top:8px; font-size:0.75rem; color:var(--gold);">Отправлено: ${b.created_at}</p>
         </div>
-        <div class="admin-item-actions">
-          <button type="button" class="btn-sm btn-delete" onclick="deleteBooking(${b.id})">Удал.</button>
-        </div>
+        <div class="admin-item-actions"><button type="button" class="btn-sm btn-delete" onclick="deleteBooking(${b.id})">Удал.</button></div>
       </div>
     `).join('');
   }
 
   window.deleteBooking = async (id) => {
     if (confirm('Удалить заявку?')) {
-      try {
-        await fetch(`${API_URL}/api/bookings/${id}`, { method: 'DELETE' });
-        loadData();
-      } catch(e) { alert('Ошибка удаления'); }
+      try { await fetch(`${API_URL}/api/bookings/${id}`, { method: 'DELETE' }); loadData(); } catch(e) { alert('Ошибка'); }
     }
   };
 
