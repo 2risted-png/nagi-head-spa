@@ -70,8 +70,12 @@
   
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   
+  /* Класс для появления на ПК */
   .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition-slow); }
   .reveal.active { opacity: 1; transform: translateY(0); }
+
+  /* Класс для скрытия лишних карточек */
+  .hidden-item { display: none !important; }
 
   /* ================= ВЕРХНЯЯ ПАНЕЛЬ ================= */
   .topbar { 
@@ -396,7 +400,6 @@
   @media (max-width: 900px) { 
     .video-background { 
       width: 100vw; 
-      /* Отключаем тяжелую маску на мобильных, чтобы не было багов с отрисовкой */
       mask-image: none !important; 
       -webkit-mask-image: none !important; 
     } 
@@ -438,19 +441,19 @@
     
     .form-row { flex-direction: column; gap: 0; }
 
-    /* === КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ (Убираем пустые места и невидимые блоки) === */
+    /* === КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ (Отключаем тяжелые эффекты) === */
     
-    /* Отключаем тяжелый эффект размытия на карточках, из-за которого они могут исчезать */
     .service, .review, .cosmetic-card, .contact-card {
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
       background: rgba(26, 31, 22, 0.95) !important;
+      transform: none !important; /* Убираем возможные сдвиги */
     }
 
-    /* Принудительно делаем все анимации видимыми, чтобы не было пустот, если скрипт не сработал */
+    /* На мобильных ВСЕГДА показываем контент без анимаций */
     .reveal {
       opacity: 1 !important;
-      transform: translateY(0) !important;
+      transform: none !important;
       transition: none !important;
     }
   }
@@ -839,12 +842,10 @@
     } else {
         servicesContainer.innerHTML = state.services.map((s, index) => {
           const isHidden = index >= 3 && !servicesExpanded;
-          const style = isHidden ? 'style="display: none;"' : '';
-          const activeClass = (index >= 3 && servicesExpanded) ? 'active' : '';
-          const hiddenClass = index >= 3 ? 'hidden-service' : '';
+          const hiddenClass = isHidden ? 'hidden-item' : '';
 
           return `
-            <article class="service reveal ${hiddenClass} ${activeClass}" ${style} onclick="openServiceDetail('${s.id}')">
+            <article class="service reveal ${hiddenClass}" onclick="openServiceDetail('${s.id}')">
               <div class="service__top">
                 <h3 class="service__name">${s.name}</h3>
                 <span class="service__price">${s.price}</span>
@@ -857,7 +858,7 @@
 
         if (state.services.length > 3) {
           servicesContainer.innerHTML += `
-            <div class="show-more-container reveal ${servicesExpanded ? 'active' : ''}">
+            <div class="show-more-container reveal">
               <button type="button" class="show-more-btn ${servicesExpanded ? 'expanded' : ''}" id="showMoreServicesBtn" onclick="toggleServices()">
                 ${servicesExpanded ? 'Скрыть услуги' : 'Показать все услуги'}
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
@@ -875,12 +876,10 @@
     } else {
         reviewsContainer.innerHTML = state.reviews.map((r, index) => {
           const isHidden = index >= REVIEWS_LIMIT && !reviewsExpanded;
-          const style = isHidden ? 'style="display: none;"' : '';
-          const activeClass = (index >= REVIEWS_LIMIT && reviewsExpanded) ? 'active' : '';
-          const hiddenClass = index >= REVIEWS_LIMIT ? 'hidden-review' : '';
+          const hiddenClass = isHidden ? 'hidden-item' : '';
 
           return `
-            <article class="review reveal ${hiddenClass} ${activeClass}" ${style}>
+            <article class="review reveal ${hiddenClass}">
               <p class="review__name">Имя: ${r.name}</p>
               <span class="review__date">${r.date}</span>
               <p class="review__text">«${r.text}»</p>
@@ -890,7 +889,7 @@
 
         if (state.reviews.length > REVIEWS_LIMIT) {
           reviewsContainer.innerHTML += `
-            <div class="show-more-container reveal ${reviewsExpanded ? 'active' : ''}">
+            <div class="show-more-container reveal">
               <button type="button" class="show-more-btn ${reviewsExpanded ? 'expanded' : ''}" id="showMoreReviewsBtn" onclick="toggleReviews()">
                 ${reviewsExpanded ? 'Скрыть отзывы' : 'Показать все отзывы'}
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
@@ -900,36 +899,39 @@
         }
     }
 
+    // Анимация появления
     document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
     
-    // На мобильных устройствах анимация отключена через CSS, но на всякий случай добавляем класс active
-    setTimeout(() => {
-      document.querySelectorAll('.reveal').forEach(el => {
-          if (window.innerWidth <= 768) {
-              el.classList.add('active');
-          } else {
-              observer.observe(el);
-          }
-      });
-    }, 50);
+    // На мобильных устройствах ничего не ждем и не анимируем, просто показываем
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    } else {
+        setTimeout(() => {
+          document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }, 50);
+    }
   }
 
   window.toggleServices = () => {
     servicesExpanded = !servicesExpanded;
+    
+    // Просто переключаем классы
+    const services = document.querySelectorAll('.service');
+    services.forEach((el, index) => {
+        if (index >= 3) {
+            if (servicesExpanded) {
+                el.classList.remove('hidden-item');
+            } else {
+                el.classList.add('hidden-item');
+            }
+        }
+    });
+
+    const btn = document.getElementById('showMoreServicesBtn');
     if (servicesExpanded) {
-      document.querySelectorAll('.hidden-service').forEach(el => {
-        el.style.display = 'flex';
-        setTimeout(() => el.classList.add('active'), 50);
-      });
-      const btn = document.getElementById('showMoreServicesBtn');
       btn.innerHTML = `Скрыть услуги <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><path d="M6 9l6 6 6-6"/></svg>`;
       btn.classList.add('expanded');
     } else {
-      document.querySelectorAll('.hidden-service').forEach(el => {
-        el.style.display = 'none';
-        el.classList.remove('active');
-      });
-      const btn = document.getElementById('showMoreServicesBtn');
       btn.innerHTML = `Показать все услуги <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
       btn.classList.remove('expanded');
       document.getElementById('services').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -938,26 +940,30 @@
 
   window.toggleReviews = () => {
     reviewsExpanded = !reviewsExpanded;
+    
+    const reviews = document.querySelectorAll('.review');
+    reviews.forEach((el, index) => {
+        if (index >= 3) {
+            if (reviewsExpanded) {
+                el.classList.remove('hidden-item');
+            } else {
+                el.classList.add('hidden-item');
+            }
+        }
+    });
+
+    const btn = document.getElementById('showMoreReviewsBtn');
     if (reviewsExpanded) {
-      document.querySelectorAll('.hidden-review').forEach(el => {
-        el.style.display = 'block';
-        setTimeout(() => el.classList.add('active'), 50);
-      });
-      const btn = document.getElementById('showMoreReviewsBtn');
       btn.innerHTML = `Скрыть отзывы <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><path d="M6 9l6 6 6-6"/></svg>`;
       btn.classList.add('expanded');
     } else {
-      document.querySelectorAll('.hidden-review').forEach(el => {
-        el.style.display = 'none';
-        el.classList.remove('active');
-      });
-      const btn = document.getElementById('showMoreReviewsBtn');
       btn.innerHTML = `Показать все отзывы <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
       btn.classList.remove('expanded');
       document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
+  // ОСТАЛЬНОЙ КОД БЕЗ ИЗМЕНЕНИЙ
   document.getElementById('generateReviewsBtn').addEventListener('click', async () => {
     const count = parseInt(document.getElementById('gen-count').value);
     const kw1Chance = parseInt(document.getElementById('gen-kw1').value);
