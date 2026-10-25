@@ -74,26 +74,30 @@
   .service__desc { margin: 0; font-size: 0.95rem; line-height: 1.8; color: var(--text-muted); position: relative; z-index: 1; flex-grow: 1; }
   .service__time { display: inline-block; margin-top: 24px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); position: relative; z-index: 1; }
 
-  /* Кнопка "Показать все услуги" */
+  /* Кнопка "Показать все" */
   .show-more-container { grid-column: 1 / -1; text-align: center; margin-top: 20px; }
   .show-more-btn { background: transparent; border: 1px solid var(--gold-muted); color: var(--gold); padding: 14px 32px; border-radius: 40px; cursor: pointer; font-family: 'Manrope', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 12px; transition: var(--transition-med); }
   .show-more-btn:hover { border-color: var(--gold); color: var(--gold-soft); background: rgba(201, 169, 106, 0.1); }
   .show-more-btn svg { width: 16px; height: 16px; transition: transform 0.4s ease; }
   .show-more-btn.expanded svg { transform: rotate(180deg); }
 
-  /* КОСМЕТИКА, ОТЗЫВЫ, КОНТАКТЫ */
+  /* КОСМЕТИКА */
   .cosmetics { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
   .cosmetic-card { padding: 48px 36px; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); text-align: center; transition: var(--transition-med); }
   .cosmetic-card:hover { transform: translateY(-8px); border-color: rgba(201, 169, 106, 0.5); background: rgba(30, 36, 23, 0.6); box-shadow: 0 25px 50px -15px rgba(0,0,0,0.8); }
   .cosmetic-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 2rem; color: var(--gold); margin: 0 0 24px; letter-spacing: 0.05em; }
   .cosmetic-card p { margin: 0; font-size: 0.95rem; line-height: 1.9; color: var(--text-muted); }
+
+  /* ОТЗЫВЫ */
   .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-  .review { position: relative; padding: 36px; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); transition: var(--transition-med); }
+  .review { position: relative; padding: 36px; border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); transition: var(--transition-med); display: block; }
   .review:hover { border-color: rgba(201, 169, 106, 0.4); transform: translateY(-5px); background: rgba(30, 36, 23, 0.6); }
   .review__name { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--gold-soft); }
   .review__date { display: block; margin-top: 8px; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--gold-muted); }
   .review__date::after { content: ""; display: block; width: 40px; height: 1px; margin-top: 16px; background: var(--glass-border); }
   .review__text { margin: 20px 0 0; font-size: 0.95rem; line-height: 1.9; color: var(--text-main); font-style: italic; }
+
+  /* КОНТАКТЫ */
   .contacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
   .contact-card { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 40px; text-align: center; backdrop-filter: blur(12px); transition: var(--transition-med); text-decoration: none; color: inherit; }
   .contact-card:hover { border-color: var(--gold); transform: translateY(-5px); background: rgba(30, 36, 23, 0.6); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
@@ -103,7 +107,7 @@
   .contact-card__value { font-size: 1.1rem; color: var(--text-main); transition: var(--transition-med); }
   .contact-card:hover .contact-card__value { color: var(--gold); }
 
-  /* ФОРМЫ */
+  /* ФОРМЫ И МОДАЛЬНЫЕ ОКНА */
   .inline-login-box { display: flex; justify-content: center; margin-bottom: 50px; }
   .inline-login-box .btn { margin-top: 0; }
   .review-form-container { background: rgba(20, 25, 15, 0.8); border: 1px solid var(--gold); border-radius: var(--radius); padding: 40px; max-width: 500px; margin: 0 auto 50px; display: none; animation: fadeInUp 0.6s ease forwards; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
@@ -114,8 +118,6 @@
   .form-group select option { background: #12140E; color: #fff; }
   .form-row { display: flex; gap: 15px; }
   .form-row .form-group { flex: 1; }
-
-  /* МОДАЛЬНЫЕ ОКНА */
   .modal { display: none; position: fixed; inset: 0; background: rgba(5, 8, 3, 0.85); backdrop-filter: blur(15px); z-index: 1000; align-items: center; justify-content: center; opacity: 0; transition: var(--transition-med); padding: 20px; }
   .modal.active { display: flex; opacity: 1; }
   .modal__content { background: rgba(20, 25, 15, 0.95); border: 1px solid var(--gold); border-radius: var(--radius); padding: 48px 40px; width: 100%; max-width: 480px; position: relative; transform: translateY(20px); transition: var(--transition-slow); box-shadow: 0 30px 60px rgba(0,0,0,0.9); max-height: 90vh; overflow-y: auto; }
@@ -175,7 +177,7 @@
   .btn-delete { border-color: rgba(154, 90, 90, 0.5); color: #E09A9A; }
   .btn-delete:hover { background: rgba(154, 90, 90, 0.2); border-color: #E09A9A; }
 
-  /* Стили для генератора отзывов */
+  /* Генератор отзывов */
   .generator-box { border: 1px solid var(--gold-muted); padding: 24px; border-radius: 12px; margin-bottom: 30px; background: rgba(201, 169, 106, 0.05); }
   .generator-box h4 { margin-top: 0; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; }
   .range-group { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
@@ -478,30 +480,25 @@
     </div>
     
     <div class="admin-section" id="admin-reviews">
-      <!-- Генератор отзывов -->
       <div class="generator-box">
         <h4>Генератор отзывов</h4>
         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:15px;">Создает до 100 уникальных отзывов с заданными ключевыми словами.</p>
-        
         <div class="form-row">
           <div class="form-group">
             <label>Кол-во отзывов (макс. 100)</label>
             <input type="number" id="gen-count" value="50" min="1" max="100">
           </div>
         </div>
-        
         <div class="range-group">
           <span style="font-size:0.85rem; width: 180px;">Упоминание "Лучший японский салон"</span>
           <input type="range" id="gen-kw1" min="0" max="100" value="30">
           <span class="range-value" id="gen-kw1-val">30%</span>
         </div>
-        
         <div class="range-group">
           <span style="font-size:0.85rem; width: 180px;">Упоминание бренда "Наги"</span>
           <input type="range" id="gen-kw2" min="0" max="100" value="50">
           <span class="range-value" id="gen-kw2-val">50%</span>
         </div>
-        
         <button type="button" class="btn" id="generateReviewsBtn" style="margin-top:10px; width:100%;">Сгенерировать отзывы</button>
       </div>
 
@@ -535,9 +532,11 @@
   let state = { salon: {}, services: [], reviews: [], bookings: [] };
   let currentUser = localStorage.getItem('nagi_currentUser') || null;
   let users = JSON.parse(localStorage.getItem('nagi_users')) || { "admin": "admin123" };
+  
   let servicesExpanded = false;
+  let reviewsExpanded = false; // Новая переменная для отзывов
 
-  // Обновление значений на ползунках
+  // Ползунки генератора
   document.getElementById('gen-kw1').addEventListener('input', (e) => document.getElementById('gen-kw1-val').innerText = e.target.value + '%');
   document.getElementById('gen-kw2').addEventListener('input', (e) => document.getElementById('gen-kw2-val').innerText = e.target.value + '%');
 
@@ -575,7 +574,7 @@
     document.getElementById('footer-address').innerText = state.salon.address || "";
     document.getElementById('footer-phone').innerText = state.salon.phone || "";
 
-    // Отрисовка услуг с логикой "Показать все"
+    // Отрисовка услуг (Лимит: 3)
     const servicesContainer = document.getElementById('services-container');
     servicesContainer.innerHTML = state.services.map((s, index) => {
       const isHidden = index >= 3 && !servicesExpanded;
@@ -606,15 +605,35 @@
       `;
     }
 
-    // Отрисовка отзывов
+    // Отрисовка отзывов (Лимит: 3)
     const reviewsContainer = document.getElementById('reviews-container');
-    reviewsContainer.innerHTML = state.reviews.map(r => `
-      <article class="review reveal">
-        <p class="review__name">Имя: ${r.name}</p>
-        <span class="review__date">${r.date}</span>
-        <p class="review__text">«${r.text}»</p>
-      </article>
-    `).join('');
+    const REVIEWS_LIMIT = 3;
+    
+    reviewsContainer.innerHTML = state.reviews.map((r, index) => {
+      const isHidden = index >= REVIEWS_LIMIT && !reviewsExpanded;
+      const style = isHidden ? 'style="display: none;"' : '';
+      const activeClass = (index >= REVIEWS_LIMIT && reviewsExpanded) ? 'active' : '';
+      const hiddenClass = index >= REVIEWS_LIMIT ? 'hidden-review' : '';
+
+      return `
+        <article class="review reveal ${hiddenClass} ${activeClass}" ${style}>
+          <p class="review__name">Имя: ${r.name}</p>
+          <span class="review__date">${r.date}</span>
+          <p class="review__text">«${r.text}»</p>
+        </article>
+      `;
+    }).join('');
+
+    if (state.reviews.length > REVIEWS_LIMIT) {
+      reviewsContainer.innerHTML += `
+        <div class="show-more-container reveal ${reviewsExpanded ? 'active' : ''}">
+          <button type="button" class="show-more-btn ${reviewsExpanded ? 'expanded' : ''}" id="showMoreReviewsBtn" onclick="toggleReviews()">
+            ${reviewsExpanded ? 'Скрыть отзывы' : 'Показать все отзывы'}
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+      `;
+    }
 
     document.querySelectorAll('.reveal').forEach(el => el.classList.remove('active'));
     setTimeout(() => {
@@ -622,7 +641,7 @@
     }, 50);
   }
 
-  // ================= ЛОГИКА РАСКРЫТИЯ УСЛУГ =================
+  // ================= ЛОГИКА РАСКРЫТИЯ =================
   window.toggleServices = () => {
     servicesExpanded = !servicesExpanded;
     if (servicesExpanded) {
@@ -645,6 +664,28 @@
     }
   };
 
+  window.toggleReviews = () => {
+    reviewsExpanded = !reviewsExpanded;
+    if (reviewsExpanded) {
+      document.querySelectorAll('.hidden-review').forEach(el => {
+        el.style.display = 'block';
+        setTimeout(() => el.classList.add('active'), 50);
+      });
+      const btn = document.getElementById('showMoreReviewsBtn');
+      btn.innerHTML = `Скрыть отзывы <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);"><path d="M6 9l6 6 6-6"/></svg>`;
+      btn.classList.add('expanded');
+    } else {
+      document.querySelectorAll('.hidden-review').forEach(el => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+      });
+      const btn = document.getElementById('showMoreReviewsBtn');
+      btn.innerHTML = `Показать все отзывы <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
+      btn.classList.remove('expanded');
+      document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   // ================= ГЕНЕРАТОР ОТЗЫВОВ =================
   document.getElementById('generateReviewsBtn').addEventListener('click', async () => {
     const count = parseInt(document.getElementById('gen-count').value);
@@ -657,24 +698,11 @@
     btn.innerText = 'Генерация...';
     btn.disabled = true;
 
-    // База данных для генерации (3000+ комбинаций)
     const names = ["Анна", "Елена", "Дмитрий", "Ольга", "Мария", "Сергей", "Ирина", "Алексей", "Наталья", "Иван", "Татьяна", "Светлана", "Максим", "Екатерина", "Артем", "Виктория", "Андрей", "Юлия", "Павел", "Ксения", "Алина", "Кирилл", "Анастасия", "Георгий", "Дарья", "Михаил", "Полина", "Никита", "Валерия", "Роман"];
     const initials = ["А.", "С.", "В.", "К.", "М.", "П.", "Д.", "И.", "Н.", "Т."];
     
-    const openers = [
-      "Была на сеансе хед-спа, осталась в полном восторге.", "Очень расслабляющая атмосфера и приятные мастера.", "Идеальное место, чтобы снять напряжение после работы.", 
-      "Волшебные руки у мастеров! Голова перестала болеть.", "Сделала глубокое очищение, кожа головы просто дышит.", "Уютно, тихо, ароматы потрясающие.", 
-      "Пришла сюда по совету подруги и не пожалела.", "Отличный сервис, чувствуется забота о каждом госте.", "Прекрасный способ восстановить силы.", 
-      "Массаж просто божественный, время пролетело незаметно.", "Очень понравился интерьер и внимание к деталям.", "Снимаю стресс только здесь.", "Лучшее место в городе для перезагрузки.", "Мастера настоящие профессионалы своего дела.", "Теплая и душевная обстановка."
-    ];
-    
-    const middles = [
-      "Записалась на 90 минут, вышла как заново родилась.", "Пили вкусный чай после процедуры.", "Очень удобно, что можно записаться онлайн.", 
-      "Понравилось, что используются только натуральные масла.", "Проработка воротниковой зоны на высшем уровне.", "Голова свежая, мысли ясные.", 
-      "Давно искала такое место.", "Спина и шея наконец-то расслабились.", "Спасибо за индивидуальный подход.", "Обязательно приду еще.", 
-      "Внимательный персонал, все объясняют.", "Атмосфера полного дзена.", "Сделала подарок себе на выходных.", "Сервис на высшем уровне.", "Очень чисто и комфортно."
-    ];
-    
+    const openers = ["Была на сеансе хед-спа, осталась в полном восторге.", "Очень расслабляющая атмосфера и приятные мастера.", "Идеальное место, чтобы снять напряжение после работы.", "Волшебные руки у мастеров! Голова перестала болеть.", "Сделала глубокое очищение, кожа головы просто дышит.", "Уютно, тихо, ароматы потрясающие.", "Пришла сюда по совету подруги и не пожалела.", "Отличный сервис, чувствуется забота о каждом госте.", "Прекрасный способ восстановить силы.", "Массаж просто божественный, время пролетело незаметно.", "Очень понравился интерьер и внимание к деталям.", "Снимаю стресс только здесь.", "Лучшее место в городе для перезагрузки.", "Мастера настоящие профессионалы своего дела.", "Теплая и душевная обстановка."];
+    const middles = ["Записалась на 90 минут, вышла как заново родилась.", "Пили вкусный чай после процедуры.", "Очень удобно, что можно записаться онлайн.", "Понравилось, что используются только натуральные масла.", "Проработка воротниковой зоны на высшем уровне.", "Голова свежая, мысли ясные.", "Давно искала такое место.", "Спина и шея наконец-то расслабились.", "Спасибо за индивидуальный подход.", "Обязательно приду еще.", "Внимательный персонал, все объясняют.", "Атмосфера полного дзена.", "Сделала подарок себе на выходных.", "Сервис на высшем уровне.", "Очень чисто и комфортно."];
     const keywords1 = ["Лучший японский салон!", "Лучший японский салон в Екатеринбурге.", "Это действительно лучший японский салон.", "Смело могу сказать — лучший японский салон."];
     const keywords2 = ["Наги", "НАГИ", "салон Наги", "бренд Наги", "в Наги"];
     
@@ -683,43 +711,26 @@
 
     for (let i = 0; i < count; i++) {
       const randomName = names[Math.floor(Math.random() * names.length)] + " " + initials[Math.floor(Math.random() * initials.length)];
-      
       let text = openers[Math.floor(Math.random() * openers.length)] + " " + middles[Math.floor(Math.random() * middles.length)];
       
-      // Добавление ключевых слов по процентам
-      if (Math.random() * 100 < kw1Chance) {
-        text += " " + keywords1[Math.floor(Math.random() * keywords1.length)];
-      }
-      if (Math.random() * 100 < kw2Chance) {
-        text += " " + keywords2[Math.floor(Math.random() * keywords2.length)] + " — это любовь!";
-      }
+      if (Math.random() * 100 < kw1Chance) text += " " + keywords1[Math.floor(Math.random() * keywords1.length)];
+      if (Math.random() * 100 < kw2Chance) text += " " + keywords2[Math.floor(Math.random() * keywords2.length)] + " — это любовь!";
 
-      // Случайная дата в пределах последнего года
       const pastDate = new Date(now.getTime() - Math.floor(Math.random() * 365) * 24 * 60 * 60 * 1000);
       const dateStr = pastDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-
       newReviews.push({ name: randomName, date: dateStr, text: text });
     }
 
     try {
       const response = await fetch(`${API_URL}/api/reviews/bulk`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newReviews)
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newReviews)
       });
-      
       if (response.ok) {
         showToast(`Успешно добавлено ${count} отзывов!`);
-        loadData(); // Обновляем данные с сервера
-      } else {
-        alert('Ошибка сервера при генерации.');
-      }
-    } catch (e) {
-      alert('Ошибка сети.');
-    } finally {
-      btn.innerText = 'Сгенерировать отзывы';
-      btn.disabled = false;
-    }
+        loadData();
+      } else alert('Ошибка сервера при генерации.');
+    } catch (e) { alert('Ошибка сети.'); } 
+    finally { btn.innerText = 'Сгенерировать отзывы'; btn.disabled = false; }
   });
 
   // ================= ДЕТАЛЬНЫЙ ПРОСМОТР УСЛУГИ =================
@@ -1068,7 +1079,6 @@
 
     if (!name || !text) return alert('Заполните имя и текст');
     
-    // Если это ручное добавление, используем обычный POST
     const newReview = { name, date: date || new Date().toLocaleDateString('ru-RU'), text };
     try {
       const response = await fetch(`${API_URL}/api/reviews`, {
