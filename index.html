@@ -21,7 +21,6 @@
 <script>
 tailwind.config = { theme: { extend: {
   colors: {
-    /* ОСВЕТЛЕННАЯ ПАЛИТРА (Теплый оливково-серый) */
     zen: { bg:'#393E33', surface:'#474D40', light:'#5A614F' },
     cream:'#F5F2ED',
     olive:{ light:'#B4C4A8', DEFAULT:'#7C8F6F', dark:'#5A684F' },
@@ -186,7 +185,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <section class="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-20 pb-10">
 <div class="absolute inset-0 z-0">
 <img src="SkjsWhN3vfE.jpg" alt="Атмосфера NAGI HEAD SPA" class="w-full h-full object-cover object-center scale-110" data-parallax="0.15">
-<!-- Изменен градиент на черный для читаемости текста на светлом фоне -->
 <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-[#2F332A]"></div>
 <div class="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] max-w-[900px] max-h-[900px] rounded-full bg-gold/15 blur-[140px] glow-pulse pointer-events-none"></div>
 <div class="absolute -bottom-1/4 -left-1/4 w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full bg-olive/15 blur-[120px] glow-pulse pointer-events-none" style="animation-delay:4s"></div>
@@ -200,8 +198,12 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <span class="reveal-text text-gold-light uppercase tracking-[0.3em] text-[10px] md:text-sm font-medium mb-6 md:mb-8 flex items-center gap-3 drop-shadow-md">
 <span class="w-8 h-[1px] bg-gold/60"></span>Добро пожаловать в NAGI<span class="w-8 h-[1px] bg-gold/60"></span>
 </span>
-<h1 class="reveal-text text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] text-cream mb-6 md:mb-8 drop-shadow-xl" style="animation-delay:.1s">Искусство<br><span class="italic gradient-text font-light">тишины</span></h1>
-<p class="reveal-text text-sm sm:text-base md:text-lg text-cream/90 font-light max-w-xl leading-relaxed mb-8 md:mb-12 drop-shadow-md" style="animation-delay:.2s">Погрузитесь в атмосферу абсолютного спокойствия. Уникальные японские ритуалы для восстановления баланса тела и разума.</p>
+<!-- ИЗМЕНЕН ЗАГОЛОВОК -->
+<h1 class="reveal-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.15] text-cream mb-6 md:mb-8 drop-shadow-xl" style="animation-delay:.1s">
+    Искусство<br>
+    <span class="italic gradient-text font-light">японского расслабления</span>
+</h1>
+<p class="reveal-text text-sm sm:text-base md:text-lg text-cream/90 font-light max-w-xl leading-relaxed mb-8 md:mb-12 drop-shadow-md" style="animation-delay:.2s">Погрузитесь в атмосферу абсолютного спокойствия. Уникальные ритуалы для восстановления баланса тела и разума.</p>
 <div class="reveal-text flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0" style="animation-delay:.3s">
 <button onclick="openOrderModal('service','Индивидуальная запись','')" class="btn-shine bg-cream text-ink-900 px-8 py-4 rounded-full font-medium text-sm tracking-wide btn-hover text-center shadow-lg">Забронировать визит</button>
 <a href="#certificates" class="bg-transparent border border-cream/40 text-cream px-8 py-4 rounded-full font-medium text-sm tracking-wide hover:bg-cream/10 hover:border-gold/80 transition-all text-center backdrop-blur-sm drop-shadow-md">Приобрести сертификат</a>
@@ -281,7 +283,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <h2 class="text-3xl md:text-5xl font-serif mb-4">Подарочные <span class="gradient-text italic">сертификаты</span></h2>
 <p class="text-cream/70 font-light text-sm md:text-base max-w-md mx-auto">Идеальный подарок для близких.</p>
 </div>
-<div id="certificates-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto"></div>
+<div id="certificates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto"></div>
 </div>
 </section>
 
@@ -602,6 +604,16 @@ const DEFAULTS = {
   certificates: [
     { id:'c1', title:'Сертификат 5 000 ₽', desc:'Подарочный сертификат на любые услуги салона номиналом 5 000 ₽.', full_desc: 'Идеальный подарок для близких. Сертификат действует в течение 1 года с момента покупки. Красивая упаковка и открытка в подарок.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'5 000 ₽' },
     { id:'c2', title:'Сертификат 10 000 ₽', desc:'Идеальный подарок — сертификат на 10 000 ₽ для любого ритуала.', full_desc: 'Подарите человеку возможность выбрать для себя любой уход. Сертификат действует 1 год, упаковывается в фирменный конверт.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'10 000 ₽' },
+    // ДОБАВЛЕН СЕРТИФИКАТ НА 15 000 ₽ С УКАЗАННОЙ ССЫЛКОЙ
+    { 
+      id:'c15', 
+      title:'Сертификат 15 000 ₽', 
+      desc:'Премиальный подарок на 15 000 ₽ для любого ритуала.', 
+      full_desc: 'Отличный выбор для тех, кто ценит заботу о себе. Сертификат позволит пройти несколько флагманских процедур или полный курс ухода.', 
+      image_url: 'https://sun9-62.vkuserphoto.ru/s/v1/ig2/Er8nuBQZ4fJbk05YnYWWzOSOqLhd9kuV-LtO6tQowCmgyd8NuHQQVOmN8vjxGnOrvyNLX8rX4qa428QmfX-4dNWO.jpg?quality=95&as=32x24,48x35,72x53,108x80,160x118,240x177,360x266,480x354,540x399,640x472,720x531,825x609&from=bu&u=RhkyKEV9MSdl_h20OYPZanDnIU8jucJlRek-eLYlP6g&cs=825x0', 
+      features:[], 
+      price:'15 000 ₽' 
+    },
     { id:'c3', title:'Сертификат 20 000 ₽', desc:'Премиальный подарок — сертификат на полный курс процедур.', full_desc: 'Роскошный подарок, который позволит пройти полноценный курс восстановления или посетить несколько флагманских ритуалов.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'20 000 ₽' }
   ],
   reviews: [
@@ -685,12 +697,32 @@ function openProductModal(type, id) {
   }
 
   const featuresContainer = document.getElementById('pm-features-container');
-  const featuresList = document.getElementById('pm-features');
-  if (item.features && item.features.length > 0) {
-      featuresList.innerHTML = item.features.map(f => `<li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('');
-      featuresContainer.classList.remove('hidden');
+  
+  // ЛОГИКА ОТОБРАЖЕНИЯ "ЧТО ВХОДИТ"
+  if (type === 'service') {
+      // Для УСЛУГ: убираем галочки, выводим просто текстом через точку
+      if (item.features && item.features.length > 0) {
+          featuresContainer.innerHTML = `
+              <h4 class="text-gold text-sm font-medium mb-2 uppercase tracking-wider">Что входит</h4>
+              <p class="text-sm text-cream/80 leading-relaxed font-light">${item.features.join(' · ')}</p>
+          `;
+          featuresContainer.classList.remove('hidden');
+      } else {
+          featuresContainer.classList.add('hidden');
+      }
   } else {
-      featuresContainer.classList.add('hidden');
+      // Для АБОНЕМЕНТОВ И СЕРТИФИКАТОВ: оставляем галочки
+      if (item.features && item.features.length > 0) {
+          featuresContainer.innerHTML = `
+              <h4 class="text-gold text-sm font-medium mb-2 uppercase tracking-wider">Что входит</h4>
+              <ul id="pm-features" class="space-y-2 text-sm text-cream/90"></ul>
+          `;
+          const ul = document.getElementById('pm-features');
+          ul.innerHTML = item.features.map(f => `<li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('');
+          featuresContainer.classList.remove('hidden');
+      } else {
+          featuresContainer.classList.add('hidden');
+      }
   }
 
   const btn = document.getElementById('pm-action-btn');
