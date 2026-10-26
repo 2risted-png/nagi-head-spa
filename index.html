@@ -106,23 +106,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .admin-input:focus{border-color:rgba(201,168,118,.6)}
 .admin-label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(235,233,225,.5);margin-bottom:.35rem}
 .star{color:#C9A876}
-
-/* Стили для раскрывающихся карточек */
-.card-item { cursor: pointer; }
-.card-details {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
-}
-.card-item.expanded .card-details {
-    max-height: 600px;
-    opacity: 1;
-    margin-top: 1.5rem;
-}
-.card-arrow { transition: transform 0.4s ease; }
-.card-item.expanded .card-arrow { transform: rotate(180deg); }
-
 @media (prefers-reduced-motion:reduce){.bg-orb,.particle{animation:none!important}[data-parallax]{transform:none!important}}
 </style>
 </head>
@@ -219,7 +202,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <p class="reveal-text text-sm sm:text-base md:text-lg text-cream/70 font-light max-w-xl leading-relaxed mb-8 md:mb-12" style="animation-delay:.2s">Погрузитесь в атмосферу абсолютного спокойствия. Уникальные японские ритуалы для восстановления баланса тела и разума.</p>
 <div class="reveal-text flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0" style="animation-delay:.3s">
 <button onclick="openOrderModal('service','Индивидуальная запись','')" class="btn-shine bg-cream text-zen-bg px-8 py-4 rounded-full font-medium text-sm tracking-wide btn-hover text-center">Забронировать визит</button>
-<!-- НОВАЯ КНОПКА СЕРТИФИКАТА -->
 <a href="#certificates" class="bg-transparent border border-cream/30 text-cream px-8 py-4 rounded-full font-medium text-sm tracking-wide hover:bg-cream/10 hover:border-gold/60 transition-all text-center">Приобрести сертификат</a>
 </div>
 </div>
@@ -424,6 +406,56 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </div>
 </footer>
 
+<!-- НОВЫЙ ДИАЛОГ: КАРТОЧКА ТОВАРА -->
+<div id="product-modal" class="modal hidden-modal fixed inset-0 z-[105] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this)closeProductModal()">
+  <div class="bg-zen-surface max-w-2xl w-full rounded-2xl border border-zen-light/30 relative max-h-[90vh] overflow-y-auto">
+    <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 bg-black/50 text-cream/80 hover:text-cream p-2 rounded-full backdrop-blur-md">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    
+    <!-- Обложка -->
+    <div id="pm-image-container" class="w-full h-64 md:h-80 overflow-hidden rounded-t-2xl relative bg-zen-bg">
+        <img id="pm-image" src="" alt="Фото" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-zen-surface to-transparent"></div>
+    </div>
+
+    <div class="p-6 md:p-8 pt-0">
+        <span id="pm-tag" class="inline-block text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-3 mt-4"></span>
+        <h2 id="pm-title" class="text-3xl md:text-4xl font-serif mb-4 text-cream"></h2>
+        
+        <!-- Краткое описание -->
+        <p id="pm-desc" class="text-cream/80 font-light text-sm mb-6"></p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <!-- Подробное описание -->
+            <div id="pm-full-desc-container">
+                <h4 class="text-gold text-sm font-medium mb-2 uppercase tracking-wider">Подробнее</h4>
+                <p id="pm-full-desc" class="text-cream/60 text-sm font-light leading-relaxed mb-4 whitespace-pre-line"></p>
+            </div>
+            <!-- Что входит -->
+            <div id="pm-features-container">
+                <h4 class="text-gold text-sm font-medium mb-2 uppercase tracking-wider">Что входит</h4>
+                <ul id="pm-features" class="space-y-2 text-sm text-cream/80"></ul>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between pt-6 border-t border-zen-light/20 gap-4">
+            <div class="flex gap-8">
+                <div>
+                    <span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Стоимость</span>
+                    <span id="pm-price" class="text-2xl font-serif text-gold"></span>
+                </div>
+                <div id="pm-duration-container">
+                    <span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Длительность</span>
+                    <span id="pm-duration" class="text-sm font-medium text-cream/90"></span>
+                </div>
+            </div>
+            <button id="pm-action-btn" class="w-full md:w-auto bg-gold text-zen-bg px-8 py-3 rounded-full font-medium text-sm hover:bg-cream transition-colors"></button>
+        </div>
+    </div>
+  </div>
+</div>
+
 <!-- ВХОД -->
 <div id="login-modal" class="modal hidden-modal fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this)closeLogin()">
 <div class="bg-zen-surface max-w-md w-full rounded-2xl border border-zen-light/30 p-5 md:p-8 relative">
@@ -440,7 +472,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </div>
 
 <!-- ЗАКАЗ -->
-<div id="order-modal" class="modal hidden-modal fixed inset-0 z-[105] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this)closeOrderModal()">
+<div id="order-modal" class="modal hidden-modal fixed inset-0 z-[106] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this)closeOrderModal()">
 <div class="bg-zen-surface max-w-md w-full rounded-2xl border border-zen-light/30 p-5 md:p-8 relative max-h-[90vh] overflow-y-auto">
 <button onclick="closeOrderModal()" class="absolute top-4 right-4 text-cream/60 hover:text-cream p-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg></button>
 <h2 class="text-2xl font-serif mb-1" id="order-modal-title">Оформление заказа</h2>
@@ -532,28 +564,28 @@ const USER_KEY = 'nagi_user_v1';
 const ADMIN = { login: 'admin', password: 'admin123', isAdmin: true };
 
 // ============================================
-// ДЕФОЛТНЫЕ ДАННЫЕ
+// ДЕФОЛТНЫЕ ДАННЫЕ (Добавлены фото и подр. описание)
 // ============================================
 const DEFAULTS = {
   services: [
-    { id:'s1', tag:'Мужской уход', title:'Barber&Head SPA', desc:'Уникальный мужской ритуал, сочетающий в себе элементы барберинга и глубокий уход за кожей головы. Идеальное расслабление и безупречный вид.', features:['Массаж головы и шейно-воротниковой зоны','Глубокое очищение кожи головы','Уход за волосами','Барберские техники'], duration:'1 час 45 минут', price:'5 500 ₽' },
-    { id:'s2', tag:'Классика', title:'Classic Head SPA', desc:'Базовый японский ритуал для восстановления баланса кожи головы и глубокого расслабления нервной системы.', features:['Очищение кожи головы','Массаж головы и шеи','Увлажнение волос'], duration:'1 час 45 минут', price:'4 500 ₽' },
-    { id:'s3', tag:'Для лица', title:'Japanese Face', desc:'Скульптурный массаж лица по древним японским техникам. Возвращает тонус, сияние и четкий овал.', features:['Лимфодренажный массаж','Глубокое очищение и пилинг','Альгинатная маска'], duration:'2 часа 15 минут', price:'6 200 ₽' },
-    { id:'s4', tag:'Флагманский уход', title:'Tokyo Head SPA', desc:'Глубокий японский ритуал для головы и волос. Полное очищение, массаж и перезагрузка нервной системы.', features:['Массаж шейно-воротниковой зоны','Глубокое очищение кожи головы','Увлажняющая маска для волос'], duration:'1,5 часа', price:'6 500 ₽' },
-    { id:'s5', tag:'Восстановление', title:'T-SHOCK', desc:'Интенсивная шоковая терапия для волос. Мгновенное восстановление структуры, блеск и защита от повреждений.', features:['Глубокое восстановление','Питание и увлажнение','Запечатывание кутикулы'], duration:'1 час 30 минут', price:'4 500 ₽' },
-    { id:'s6', tag:'Уход за волосами', title:'Deep Care Tokio Inkarami', desc:'Премиальное восстановление волос с использованием японских аминокислот. Цена зависит от длины волос: короткие — 5500 ₽ (≈20 мин), средние — 6000 ₽ (≈25 мин), длинные — 6500 ₽ (≈30 мин).', features:['Восстановление структуры','Аминокислотный комплекс','Зеркальный блеск'], duration:'1,5 часа', price:'от 5 500 ₽' },
-    { id:'s7', tag:'Омоложение', title:'Интенсивная омолаживающая программа Три-комплекс', desc:'Комплексный уход, направленный на глубокое омоложение, питание и восстановление кожи.', features:['Тройное действие','Глубокое питание','Улучшение тонуса'], duration:'1 час', price:'5 800 ₽' },
-    { id:'s8', tag:'Антиоксидант', title:'Оживляющая антиоксидантная программа Selvert Thermal с витамином С', desc:'Мощный антиоксидантный коктейль с витамином С для оживления тусклой кожи и защиты от внешних факторов.', features:['Витамин С','Антиоксидантная защита','Сияние кожи'], duration:'50 минут', price:'6 500 ₽' }
+    { id:'s1', tag:'Мужской уход', title:'Barber&Head SPA', desc:'Уникальный мужской ритуал, сочетающий в себе элементы барберинга и глубокий уход за кожей головы.', full_desc: 'Идеальное расслабление и безупречный вид. В программу входит мужская стрижка, укладка, а также глубокое очищение кожи головы и расслабляющий массаж.', image_url: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=800&auto=format&fit=crop', features:['Массаж головы и шейно-воротниковой зоны','Глубокое очищение кожи головы','Уход за волосами','Барберские техники'], duration:'1 час 45 минут', price:'5 500 ₽' },
+    { id:'s2', tag:'Классика', title:'Classic Head SPA', desc:'Базовый японский ритуал для восстановления баланса кожи головы и глубокого расслабления нервной системы.', full_desc: 'Классическая программа, которая подходит для любого типа кожи. Мы используем премиальную японскую косметику для очищения и увлажнения.', image_url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop', features:['Очищение кожи головы','Массаж головы и шеи','Увлажнение волос'], duration:'1 час 45 минут', price:'4 500 ₽' },
+    { id:'s3', tag:'Для лица', title:'Japanese Face', desc:'Скульптурный массаж лица по древним японским техникам. Возвращает тонус, сияние и четкий овал.', full_desc: 'Глубокий лимфодренаж и работа с мышцами лица. Уже после первой процедуры вы заметите потрясающий результат - кожа сияет, а контуры лица становятся более четкими.', image_url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop', features:['Лимфодренажный массаж','Глубокое очищение и пилинг','Альгинатная маска'], duration:'2 часа 15 минут', price:'6 200 ₽' },
+    { id:'s4', tag:'Флагманский уход', title:'Tokyo Head SPA', desc:'Глубокий японский ритуал для головы и волос. Полное очищение, массаж и перезагрузка нервной системы.', full_desc: 'Наш самый популярный ритуал. Многоступенчатая система очищения пор, массаж активных точек и питательная маска. Вы выйдете как будто заново родившимся!', image_url: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=800&auto=format&fit=crop', features:['Массаж шейно-воротниковой зоны','Глубокое очищение кожи головы','Увлажняющая маска для волос'], duration:'1,5 часа', price:'6 500 ₽' },
+    { id:'s5', tag:'Восстановление', title:'T-SHOCK', desc:'Интенсивная шоковая терапия для волос. Мгновенное восстановление структуры, блеск и защита от повреждений.', full_desc: 'Спасение для поврежденных и ослабленных волос. Протеиновая реконструкция проникает вглубь волоса и восстанавливает его изнутри.', image_url: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop', features:['Глубокое восстановление','Питание и увлажнение','Запечатывание кутикулы'], duration:'1 час 30 минут', price:'4 500 ₽' },
+    { id:'s6', tag:'Уход за волосами', title:'Deep Care Tokio Inkarami', desc:'Премиальное восстановление волос с использованием японских аминокислот.', full_desc: 'Инновационная процедура, которая восстанавливает волосы на молекулярном уровне. Цена зависит от длины волос: короткие — 5500 ₽ (≈20 мин), средние — 6000 ₽ (≈25 мин), длинные — 6500 ₽ (≈30 мин).', image_url: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=800&auto=format&fit=crop', features:['Восстановление структуры','Аминокислотный комплекс','Зеркальный блеск'], duration:'1,5 часа', price:'от 5 500 ₽' },
+    { id:'s7', tag:'Омоложение', title:'Интенсивная омолаживающая программа Три-комплекс', desc:'Комплексный уход, направленный на глубокое омоложение, питание и восстановление кожи.', full_desc: 'Три этапа воздействия: очищение, питание и защита. Программа разработана для зрелой кожи и помогает бороться с первыми признаками старения.', image_url: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=800&auto=format&fit=crop', features:['Тройное действие','Глубокое питание','Улучшение тонуса'], duration:'1 час', price:'5 800 ₽' },
+    { id:'s8', tag:'Антиоксидант', title:'Оживляющая антиоксидантная программа Selvert Thermal с витамином С', desc:'Мощный антиоксидантный коктейль с витамином С для оживления тусклой кожи.', full_desc: 'Борется с тусклостью и следами усталости. Витамин С стимулирует выработку коллагена, а термальная вода глубоко увлажняет.', image_url: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800&auto=format&fit=crop', features:['Витамин С','Антиоксидантная защита','Сияние кожи'], duration:'50 минут', price:'6 500 ₽' }
   ],
   subscriptions: [
-    { id:'sub1', tag:'Курс процедур', title:'Tokyo Head SPA', desc:'Выгодный абонемент на флагманский ритуал для головы и волос. Поддерживайте идеальное состояние кожи головы и глубокое расслабление на постоянной основе.', features:['4 процедуры — 24 500 ₽','6 процедур — 35 000 ₽','10 процедур — 55 000 ₽','Длительность 1,5 часа'], benefit:'Выгода', price:'от 24 500 ₽', badge:'Хит' },
-    { id:'sub2', tag:'Курс процедур', title:'Japanese Face', desc:'Курс скульптурного массажа лица. Долгосрочный результат: четкий овал, сияние и молодость кожи.', features:['4 процедуры — 23 500 ₽ (-5%)','6 процедур — 33 500 ₽ (-10%)','10 процедур — 52 500 ₽ (-15%)','Длительность 2 ч 15 мин'], benefit:'Выгода до 15%', price:'от 23 500 ₽', badge:'Выгодно' },
-    { id:'sub3', tag:'Курс процедур', title:'Classic Head SPA', desc:'Классический уход за головой для поддержания баланса и снятия стресса.', features:['4 процедуры — 17 100 ₽ (-5%)','6 процедур — 24 300 ₽ (-10%)','10 процедур — 38 000 ₽ (-15%)','Длительность 1 ч 45 мин'], benefit:'Выгода до 15%', price:'от 17 100 ₽', badge:'' }
+    { id:'sub1', tag:'Курс процедур', title:'Tokyo Head SPA', desc:'Выгодный абонемент на флагманский ритуал для головы и волос.', full_desc: 'Поддерживайте идеальное состояние кожи головы и глубокое расслабление на постоянной основе. Отличный способ сэкономить.', image_url: 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=800&auto=format&fit=crop', features:['4 процедуры — 24 500 ₽','6 процедур — 35 000 ₽','10 процедур — 55 000 ₽','Длительность 1,5 часа'], benefit:'Выгода', price:'от 24 500 ₽', badge:'Хит' },
+    { id:'sub2', tag:'Курс процедур', title:'Japanese Face', desc:'Курс скульптурного массажа лица. Долгосрочный результат: четкий овал, сияние и молодость кожи.', full_desc: 'Регулярный уход за лицом творит чудеса. Курс из нескольких процедур закрепит результат и обеспечит длительный лифтинг-эффект.', image_url: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop', features:['4 процедуры — 23 500 ₽ (-5%)','6 процедур — 33 500 ₽ (-10%)','10 процедур — 52 500 ₽ (-15%)','Длительность 2 ч 15 мин'], benefit:'Выгода до 15%', price:'от 23 500 ₽', badge:'Выгодно' },
+    { id:'sub3', tag:'Курс процедур', title:'Classic Head SPA', desc:'Классический уход за головой для поддержания баланса и снятия стресса.', full_desc: 'Базовая программа, которая всегда держит вас в тонусе. Идеально для регулярного снятия накопившегося стресса.', image_url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop', features:['4 процедуры — 17 100 ₽ (-5%)','6 процедур — 24 300 ₽ (-10%)','10 процедур — 38 000 ₽ (-15%)','Длительность 1 ч 45 мин'], benefit:'Выгода до 15%', price:'от 17 100 ₽', badge:'' }
   ],
   certificates: [
-    { id:'c1', title:'Сертификат 5 000 ₽', desc:'Подарочный сертификат на любые услуги салона номиналом 5 000 ₽.', price:'5 000 ₽' },
-    { id:'c2', title:'Сертификат 10 000 ₽', desc:'Идеальный подарок — сертификат на 10 000 ₽ для любого ритуала.', price:'10 000 ₽' },
-    { id:'c3', title:'Сертификат 20 000 ₽', desc:'Премиальный подарок — сертификат на полный курс процедур.', price:'20 000 ₽' }
+    { id:'c1', title:'Сертификат 5 000 ₽', desc:'Подарочный сертификат на любые услуги салона номиналом 5 000 ₽.', full_desc: 'Идеальный подарок для близких. Сертификат действует в течение 1 года с момента покупки. Красивая упаковка и открытка в подарок.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'5 000 ₽' },
+    { id:'c2', title:'Сертификат 10 000 ₽', desc:'Идеальный подарок — сертификат на 10 000 ₽ для любого ритуала.', full_desc: 'Подарите человеку возможность выбрать для себя любой уход. Сертификат действует 1 год, упаковывается в фирменный конверт.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'10 000 ₽' },
+    { id:'c3', title:'Сертификат 20 000 ₽', desc:'Премиальный подарок — сертификат на полный курс процедур.', full_desc: 'Роскошный подарок, который позволит пройти полноценный курс восстановления или посетить несколько флагманских ритуалов.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'20 000 ₽' }
   ],
   reviews: [
     { id:'r1', name:'Анна', date:'15 октября 2025', rating:5, text:'Невероятный ритуал! Вышла как будто заново родилась. Мастер очень внимательный, атмосфера волшебная.' },
@@ -605,37 +637,87 @@ function setCurrentUser(user) { if (user) localStorage.setItem(USER_KEY, JSON.st
 function updateAuthUI() { const user = getCurrentUser(); const btnText = document.getElementById('auth-btn-text'); if (btnText) btnText.textContent = user ? (user.isAdmin ? 'Админка' : user.login) : 'Войти'; }
 
 // ============================================
-// РЕНДЕР (С РАСКРЫВАЮЩИМИСЯ КАРТОЧКАМИ)
+// ДИАЛОГ ТОВАРА
 // ============================================
-function toggleCard(el) {
-  el.classList.toggle('expanded');
+function openProductModal(type, id) {
+  const list = type === 'service' ? DATA.services : type === 'subscription' ? DATA.subscriptions : DATA.certificates;
+  const item = list.find(x => x.id === id);
+  if (!item) return;
+
+  // Заполняем данными
+  document.getElementById('pm-title').textContent = item.title;
+  document.getElementById('pm-tag').textContent = item.tag || '';
+  document.getElementById('pm-desc').textContent = item.desc || '';
+  document.getElementById('pm-full-desc').textContent = item.full_desc || '';
+  document.getElementById('pm-price').textContent = item.price || '';
+  
+  // Фото
+  const imgContainer = document.getElementById('pm-image-container');
+  const img = document.getElementById('pm-image');
+  if (item.image_url) {
+      img.src = item.image_url;
+      imgContainer.classList.remove('hidden');
+  } else {
+      imgContainer.classList.add('hidden');
+  }
+
+  // Длительность
+  const durationContainer = document.getElementById('pm-duration-container');
+  if (item.duration) {
+      document.getElementById('pm-duration').textContent = item.duration;
+      durationContainer.classList.remove('hidden');
+  } else {
+      durationContainer.classList.add('hidden');
+  }
+
+  // Фичи
+  const featuresContainer = document.getElementById('pm-features-container');
+  const featuresList = document.getElementById('pm-features');
+  if (item.features && item.features.length > 0) {
+      featuresList.innerHTML = item.features.map(f => `<li class="flex items-start gap-2"><svg class="w-4 h-4 text-gold shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('');
+      featuresContainer.classList.remove('hidden');
+  } else {
+      featuresContainer.classList.add('hidden');
+  }
+
+  // Кнопка действия
+  const btn = document.getElementById('pm-action-btn');
+  btn.onclick = () => {
+      closeProductModal();
+      openOrderModal(type, item.title, item.price);
+  };
+  if (type === 'service') btn.textContent = 'Записаться';
+  else if (type === 'subscription') btn.textContent = 'Купить абонемент';
+  else btn.textContent = 'Купить сертификат';
+
+  document.getElementById('product-modal').classList.remove('hidden-modal');
+  document.body.style.overflow = 'hidden';
 }
 
+function closeProductModal() {
+  document.getElementById('product-modal').classList.add('hidden-modal');
+  document.body.style.overflow = 'auto';
+}
+
+// ============================================
+// РЕНДЕР (КЛИКАБЕЛЬНЫЕ КАРТОЧКИ)
+// ============================================
 function renderServices() {
   const grid = document.getElementById('services-grid'); if (!grid) return;
   grid.innerHTML = DATA.services.map(s => `
-    <div data-reveal="scale" class="card-item glow-border bg-zen-surface/60 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden" onclick="toggleCard(this)">
+    <div data-reveal="scale" onclick="openProductModal('service', '${s.id}')" class="glow-border bg-zen-surface/60 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden cursor-pointer hover:-translate-y-1">
       <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors pointer-events-none"></div>
       
-      <!-- КРАТКАЯ ИНФОРМАЦИЯ -->
-      <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-3 pointer-events-none">${escapeHtml(s.tag)}</span>
-      <h3 class="text-2xl font-serif mb-3 pointer-events-none">${escapeHtml(s.title)}</h3>
-      <p class="text-sm text-cream/60 font-light mb-4 pointer-events-none line-clamp-3">${escapeHtml(s.desc)}</p>
+      <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-4 pointer-events-none">${escapeHtml(s.tag)}</span>
+      <h3 class="text-2xl md:text-3xl font-serif mb-4 pointer-events-none">${escapeHtml(s.title)}</h3>
+      <p class="text-sm text-cream/60 font-light mb-8 flex-1 pointer-events-none line-clamp-3">${escapeHtml(s.desc)}</p>
       
-      <!-- ЦЕНА И СТРЕЛОЧКА -->
       <div class="flex items-end justify-between mt-auto pointer-events-none">
-        <span class="text-xl font-serif text-gold">${escapeHtml(s.price)}</span>
-        <div class="flex items-center gap-2 text-gold/60 text-xs uppercase tracking-wider">
+        <div><span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Стоимость</span><span class="text-2xl font-serif text-gold">${escapeHtml(s.price)}</span></div>
+        <div class="flex items-center gap-1 text-gold/70 text-xs uppercase tracking-widest group-hover:text-gold transition-colors">
             <span>Подробнее</span>
-            <svg class="w-4 h-4 card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </div>
-      </div>
-
-      <!-- ПОДРОБНОЕ ОПИСАНИЕ (Скрыто по умолчанию) -->
-      <div class="card-details border-t border-zen-light/20 pt-4">
-        <ul class="space-y-2 mb-4">${(s.features||[]).map(f=>`<li class="flex items-start gap-2 text-sm text-cream/80"><svg class="w-4 h-4 text-gold shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('')}</ul>
-        <p class="text-xs text-cream/50 mb-5">Длительность: ${escapeHtml(s.duration)}</p>
-        <button onclick="event.stopPropagation(); openOrderModal('service','${escapeHtml(s.title).replace(/'/g,"\\'")}','${escapeHtml(s.price).replace(/'/g,"\\'")}')" class="w-full py-3 rounded-full border border-gold text-cream font-medium text-sm hover:bg-gold hover:text-zen-bg transition-colors">Записаться</button>
       </div>
     </div>
   `).join('');
@@ -644,31 +726,23 @@ function renderServices() {
 function renderSubs() {
   const grid = document.getElementById('subs-grid'); if (!grid) return;
   grid.innerHTML = DATA.subscriptions.map(s => `
-    <div data-reveal="scale" class="card-item glow-border bg-zen-surface/60 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden" onclick="toggleCard(this)">
+    <div data-reveal="scale" onclick="openProductModal('subscription', '${s.id}')" class="glow-border bg-zen-surface/60 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden cursor-pointer hover:-translate-y-1">
       <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors pointer-events-none"></div>
       ${s.badge ? `<div class="absolute top-6 right-6 bg-gold/20 text-gold-light text-[10px] uppercase tracking-wider px-3 py-1 rounded-full border border-gold/30 pointer-events-none">${escapeHtml(s.badge)}</div>` : ''}
       
-      <!-- КРАТКАЯ ИНФОРМАЦИЯ -->
-      <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-3 pointer-events-none">${escapeHtml(s.tag)}</span>
-      <h3 class="text-2xl font-serif mb-3 pointer-events-none pr-12">${escapeHtml(s.title)}</h3>
-      <p class="text-sm text-cream/60 font-light mb-4 pointer-events-none line-clamp-3">${escapeHtml(s.desc)}</p>
+      <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-4 pointer-events-none">${escapeHtml(s.tag)}</span>
+      <h3 class="text-2xl md:text-3xl font-serif mb-4 pointer-events-none pr-12">${escapeHtml(s.title)}</h3>
+      <p class="text-sm text-cream/60 font-light mb-8 flex-1 pointer-events-none line-clamp-3">${escapeHtml(s.desc)}</p>
       
-      <!-- ЦЕНА И СТРЕЛОЧКА -->
       <div class="flex items-end justify-between mt-auto pointer-events-none">
         <div class="flex flex-col">
             <span class="text-[10px] uppercase tracking-widest text-cream/50 mb-1">Выгода ${escapeHtml(s.benefit)}</span>
-            <span class="text-xl font-serif text-gold">${escapeHtml(s.price)}</span>
+            <span class="text-2xl font-serif text-gold">${escapeHtml(s.price)}</span>
         </div>
-        <div class="flex items-center gap-2 text-gold/60 text-xs uppercase tracking-wider">
+        <div class="flex items-center gap-1 text-gold/70 text-xs uppercase tracking-widest group-hover:text-gold transition-colors">
             <span>Подробнее</span>
-            <svg class="w-4 h-4 card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </div>
-      </div>
-
-      <!-- ПОДРОБНОЕ ОПИСАНИЕ -->
-      <div class="card-details border-t border-zen-light/20 pt-4">
-        <ul class="space-y-2 mb-5">${(s.features||[]).map(f=>`<li class="flex items-start gap-2 text-sm text-cream/80"><svg class="w-4 h-4 text-gold shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('')}</ul>
-        <button onclick="event.stopPropagation(); openOrderModal('subscription','${escapeHtml(s.title).replace(/'/g,"\\'")}','${escapeHtml(s.price).replace(/'/g,"\\'")}')" class="w-full py-3 rounded-full bg-gold text-zen-bg font-medium text-sm hover:bg-cream transition-colors">Купить абонемент</button>
       </div>
     </div>
   `).join('');
@@ -699,26 +773,18 @@ function renderCertificates() {
       grid.innerHTML = '<p class="text-cream/50 text-center col-span-full">Сертификаты временно недоступны.</p>'; return;
   }
   grid.innerHTML = DATA.certificates.map(c => `
-    <div data-reveal="scale" class="card-item glow-border bg-zen-surface/50 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-zen-light/20 hover:border-gold/40 transition-all group flex flex-col" onclick="toggleCard(this)">
+    <div data-reveal="scale" onclick="openProductModal('certificate', '${c.id}')" class="glow-border bg-zen-surface/50 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-zen-light/20 hover:border-gold/40 transition-all group flex flex-col cursor-pointer hover:-translate-y-1">
       <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-5 pointer-events-none"><span class="text-gold text-xl">✦</span></div>
       
-      <!-- КРАТКАЯ ИНФОРМАЦИЯ -->
       <h3 class="text-xl font-serif mb-3 pointer-events-none">${escapeHtml(c.title)}</h3>
-      <p class="text-sm text-cream/60 font-light mb-4 pointer-events-none line-clamp-3">${escapeHtml(c.desc)}</p>
+      <p class="text-sm text-cream/60 font-light mb-8 flex-1 pointer-events-none line-clamp-3">${escapeHtml(c.desc)}</p>
       
-      <!-- ЦЕНА И СТРЕЛОЧКА -->
       <div class="flex items-end justify-between mt-auto pointer-events-none">
         <span class="text-2xl font-serif text-gold">${escapeHtml(c.price)}</span>
-        <div class="flex items-center gap-2 text-gold/60 text-xs uppercase tracking-wider">
+        <div class="flex items-center gap-1 text-gold/70 text-xs uppercase tracking-widest group-hover:text-gold transition-colors">
             <span>Подробнее</span>
-            <svg class="w-4 h-4 card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </div>
-      </div>
-
-      <!-- ПОДРОБНОЕ ОПИСАНИЕ -->
-      <div class="card-details border-t border-zen-light/20 pt-4">
-        <p class="text-xs text-cream/50 mb-5">Данный сертификат можно использовать для оплаты любых услуг салона. Действует в течение 1 года с момента покупки. Красивая упаковка и открытка в подарок.</p>
-        <button onclick="event.stopPropagation(); openOrderModal('certificate','${escapeHtml(c.title).replace(/'/g,"\\'")}','${escapeHtml(c.price).replace(/'/g,"\\'")}')" class="w-full py-3 rounded-full border border-gold text-gold hover:bg-gold hover:text-cream font-medium text-sm transition-colors">Купить сертификат</button>
       </div>
     </div>
   `).join('');
@@ -885,9 +951,9 @@ function startEdit(type, id) {
 
 function createEmpty(type) {
   const base = { id: 'n' + Date.now() };
-  if (type === 'services') return { ...base, tag:'', title:'', desc:'', features:[], duration:'', price:'' };
-  if (type === 'subscriptions') return { ...base, tag:'', title:'', desc:'', features:[], benefit:'', price:'', badge:'' };
-  if (type === 'certificates') return { ...base, title:'', desc:'', price:'' };
+  if (type === 'services') return { ...base, tag:'', title:'', desc:'', full_desc:'', image_url:'', features:[], duration:'', price:'' };
+  if (type === 'subscriptions') return { ...base, tag:'', title:'', desc:'', full_desc:'', image_url:'', features:[], benefit:'', price:'', badge:'' };
+  if (type === 'certificates') return { ...base, title:'', desc:'', full_desc:'', image_url:'', price:'' };
   if (type === 'reviews') return { ...base, name:'', date:'', rating:5, text:'' };
   return base;
 }
@@ -898,8 +964,10 @@ function renderEditFields() {
     container.innerHTML = `
       <div><label class="admin-label">Категория</label><input class="admin-input" id="e-tag" value="${escapeHtml(d.tag)}"></div>
       <div><label class="admin-label">Название</label><input class="admin-input" id="e-title" value="${escapeHtml(d.title)}"></div>
-      <div class="md:col-span-2"><label class="admin-label">Краткое описание (видно сразу)</label><textarea class="admin-input" id="e-desc" rows="2">${escapeHtml(d.desc)}</textarea></div>
-      <div class="md:col-span-2"><label class="admin-label">Что входит (по пункту на строку - откроется при клике)</label><textarea class="admin-input" id="e-features" rows="3">${escapeHtml((d.features||[]).join('\n'))}</textarea></div>
+      <div class="md:col-span-2"><label class="admin-label">Ссылка на фото (URL)</label><input class="admin-input" id="e-image" value="${escapeHtml(d.image_url||'')}" placeholder="https://..."></div>
+      <div class="md:col-span-2"><label class="admin-label">Краткое описание (видно на карточке)</label><textarea class="admin-input" id="e-desc" rows="2">${escapeHtml(d.desc)}</textarea></div>
+      <div class="md:col-span-2"><label class="admin-label">Подробное описание (видно в диалоге)</label><textarea class="admin-input" id="e-fulldesc" rows="4">${escapeHtml(d.full_desc||'')}</textarea></div>
+      <div class="md:col-span-2"><label class="admin-label">Что входит (по пункту на строку)</label><textarea class="admin-input" id="e-features" rows="3">${escapeHtml((d.features||[]).join('\n'))}</textarea></div>
       ${type === 'services' ? `<div><label class="admin-label">Длительность</label><input class="admin-input" id="e-duration" value="${escapeHtml(d.duration||'')}"></div>` : ''}
       ${type === 'subscriptions' ? `<div><label class="admin-label">Выгода</label><input class="admin-input" id="e-benefit" value="${escapeHtml(d.benefit||'')}"></div>` : ''}
       ${type === 'subscriptions' ? `<div><label class="admin-label">Бейдж</label><input class="admin-input" id="e-badge" value="${escapeHtml(d.badge||'')}"></div>` : ''}
@@ -908,7 +976,9 @@ function renderEditFields() {
   } else if (type === 'certificates') {
     container.innerHTML = `
       <div class="md:col-span-2"><label class="admin-label">Название</label><input class="admin-input" id="e-title" value="${escapeHtml(d.title)}"></div>
-      <div class="md:col-span-2"><label class="admin-label">Описание</label><textarea class="admin-input" id="e-desc" rows="2">${escapeHtml(d.desc)}</textarea></div>
+      <div class="md:col-span-2"><label class="admin-label">Ссылка на фото (URL)</label><input class="admin-input" id="e-image" value="${escapeHtml(d.image_url||'')}" placeholder="https://..."></div>
+      <div class="md:col-span-2"><label class="admin-label">Краткое описание</label><textarea class="admin-input" id="e-desc" rows="2">${escapeHtml(d.desc)}</textarea></div>
+      <div class="md:col-span-2"><label class="admin-label">Подробное описание</label><textarea class="admin-input" id="e-fulldesc" rows="3">${escapeHtml(d.full_desc||'')}</textarea></div>
       <div><label class="admin-label">Стоимость</label><input class="admin-input" id="e-price" value="${escapeHtml(d.price)}"></div>
     `;
   } else if (type === 'reviews') {
@@ -923,88 +993,5 @@ function renderEditFields() {
 
 async function saveEdit() {
   const t = editState.type; const d = { ...editState.data }; const val = id => { const el = document.getElementById(id); return el ? el.value : ''; };
-  if (t === 'services') { d.tag=val('e-tag'); d.title=val('e-title'); d.desc=val('e-desc'); d.features = val('e-features').split('\n').map(s=>s.trim()).filter(Boolean); d.duration=val('e-duration'); d.price=val('e-price'); }
-  else if (t === 'subscriptions') { d.tag=val('e-tag'); d.title=val('e-title'); d.desc=val('e-desc'); d.features = val('e-features').split('\n').map(s=>s.trim()).filter(Boolean); d.benefit=val('e-benefit'); d.badge=val('e-badge'); d.price=val('e-price'); }
-  else if (t === 'certificates') { d.title=val('e-title'); d.desc=val('e-desc'); d.price=val('e-price'); }
-  else if (t === 'reviews') { d.name=val('e-name'); d.date=val('e-date'); d.rating = parseInt(val('e-rating'),10) || 5; d.text=val('e-text'); }
-  const titleField = t === 'reviews' ? 'name' : 'title'; if (!d[titleField]) { alert('Заполните название'); return; }
-  if (editState.id) { const idx = DATA[t].findIndex(x => x.id === editState.id); if (idx >= 0) DATA[t][idx] = d; } else { DATA[t].push(d); }
-  const ok = await saveDataToCloud(DATA); if (ok) { cancelEdit(); renderAdminContent(); renderAll(); }
-}
-
-function cancelEdit() { editState = null; document.getElementById('admin-edit-panel').classList.add('hidden'); }
-async function deleteItem(type, id) { if (!confirm('Удалить этот элемент?')) return; DATA[type] = DATA[type].filter(x => x.id !== id); const ok = await saveDataToCloud(DATA); if (ok) { renderAdminContent(); renderAll(); } }
-
-// ============================================
-// ОБЩЕЕ
-// ============================================
-function toggleMenu() {
-  const m = document.getElementById('menu-overlay');
-  if (m.classList.contains('opacity-0')) { m.classList.remove('opacity-0','invisible'); m.classList.add('opacity-100','visible'); document.body.style.overflow = 'hidden'; }
-  else { m.classList.remove('opacity-100','visible'); m.classList.add('opacity-0','invisible'); document.body.style.overflow = 'auto'; }
-}
-function openPrivacy() { document.getElementById('privacy-modal').classList.remove('hidden-modal'); document.body.style.overflow='hidden'; }
-function closePrivacy() { document.getElementById('privacy-modal').classList.add('hidden-modal'); document.body.style.overflow='auto'; }
-function closeThanks() { document.getElementById('thanks-modal').classList.add('hidden-modal'); document.body.style.overflow='auto'; }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePrivacy(); closeThanks(); closeLogin(); closeAdmin(); closeOrderModal(); } });
-
-function acceptCookies() { localStorage.setItem('nagi_cookies_accepted','1'); document.getElementById('cookie-banner').classList.add('hide'); }
-window.addEventListener('load', () => { if (!localStorage.getItem('nagi_cookies_accepted')) setTimeout(() => document.getElementById('cookie-banner').classList.remove('hide'), 1500); });
-
-(function generateParticles(){
-  const c = document.getElementById('particles'); if (!c) return;
-  const isMobile = matchMedia('(max-width:767px)').matches; const count = isMobile ? 15 : 30;
-  for (let i=0;i<count;i++){
-    const p = document.createElement('div'); p.className='particle';
-    const s = 2 + Math.random()*4; p.style.width=s+'px'; p.style.height=s+'px';
-    p.style.left=(Math.random()*100)+'%'; p.style.bottom='0';
-    p.style.animationDuration=(22+Math.random()*30)+'s'; p.style.animationDelay='-'+(Math.random()*25)+'s';
-    c.appendChild(p);
-  }
-})();
-
-// Плавающее меню (верхнее)
-let lastScrollY = window.scrollY; const floatingNav = document.getElementById('floating-nav');
-if (floatingNav) {
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY && currentScrollY > 100) floatingNav.style.transform = 'translate(-50%, -150%)';
-        else floatingNav.style.transform = 'translate(-50%, 0)';
-        lastScrollY = currentScrollY;
-    }, { passive: true });
-}
-
-// Видео-карусель
-const slider = document.getElementById('videoCarousel'); const slides = document.querySelectorAll('.video-slide'); const allVideos = document.querySelectorAll('.video-slide video'); const totalSlides = slides.length;
-function scrollSlideToCenter(slide) { const sr = slider.getBoundingClientRect(); const slr = slide.getBoundingClientRect(); slider.scrollTo({ left: slider.scrollLeft + (slr.left - sr.left) - (sr.width - slr.width)/2, behavior:'smooth' }); }
-if (slider && slides.length) {
-  slides.forEach(s => s.addEventListener('click', () => { if (!s.classList.contains('is-active')) scrollSlideToCenter(s); }));
-  allVideos.forEach(v => v.addEventListener('play', () => allVideos.forEach(o => { if (o!==v && !o.paused) o.pause(); })));
-  allVideos.forEach((v,i) => v.addEventListener('ended', () => { const n = (i+1)%totalSlides; scrollSlideToCenter(slides[n]); setTimeout(() => { const nv = slides[n].querySelector('video'); if (nv) { nv.currentTime=0; nv.play().catch(()=>{}); } }, 600); }));
-  const obs = new IntersectionObserver(entries => { entries.forEach(e => { const v = e.target.querySelector('video'); if (e.isIntersecting) { e.target.classList.add('is-active'); if (v && v.paused && v.readyState>=2) v.play().catch(()=>{}); } else { e.target.classList.remove('is-active'); if (v && !v.paused) v.pause(); } }); }, { root: slider, rootMargin:'0px -45% 0px -45%', threshold:0 });
-  slides.forEach(s => obs.observe(s));
-}
-
-// Параллакс и счётчики
-const parallaxEls = document.querySelectorAll('[data-parallax]');
-if (parallaxEls.length) {
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(() => { const sc = window.scrollY; parallaxEls.forEach(el => { const sp = parseFloat(el.dataset.parallax) || .15; el.style.transform = `translate3d(0, ${sc*sp}px, 0) scale(1.1)`; }); ticking = false; }); ticking = true; }
-  }, { passive: true });
-}
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { const el = e.target; const target = parseInt(el.dataset.count, 10); const start = performance.now(); const animate = now => { const p = Math.min((now-start)/2000, 1); el.textContent = Math.floor((1 - Math.pow(1-p,3)) * target); if (p<1) requestAnimationFrame(animate); else el.textContent = target; }; requestAnimationFrame(animate); counterObserver.unobserve(el); } });
-}, { threshold: .5 });
-document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
-
-// FAQ
-document.querySelectorAll('.faq-trigger').forEach(btn => {
-  btn.addEventListener('click', () => { const item = btn.closest('.faq-item'); const isOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item.open').forEach(o => { if (o!==item) o.classList.remove('open'); }); item.classList.toggle('open', !isOpen); });
-});
-
-// Запуск
-(async () => { DATA = await loadDataFromCloud(); renderAll(); updateAuthUI(); })();
-</script>
-</body>
-</html>
+  if (t === 'services') { d.tag=val('e-tag'); d.title=val('e-title'); d.image_url=val('e-image'); d.desc=val('e-desc'); d.full_desc=val('e-fulldesc'); d.features = val('e-features').split('\n').map(s=>s.trim()).filter(Boolean); d.duration=val('e-duration'); d.price=val('e-price'); }
+  else if (t === 'subscriptions') { d.tag=val('e-tag'); d.title=val
