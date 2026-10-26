@@ -198,7 +198,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <span class="reveal-text text-gold-light uppercase tracking-[0.3em] text-[10px] md:text-sm font-medium mb-6 md:mb-8 flex items-center gap-3 drop-shadow-md">
 <span class="w-8 h-[1px] bg-gold/60"></span>Добро пожаловать в NAGI<span class="w-8 h-[1px] bg-gold/60"></span>
 </span>
-<!-- ИЗМЕНЕН ЗАГОЛОВОК -->
 <h1 class="reveal-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.15] text-cream mb-6 md:mb-8 drop-shadow-xl" style="animation-delay:.1s">
     Искусство<br>
     <span class="italic gradient-text font-light">японского расслабления</span>
@@ -482,8 +481,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <h2 class="text-2xl font-serif mb-1">Вход</h2>
 <p class="text-cream/60 text-xs mb-6">Войдите в панель управления</p>
 <form id="login-form" class="space-y-4" onsubmit="handleLogin(event)">
-<div><label class="admin-label">Логин</label><input id="login-user" type="text" class="admin-input" placeholder="admin" required autocomplete="username"></div>
-<div><label class="admin-label">Пароль</label><input id="login-pass" type="password" class="admin-input" placeholder="••••••••" required autocomplete="current-password"></div>
+<!-- Добавлены атрибуты autocapitalize, autocorrect, spellcheck -->
+<div><label class="admin-label">Логин</label><input id="login-user" type="text" class="admin-input" placeholder="admin" required autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
+<div><label class="admin-label">Пароль</label><input id="login-pass" type="password" class="admin-input" placeholder="••••••••" required autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
 <p id="login-error" class="hidden text-xs text-red-400"></p>
 <button type="submit" class="w-full bg-gold text-ink-900 px-6 py-3 rounded-full font-medium text-sm hover:bg-cream transition-colors">Войти</button>
 </form>
@@ -602,9 +602,9 @@ const DEFAULTS = {
     { id:'sub3', tag:'Курс процедур', title:'Classic Head SPA', desc:'Классический уход за головой для поддержания баланса и снятия стресса.', full_desc: 'Базовая программа, которая всегда держит вас в тонусе. Идеально для регулярного снятия накопившегося стресса.', image_url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop', features:['4 процедуры — 17 100 ₽ (-5%)','6 процедур — 24 300 ₽ (-10%)','10 процедур — 38 000 ₽ (-15%)','Длительность 1 ч 45 мин'], benefit:'Выгода до 15%', price:'от 17 100 ₽', badge:'' }
   ],
   certificates: [
+    // ЗАМЕНЕНЫ ФОТО (ПОХОЖИЕ)
     { id:'c1', title:'Сертификат 5 000 ₽', desc:'Подарочный сертификат на любые услуги салона номиналом 5 000 ₽.', full_desc: 'Идеальный подарок для близких. Сертификат действует в течение 1 года с момента покупки. Красивая упаковка и открытка в подарок.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'5 000 ₽' },
-    { id:'c2', title:'Сертификат 10 000 ₽', desc:'Идеальный подарок — сертификат на 10 000 ₽ для любого ритуала.', full_desc: 'Подарите человеку возможность выбрать для себя любой уход. Сертификат действует 1 год, упаковывается в фирменный конверт.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'10 000 ₽' },
-    // ДОБАВЛЕН СЕРТИФИКАТ НА 15 000 ₽ С УКАЗАННОЙ ССЫЛКОЙ
+    { id:'c2', title:'Сертификат 10 000 ₽', desc:'Идеальный подарок — сертификат на 10 000 ₽ для любого ритуала.', full_desc: 'Подарите человеку возможность выбрать для себя любой уход. Сертификат действует 1 год, упаковывается в фирменный конверт.', image_url: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=800&auto=format&fit=crop', features:[], price:'10 000 ₽' },
     { 
       id:'c15', 
       title:'Сертификат 15 000 ₽', 
@@ -614,7 +614,7 @@ const DEFAULTS = {
       features:[], 
       price:'15 000 ₽' 
     },
-    { id:'c3', title:'Сертификат 20 000 ₽', desc:'Премиальный подарок — сертификат на полный курс процедур.', full_desc: 'Роскошный подарок, который позволит пройти полноценный курс восстановления или посетить несколько флагманских ритуалов.', image_url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', features:[], price:'20 000 ₽' }
+    { id:'c3', title:'Сертификат 20 000 ₽', desc:'Премиальный подарок — сертификат на полный курс процедур.', full_desc: 'Роскошный подарок, который позволит пройти полноценный курс восстановления или посетить несколько флагманских ритуалов.', image_url: 'https://images.unsplash.com/photo-1577702312706-e23ff063064f?q=80&w=800&auto=format&fit=crop', features:[], price:'20 000 ₽' }
   ],
   reviews: [
     { id:'r1', name:'Анна', date:'15 октября 2025', rating:5, text:'Невероятный ритуал! Вышла как будто заново родилась. Мастер очень внимательный, атмосфера волшебная.' },
@@ -927,7 +927,23 @@ function showOrderSuccess(orderId, clientName) {
 function onAuthClick() { const user = getCurrentUser(); if (user) { if (user.isAdmin) openAdmin(); else if (confirm('Выйти?')) setCurrentUser(null); } else openLogin(); }
 function openLogin() { document.getElementById('login-modal').classList.remove('hidden-modal'); document.body.style.overflow = 'hidden'; setTimeout(() => document.getElementById('login-user').focus(), 100); }
 function closeLogin() { document.getElementById('login-modal').classList.add('hidden-modal'); document.body.style.overflow = 'auto'; document.getElementById('login-error').classList.add('hidden'); document.getElementById('login-form').reset(); }
-function handleLogin(e) { e.preventDefault(); const login = document.getElementById('login-user').value.trim(); const pass = document.getElementById('login-pass').value; if (login === ADMIN.login && pass === ADMIN.password) { setCurrentUser({ login: ADMIN.login, isAdmin: true }); closeLogin(); openAdmin(); } else { const err = document.getElementById('login-error'); err.textContent = 'Неверный логин или пароль'; err.classList.remove('hidden'); } }
+
+// ИСПРАВЛЕННАЯ ФУНКЦИЯ ЛОГИНА (trim + toLowerCase)
+function handleLogin(e) { 
+  e.preventDefault(); 
+  const login = document.getElementById('login-user').value.trim().toLowerCase();
+  const pass = document.getElementById('login-pass').value.trim();
+  
+  if (login === ADMIN.login && pass === ADMIN.password) { 
+      setCurrentUser({ login: ADMIN.login, isAdmin: true }); 
+      closeLogin(); 
+      openAdmin(); 
+  } else { 
+      const err = document.getElementById('login-error'); 
+      err.textContent = 'Неверный логин или пароль'; 
+      err.classList.remove('hidden'); 
+  } 
+}
 
 let adminTab = 'services'; let editState = null;
 function openAdmin() { if (!getCurrentUser()?.isAdmin) { alert('Доступ только для администратора'); return; } document.getElementById('admin-modal').classList.remove('hidden-modal'); document.body.style.overflow = 'hidden'; cancelEdit(); switchAdminTab('services'); }
