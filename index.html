@@ -10,7 +10,7 @@
 <meta property="og:title" content="NAGI HEAD SPA | Искусство тишины">
 <meta property="og:description" content="Японские ритуалы для тела и разума в центре Екатеринбурга.">
 <meta property="og:locale" content="ru_RU">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231A1D18'/%3E%3Ctext x='50' y='68' font-family='serif' font-size='48' fill='%23EBE9E1' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2311130F'/%3E%3Ctext x='50' y='68' font-family='serif' font-size='48' fill='%23EBE9E1' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"DaySpa","name":"NAGI HEAD SPA","url":"https://nagi-spa.ru","telephone":"+7-999-288-34-36","address":{"@type":"PostalAddress","streetAddress":"ул. Горького, 51","addressLocality":"Екатеринбург","addressCountry":"RU"},"openingHours":"Mo-Su 11:00-21:00","priceRange":"5000-20000 ₽"}
 </script>
@@ -21,21 +21,20 @@
 <script>
 tailwind.config = { theme: { extend: {
   colors: {
-    /* ОСВЕТЛЕННЫЕ ЦВЕТА */
-    zen: { bg:'#1A1D18', surface:'#242820', light:'#34392E' },
+    zen: { bg:'#11130F', surface:'#191C16', light:'#262B23' },
     cream:'#EBE9E1',
     olive:{ light:'#9CAB91', DEFAULT:'#6B7D5F', dark:'#3E4A35' },
     gold:{ light:'#D9C29A', DEFAULT:'#C9A876', dark:'#A88554' },
     ember:{ light:'#D89270', DEFAULT:'#C77454', dark:'#9D5739' },
-    ink:{ 800:'#1F231D', 900:'#151814' }
+    ink:{ 800:'#12150F', 900:'#0A0C08' }
   },
   fontFamily: { sans:['Inter','sans-serif'], serif:['Cormorant Garamond','serif'] }
 }}};
 </script>
 <style>
 html{scroll-behavior:smooth}
-body{overflow-x:hidden;-webkit-tap-highlight-color:transparent;background:#151814}
-::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#1A1D18}::-webkit-scrollbar-thumb{background:#3E4A35;border-radius:4px}
+body{overflow-x:hidden;-webkit-tap-highlight-color:transparent;background:#0E100D}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#11130F}::-webkit-scrollbar-thumb{background:#3E4A35;border-radius:4px}
 .btn-hover{transition:all .4s cubic-bezier(.25,1,.5,1)}
 .btn-hover:hover{transform:translateY(-2px);box-shadow:0 15px 30px -10px rgba(201,168,118,.3)}
 .reveal-text{animation:revealText 1.2s cubic-bezier(.77,0,.175,1) forwards;opacity:0;transform:translateY(30px)}
@@ -43,11 +42,11 @@ body{overflow-x:hidden;-webkit-tap-highlight-color:transparent;background:#15181
 #menu-overlay{transition:opacity .5s,visibility .5s}
 .modal{transition:opacity .3s,visibility .3s}
 .modal.hidden-modal{opacity:0;visibility:hidden;pointer-events:none}
-#bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,rgba(45,52,42,1) 0%,transparent 60%),#151814}
-.bg-orb{position:absolute;border-radius:50%;filter:blur(100px);will-change:transform;opacity:.85}
-.bg-orb-1{width:65vw;height:65vw;max-width:900px;max-height:900px;background:radial-gradient(circle,rgba(201,168,118,.22) 0%,rgba(201,168,118,.06) 40%,transparent 70%);top:-15%;left:-12%;animation:drift-1 28s ease-in-out infinite}
-.bg-orb-2{width:55vw;height:55vw;max-width:750px;max-height:750px;background:radial-gradient(circle,rgba(107,125,95,.25) 0%,rgba(107,125,95,.08) 40%,transparent 70%);bottom:-18%;right:-12%;animation:drift-2 34s ease-in-out infinite}
-.bg-orb-3{width:45vw;height:45vw;max-width:600px;max-height:600px;background:radial-gradient(circle,rgba(199,116,84,.18) 0%,rgba(199,116,84,.05) 40%,transparent 70%);top:45%;left:45%;animation:drift-3 40s ease-in-out infinite}
+#bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,rgba(20,24,18,1) 0%,transparent 60%),#0A0C08}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(100px);will-change:transform;opacity:.75}
+.bg-orb-1{width:65vw;height:65vw;max-width:900px;max-height:900px;background:radial-gradient(circle,rgba(201,168,118,.18) 0%,rgba(201,168,118,.05) 40%,transparent 70%);top:-15%;left:-12%;animation:drift-1 28s ease-in-out infinite}
+.bg-orb-2{width:55vw;height:55vw;max-width:750px;max-height:750px;background:radial-gradient(circle,rgba(107,125,95,.22) 0%,rgba(107,125,95,.06) 40%,transparent 70%);bottom:-18%;right:-12%;animation:drift-2 34s ease-in-out infinite}
+.bg-orb-3{width:45vw;height:45vw;max-width:600px;max-height:600px;background:radial-gradient(circle,rgba(199,116,84,.14) 0%,rgba(199,116,84,.04) 40%,transparent 70%);top:45%;left:45%;animation:drift-3 40s ease-in-out infinite}
 @keyframes drift-1{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(8vw,12vh) scale(1.12)}50%{transform:translate(-4vw,6vh) scale(.94)}75%{transform:translate(5vw,-8vh) scale(1.05)}}
 @keyframes drift-2{0%,100%{transform:translate(0,0) scale(1)}30%{transform:translate(-10vw,-8vh) scale(1.08)}60%{transform:translate(6vw,-12vh) scale(.92)}}
 @keyframes drift-3{0%,100%{transform:translate(-50%,-50%) scale(1)}33%{transform:translate(-62%,-40%) scale(1.15)}66%{transform:translate(-40%,-60%) scale(.9)}}
@@ -64,7 +63,7 @@ section,footer,header,main{border:none!important}
 [data-reveal="scale"].is-visible{transform:scale(1)}
 [data-delay="1"]{transition-delay:.1s}[data-delay="2"]{transition-delay:.2s}[data-delay="3"]{transition-delay:.3s}[data-delay="4"]{transition-delay:.4s}[data-delay="5"]{transition-delay:.5s}
 [data-parallax]{will-change:transform}
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:100;mix-blend-mode:overlay}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:100;mix-blend-mode:overlay}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-25px) rotate(8deg)}}
 .float{animation:float 8s ease-in-out infinite}
 @keyframes spin-slow{to{transform:rotate(360deg)}}
@@ -103,10 +102,27 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 #cookie-banner.hide{transform:translateY(100%);opacity:0;pointer-events:none}
 .admin-tab-btn{transition:all .2s}
 .admin-tab-btn.active{background:rgba(201,168,118,.15);color:#D9C29A;border-color:rgba(201,168,118,.5)}
-.admin-input{width:100%;padding:.6rem .9rem;border-radius:.5rem;background:rgba(26,29,24,.8);border:1px solid rgba(52,57,46,1);color:#EBE9E1;font-size:.875rem;outline:none;transition:border-color .2s}
+.admin-input{width:100%;padding:.6rem .9rem;border-radius:.5rem;background:rgba(17,19,15,.8);border:1px solid rgba(38,43,35,1);color:#EBE9E1;font-size:.875rem;outline:none;transition:border-color .2s}
 .admin-input:focus{border-color:rgba(201,168,118,.6)}
 .admin-label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(235,233,225,.5);margin-bottom:.35rem}
 .star{color:#C9A876}
+
+/* Стили для раскрывающихся карточек */
+.card-item { cursor: pointer; }
+.card-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+.card-item.expanded .card-details {
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 1.5rem;
+}
+.card-arrow { transition: transform 0.4s ease; }
+.card-item.expanded .card-arrow { transform: rotate(180deg); }
+
 @media (prefers-reduced-motion:reduce){.bg-orb,.particle{animation:none!important}[data-parallax]{transform:none!important}}
 </style>
 </head>
@@ -122,7 +138,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <!-- ШАПКА -->
 <header class="fixed w-full py-4 md:py-6 px-4 md:px-12 flex justify-between items-center z-50 pointer-events-none">
 <a href="#" class="flex items-center gap-4 pointer-events-auto">
-    <!-- Логотип: убран mix-blend и инверсия. Если картинки нет, покажет красивый текст NAGI -->
     <img src="logotype.png" alt="NAGI HEAD SPA" class="h-8 md:h-10 w-auto object-contain drop-shadow-md" onerror="this.style.display='none'; document.getElementById('fallback-logo').style.display='block';">
     <div id="fallback-logo" style="display:none; font-family:'Cormorant Garamond',serif; font-size:1.75rem; letter-spacing:0.2em; color:#EBE9E1; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">NAGI</div>
 </a>
@@ -143,11 +158,19 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </header>
 
 <!-- ПЛАВАЮЩЕЕ МЕНЮ ПО ЦЕНТРУ -->
-<nav id="floating-nav" class="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-40 transition-all duration-300 ease-in-out hidden lg:flex items-center gap-8 px-8 py-3 bg-zen-surface/80 backdrop-blur-md border border-zen-light/30 rounded-full shadow-2xl">
-    <a href="#about" class="text-sm font-medium text-cream/80 hover:text-gold transition-colors">О нас</a>
-    <a href="#programs" class="text-sm font-medium text-cream/80 hover:text-gold transition-colors">Программы</a>
-    <a href="#reviews" class="text-sm font-medium text-cream/80 hover:text-gold transition-colors">Отзывы</a>
-    <a href="#faq" class="text-sm font-medium text-cream/80 hover:text-gold transition-colors">Вопросы</a>
+<nav id="floating-nav" class="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-40 transition-all duration-300 ease-in-out hidden lg:flex items-center gap-6 px-6 py-2.5 bg-zen-surface/90 backdrop-blur-md border border-zen-light/30 rounded-full shadow-2xl text-sm">
+    <a href="#about" class="font-medium text-cream/80 hover:text-gold transition-colors">О нас</a>
+    <a href="#programs" class="font-medium text-cream/80 hover:text-gold transition-colors">Программы</a>
+    <a href="#certificates" class="font-medium text-cream/80 hover:text-gold transition-colors">Сертификаты</a>
+    <a href="#reviews" class="font-medium text-cream/80 hover:text-gold transition-colors">Отзывы</a>
+    <a href="#faq" class="font-medium text-cream/80 hover:text-gold transition-colors">Вопросы</a>
+    <div class="w-[1px] h-4 bg-zen-light/40 mx-1"></div>
+    <a id="float-vk" href="#" target="_blank" rel="noopener" class="text-cream/70 hover:text-gold transition-colors" title="ВКонтакте">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.785 16.241s.288-.032.436-.196c.136-.15.132-.433.132-.433s-.02-1.32.573-1.515c.584-.192 1.337 1.277 2.134 1.844.604.428 1.062.334 1.062.334l2.134-.03s1.116-.07.587-1.02c-.043-.078-.31-.67-1.605-1.904-1.354-1.29-1.173-1.08.458-3.307 1.003-1.373 1.405-2.212 1.28-2.57-.12-.34-1.025-.25-1.025-.25h-2.394s-.177-.024-.308.058c-.128.08-.21.266-.21.266s-.376 1.04-.878 1.925c-1.06 1.86-1.487 1.958-1.66 1.842-.4-.266-.3-1.08-.3-1.657 0-1.812.265-2.567-.52-2.762-.262-.064-.455-.107-1.123-.114-.86-.01-1.587.003-2.003.21-.276.137-.488.444-.36.46.16.022.523.1.715.365.248.34.239 1.105.239 1.105s.144 2.137-.335 2.4c-.33.182-.782-.188-1.75-1.884-.497-.883-.874-1.86-.874-1.86s-.07-.18-.2-.275c-.155-.115-.373-.152-.373-.152H3.536s-.36.01-.493.173c-.118.145-.009.447-.009.447s1.403 3.39 2.993 5.097c1.457 1.565 3.11 1.462 3.11 1.462h.748z"/></svg>
+    </a>
+    <a id="float-tg" href="#" target="_blank" rel="noopener" class="text-cream/70 hover:text-gold transition-colors" title="Telegram">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
 </nav>
 
 <!-- МЕНЮ -->
@@ -158,6 +181,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <nav class="flex flex-col items-center gap-4 md:gap-5 text-center px-4">
 <a href="#about" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">О нас</a>
 <a href="#programs" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Программы</a>
+<a href="#certificates" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Сертификаты</a>
 <a href="#cosmetics" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Косметика</a>
 <a href="#reviews" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Отзывы</a>
 <a href="#space" onclick="toggleMenu()" class="text-2xl sm:text-3xl md:text-4xl font-serif italic text-cream hover:text-gold transition-colors">Пространство</a>
@@ -168,7 +192,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <div class="absolute bottom-8 md:bottom-12 flex flex-col items-center gap-4">
 <p class="text-[10px] md:text-xs tracking-[0.2em] uppercase text-cream/40">Екатеринбург, Горького 51</p>
 <div class="flex gap-6">
-<a id="menu-vk" href="#" target="_blank" rel="noopener" class="text-xs md:text-sm text-cream/60 hover:text-gold transition-colors">VK</a>
+<a id="menu-vk" href="#" target="_blank" rel="noopener" class="text-xs md:text-sm text-cream/60 hover:text-gold transition-colors">ВКонтакте</a>
 <a id="menu-tg" href="#" target="_blank" rel="noopener" class="text-xs md:text-sm text-cream/60 hover:text-gold transition-colors">Telegram</a>
 </div>
 </div>
@@ -193,9 +217,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </span>
 <h1 class="reveal-text text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] text-cream mb-6 md:mb-8" style="animation-delay:.1s">Искусство<br><span class="italic gradient-text font-light">тишины</span></h1>
 <p class="reveal-text text-sm sm:text-base md:text-lg text-cream/70 font-light max-w-xl leading-relaxed mb-8 md:mb-12" style="animation-delay:.2s">Погрузитесь в атмосферу абсолютного спокойствия. Уникальные японские ритуалы для восстановления баланса тела и разума.</p>
-<div class="reveal-text flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto px-4 sm:px-0" style="animation-delay:.3s">
+<div class="reveal-text flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0" style="animation-delay:.3s">
 <button onclick="openOrderModal('service','Индивидуальная запись','')" class="btn-shine bg-cream text-zen-bg px-8 py-4 rounded-full font-medium text-sm tracking-wide btn-hover text-center">Забронировать визит</button>
-<a href="#certificates" class="bg-transparent border border-cream/30 text-cream px-8 py-4 rounded-full font-medium text-sm tracking-wide hover:bg-cream/10 hover:border-gold/60 transition-all text-center hidden">Подарочный сертификат</a>
+<!-- НОВАЯ КНОПКА СЕРТИФИКАТА -->
+<a href="#certificates" class="bg-transparent border border-cream/30 text-cream px-8 py-4 rounded-full font-medium text-sm tracking-wide hover:bg-cream/10 hover:border-gold/60 transition-all text-center">Приобрести сертификат</a>
 </div>
 </div>
 <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-cream/40">
@@ -258,9 +283,21 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <p class="text-cream/60 font-light text-sm md:text-base">Мы разработали несколько направлений, чтобы вы могли подобрать идеальный уход.</p>
 </div>
 <div class="flex items-center gap-4 md:gap-8 mb-10 md:mb-12"><span class="h-[1px] bg-gradient-to-r from-transparent to-gold/40 flex-1"></span><h3 class="text-xl md:text-2xl font-serif text-cream tracking-[0.1em] uppercase text-center">Услуги</h3><span class="h-[1px] bg-gradient-to-l from-transparent to-gold/40 flex-1"></span></div>
-<div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto mb-20 md:mb-24"></div>
+<div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto mb-20 md:mb-24"></div>
 <div class="flex items-center gap-4 md:gap-8 mb-10 md:mb-12"><span class="h-[1px] bg-gradient-to-r from-transparent to-gold/40 flex-1"></span><h3 class="text-xl md:text-2xl font-serif text-cream tracking-[0.1em] uppercase text-center">Абонементы</h3><span class="h-[1px] bg-gradient-to-l from-transparent to-gold/40 flex-1"></span></div>
-<div id="subs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto"></div>
+<div id="subs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto"></div>
+</div>
+</section>
+
+<!-- СЕРТИФИКАТЫ -->
+<section id="certificates" class="py-20 md:py-28 px-5 relative overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-14" data-reveal>
+<div class="ornament max-w-xs mx-auto mb-6"><span class="text-gold text-lg">✦</span></div>
+<h2 class="text-3xl md:text-5xl font-serif mb-4">Подарочные <span class="gradient-text italic">сертификаты</span></h2>
+<p class="text-cream/60 font-light text-sm md:text-base max-w-md mx-auto">Идеальный подарок для близких.</p>
+</div>
+<div id="certificates-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto"></div>
 </div>
 </section>
 
@@ -289,7 +326,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <h2 data-reveal class="text-4xl md:text-5xl font-serif mb-4">Что о нас <span class="gradient-text italic">говорят</span></h2>
 <p class="text-cream/60 font-light text-sm md:text-base">Настоящие впечатления наших гостей после визита.</p>
 </div>
-<div id="reviews-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
+<div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"></div>
 </div>
 </section>
 
@@ -343,7 +380,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <p class="text-cream/60 font-light text-sm md:text-base mt-4">Чтобы ваше пребывание было максимально комфортным.</p>
 <div class="ornament max-w-xs mx-auto mt-6"><span class="text-gold text-lg">✦</span></div>
 </div>
-<div class="grid md:grid-cols-2 gap-6 md:gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 <div class="flex gap-4" data-reveal data-delay="1"><div class="text-3xl font-serif italic text-gold/50 leading-none">01</div><div><h4 class="text-lg font-serif text-cream mb-2">Тишина и покой</h4><p class="text-sm text-cream/70 font-light leading-relaxed">Пожалуйста, отключите звук телефона и соблюдайте тишину.</p></div></div>
 <div class="flex gap-4" data-reveal data-delay="2"><div class="text-3xl font-serif italic text-gold/50 leading-none">02</div><div><h4 class="text-lg font-serif text-cream mb-2">Пунктуальность</h4><p class="text-sm text-cream/70 font-light leading-relaxed">Приходите за 5-10 минут до начала сеанса.</p></div></div>
 <div class="flex gap-4" data-reveal data-delay="3"><div class="text-3xl font-serif italic text-gold/50 leading-none">03</div><div><h4 class="text-lg font-serif text-cream mb-2">Здоровье</h4><p class="text-sm text-cream/70 font-light leading-relaxed">Сообщите мастеру об аллергиях и противопоказаниях.</p></div></div>
@@ -438,7 +475,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <div class="flex-1 overflow-y-auto px-5 md:px-8 py-6">
 <div id="admin-edit-panel" class="hidden mb-6 bg-zen-bg/60 border border-gold/30 rounded-xl p-5">
 <div class="flex justify-between items-center mb-4"><h3 id="admin-edit-title" class="text-lg font-serif text-gold">Редактирование</h3><button onclick="cancelEdit()" class="text-cream/40 hover:text-cream text-xs">Отмена ✕</button></div>
-<div id="admin-edit-fields" class="grid md:grid-cols-2 gap-4"></div>
+<div id="admin-edit-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 <div class="flex gap-2 mt-5"><button onclick="saveEdit()" class="bg-gold text-zen-bg px-6 py-2 rounded-full font-medium text-sm hover:bg-cream transition-colors">Сохранить</button><button onclick="cancelEdit()" class="border border-zen-light/40 text-cream/70 px-6 py-2 rounded-full text-sm hover:bg-zen-light/20 transition-colors">Отмена</button></div>
 </div>
 <div id="admin-content"></div>
@@ -513,7 +550,11 @@ const DEFAULTS = {
     { id:'sub2', tag:'Курс процедур', title:'Japanese Face', desc:'Курс скульптурного массажа лица. Долгосрочный результат: четкий овал, сияние и молодость кожи.', features:['4 процедуры — 23 500 ₽ (-5%)','6 процедур — 33 500 ₽ (-10%)','10 процедур — 52 500 ₽ (-15%)','Длительность 2 ч 15 мин'], benefit:'Выгода до 15%', price:'от 23 500 ₽', badge:'Выгодно' },
     { id:'sub3', tag:'Курс процедур', title:'Classic Head SPA', desc:'Классический уход за головой для поддержания баланса и снятия стресса.', features:['4 процедуры — 17 100 ₽ (-5%)','6 процедур — 24 300 ₽ (-10%)','10 процедур — 38 000 ₽ (-15%)','Длительность 1 ч 45 мин'], benefit:'Выгода до 15%', price:'от 17 100 ₽', badge:'' }
   ],
-  certificates: [],
+  certificates: [
+    { id:'c1', title:'Сертификат 5 000 ₽', desc:'Подарочный сертификат на любые услуги салона номиналом 5 000 ₽.', price:'5 000 ₽' },
+    { id:'c2', title:'Сертификат 10 000 ₽', desc:'Идеальный подарок — сертификат на 10 000 ₽ для любого ритуала.', price:'10 000 ₽' },
+    { id:'c3', title:'Сертификат 20 000 ₽', desc:'Премиальный подарок — сертификат на полный курс процедур.', price:'20 000 ₽' }
+  ],
   reviews: [
     { id:'r1', name:'Анна', date:'15 октября 2025', rating:5, text:'Невероятный ритуал! Вышла как будто заново родилась. Мастер очень внимательный, атмосфера волшебная.' },
     { id:'r2', name:'Екатерина', date:'2 октября 2025', rating:5, text:'Хожу в NAGI уже полгода. Это моё место силы. Рекомендую всем.' },
@@ -564,22 +605,38 @@ function setCurrentUser(user) { if (user) localStorage.setItem(USER_KEY, JSON.st
 function updateAuthUI() { const user = getCurrentUser(); const btnText = document.getElementById('auth-btn-text'); if (btnText) btnText.textContent = user ? (user.isAdmin ? 'Админка' : user.login) : 'Войти'; }
 
 // ============================================
-// РЕНДЕР
+// РЕНДЕР (С РАСКРЫВАЮЩИМИСЯ КАРТОЧКАМИ)
 // ============================================
+function toggleCard(el) {
+  el.classList.toggle('expanded');
+}
+
 function renderServices() {
   const grid = document.getElementById('services-grid'); if (!grid) return;
   grid.innerHTML = DATA.services.map(s => `
-    <div data-reveal="scale" class="glow-border bg-zen-surface/40 backdrop-blur-md rounded-3xl p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden hover:-translate-y-1">
-      <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors"></div>
-      <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-4">${escapeHtml(s.tag)}</span>
-      <h3 class="text-2xl md:text-3xl font-serif mb-4">${escapeHtml(s.title)}</h3>
-      <p class="text-sm text-cream/60 font-light mb-8 flex-1">${escapeHtml(s.desc)}</p>
-      <ul class="space-y-3 mb-8">${(s.features||[]).map(f=>`<li class="flex items-start gap-3 text-sm text-cream/90"><svg class="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('')}</ul>
-      <div class="flex items-end justify-between mb-6">
-        <div><span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Длительность</span><span class="text-sm font-medium">${escapeHtml(s.duration)}</span></div>
-        <div class="text-right"><span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Стоимость</span><span class="text-2xl font-serif text-gold">${escapeHtml(s.price)}</span></div>
+    <div data-reveal="scale" class="card-item glow-border bg-zen-surface/60 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden" onclick="toggleCard(this)">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors pointer-events-none"></div>
+      
+      <!-- КРАТКАЯ ИНФОРМАЦИЯ -->
+      <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-3 pointer-events-none">${escapeHtml(s.tag)}</span>
+      <h3 class="text-2xl font-serif mb-3 pointer-events-none">${escapeHtml(s.title)}</h3>
+      <p class="text-sm text-cream/60 font-light mb-4 pointer-events-none line-clamp-3">${escapeHtml(s.desc)}</p>
+      
+      <!-- ЦЕНА И СТРЕЛОЧКА -->
+      <div class="flex items-end justify-between mt-auto pointer-events-none">
+        <span class="text-xl font-serif text-gold">${escapeHtml(s.price)}</span>
+        <div class="flex items-center gap-2 text-gold/60 text-xs uppercase tracking-wider">
+            <span>Подробнее</span>
+            <svg class="w-4 h-4 card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </div>
       </div>
-      <button onclick="openOrderModal('service','${escapeHtml(s.title).replace(/'/g,"\\'")}','${escapeHtml(s.price).replace(/'/g,"\\'")}')" class="w-full py-4 rounded-full border border-gold text-cream font-medium text-sm hover:bg-gold hover:text-zen-bg transition-colors">Записаться</button>
+
+      <!-- ПОДРОБНОЕ ОПИСАНИЕ (Скрыто по умолчанию) -->
+      <div class="card-details border-t border-zen-light/20 pt-4">
+        <ul class="space-y-2 mb-4">${(s.features||[]).map(f=>`<li class="flex items-start gap-2 text-sm text-cream/80"><svg class="w-4 h-4 text-gold shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('')}</ul>
+        <p class="text-xs text-cream/50 mb-5">Длительность: ${escapeHtml(s.duration)}</p>
+        <button onclick="event.stopPropagation(); openOrderModal('service','${escapeHtml(s.title).replace(/'/g,"\\'")}','${escapeHtml(s.price).replace(/'/g,"\\'")}')" class="w-full py-3 rounded-full border border-gold text-cream font-medium text-sm hover:bg-gold hover:text-zen-bg transition-colors">Записаться</button>
+      </div>
     </div>
   `).join('');
 }
@@ -587,18 +644,32 @@ function renderServices() {
 function renderSubs() {
   const grid = document.getElementById('subs-grid'); if (!grid) return;
   grid.innerHTML = DATA.subscriptions.map(s => `
-    <div data-reveal="scale" class="glow-border bg-zen-surface/40 backdrop-blur-md rounded-3xl p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden hover:-translate-y-1">
-      <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors"></div>
-      ${s.badge ? `<div class="absolute top-6 right-6 bg-gold/20 text-gold-light text-[10px] uppercase tracking-wider px-3 py-1 rounded-full border border-gold/30">${escapeHtml(s.badge)}</div>` : ''}
-      <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-4">${escapeHtml(s.tag)}</span>
-      <h3 class="text-2xl md:text-3xl font-serif mb-4">${escapeHtml(s.title)}</h3>
-      <p class="text-sm text-cream/60 font-light mb-8 flex-1">${escapeHtml(s.desc)}</p>
-      <ul class="space-y-3 mb-8">${(s.features||[]).map(f=>`<li class="flex items-start gap-3 text-sm text-cream/90"><svg class="w-5 h-5 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('')}</ul>
-      <div class="flex items-end justify-between mb-6">
-        <div><span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Выгода</span><span class="text-sm font-medium text-gold-light">${escapeHtml(s.benefit)}</span></div>
-        <div class="text-right"><span class="block text-[10px] uppercase tracking-widest text-cream/50 mb-1">Стоимость</span><span class="text-2xl font-serif text-gold">${escapeHtml(s.price)}</span></div>
+    <div data-reveal="scale" class="card-item glow-border bg-zen-surface/60 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-zen-light/20 hover:border-gold/40 transition-all duration-500 flex flex-col group relative overflow-hidden" onclick="toggleCard(this)">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full blur-2xl group-hover:bg-gold/10 transition-colors pointer-events-none"></div>
+      ${s.badge ? `<div class="absolute top-6 right-6 bg-gold/20 text-gold-light text-[10px] uppercase tracking-wider px-3 py-1 rounded-full border border-gold/30 pointer-events-none">${escapeHtml(s.badge)}</div>` : ''}
+      
+      <!-- КРАТКАЯ ИНФОРМАЦИЯ -->
+      <span class="text-gold-light uppercase tracking-[0.2em] text-[10px] font-semibold mb-3 pointer-events-none">${escapeHtml(s.tag)}</span>
+      <h3 class="text-2xl font-serif mb-3 pointer-events-none pr-12">${escapeHtml(s.title)}</h3>
+      <p class="text-sm text-cream/60 font-light mb-4 pointer-events-none line-clamp-3">${escapeHtml(s.desc)}</p>
+      
+      <!-- ЦЕНА И СТРЕЛОЧКА -->
+      <div class="flex items-end justify-between mt-auto pointer-events-none">
+        <div class="flex flex-col">
+            <span class="text-[10px] uppercase tracking-widest text-cream/50 mb-1">Выгода ${escapeHtml(s.benefit)}</span>
+            <span class="text-xl font-serif text-gold">${escapeHtml(s.price)}</span>
+        </div>
+        <div class="flex items-center gap-2 text-gold/60 text-xs uppercase tracking-wider">
+            <span>Подробнее</span>
+            <svg class="w-4 h-4 card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </div>
       </div>
-      <button onclick="openOrderModal('subscription','${escapeHtml(s.title).replace(/'/g,"\\'")}','${escapeHtml(s.price).replace(/'/g,"\\'")}')" class="w-full py-4 rounded-full bg-gold text-zen-bg font-medium text-sm hover:bg-cream transition-colors">Купить абонемент</button>
+
+      <!-- ПОДРОБНОЕ ОПИСАНИЕ -->
+      <div class="card-details border-t border-zen-light/20 pt-4">
+        <ul class="space-y-2 mb-5">${(s.features||[]).map(f=>`<li class="flex items-start gap-2 text-sm text-cream/80"><svg class="w-4 h-4 text-gold shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${escapeHtml(f)}</li>`).join('')}</ul>
+        <button onclick="event.stopPropagation(); openOrderModal('subscription','${escapeHtml(s.title).replace(/'/g,"\\'")}','${escapeHtml(s.price).replace(/'/g,"\\'")}')" class="w-full py-3 rounded-full bg-gold text-zen-bg font-medium text-sm hover:bg-cream transition-colors">Купить абонемент</button>
+      </div>
     </div>
   `).join('');
 }
@@ -609,7 +680,7 @@ function renderReviews() {
   const grid = document.getElementById('reviews-grid'); if (!grid) return;
   if (!DATA.reviews.length) { grid.innerHTML = '<p class="text-cream/50 text-center col-span-full">Пока нет отзывов.</p>'; return; }
   grid.innerHTML = DATA.reviews.map(r => `
-    <div data-reveal="scale" class="glow-border bg-zen-surface/40 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 hover:border-gold/40 transition-all group">
+    <div data-reveal="scale" class="glow-border bg-zen-surface/50 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 hover:border-gold/40 transition-all group">
       <div class="flex items-center gap-1 mb-3">${renderStars(r.rating)}</div>
       <p class="text-sm text-cream/80 font-light leading-relaxed mb-6">"${escapeHtml(r.text)}"</p>
       <div class="flex items-center justify-between border-t border-zen-light/20 pt-4">
@@ -625,16 +696,29 @@ function renderReviews() {
 function renderCertificates() {
   const grid = document.getElementById('certificates-grid'); if (!grid) return;
   if (!DATA.certificates || DATA.certificates.length === 0) {
-      grid.innerHTML = ''; const section = document.getElementById('certificates'); if (section) section.style.display = 'none'; return;
+      grid.innerHTML = '<p class="text-cream/50 text-center col-span-full">Сертификаты временно недоступны.</p>'; return;
   }
   grid.innerHTML = DATA.certificates.map(c => `
-    <div data-reveal="scale" class="glow-border bg-zen-surface/40 backdrop-blur-md p-8 rounded-2xl border border-zen-light/20 hover:border-gold/40 transition-all group flex flex-col">
-      <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-5"><span class="text-gold text-xl">✦</span></div>
-      <h3 class="text-xl font-serif mb-3">${escapeHtml(c.title)}</h3>
-      <p class="text-sm text-cream/60 font-light mb-6 flex-1">${escapeHtml(c.desc)}</p>
-      <div class="flex items-center justify-between mt-auto pt-4 border-t border-zen-light/20">
+    <div data-reveal="scale" class="card-item glow-border bg-zen-surface/50 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-zen-light/20 hover:border-gold/40 transition-all group flex flex-col" onclick="toggleCard(this)">
+      <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-5 pointer-events-none"><span class="text-gold text-xl">✦</span></div>
+      
+      <!-- КРАТКАЯ ИНФОРМАЦИЯ -->
+      <h3 class="text-xl font-serif mb-3 pointer-events-none">${escapeHtml(c.title)}</h3>
+      <p class="text-sm text-cream/60 font-light mb-4 pointer-events-none line-clamp-3">${escapeHtml(c.desc)}</p>
+      
+      <!-- ЦЕНА И СТРЕЛОЧКА -->
+      <div class="flex items-end justify-between mt-auto pointer-events-none">
         <span class="text-2xl font-serif text-gold">${escapeHtml(c.price)}</span>
-        <button onclick="openOrderModal('certificate','${escapeHtml(c.title).replace(/'/g,"\\'")}','${escapeHtml(c.price).replace(/'/g,"\\'")}')" class="text-xs text-gold hover:text-cream border border-gold/40 hover:border-gold px-4 py-2 rounded-full transition-colors">Купить</button>
+        <div class="flex items-center gap-2 text-gold/60 text-xs uppercase tracking-wider">
+            <span>Подробнее</span>
+            <svg class="w-4 h-4 card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- ПОДРОБНОЕ ОПИСАНИЕ -->
+      <div class="card-details border-t border-zen-light/20 pt-4">
+        <p class="text-xs text-cream/50 mb-5">Данный сертификат можно использовать для оплаты любых услуг салона. Действует в течение 1 года с момента покупки. Красивая упаковка и открытка в подарок.</p>
+        <button onclick="event.stopPropagation(); openOrderModal('certificate','${escapeHtml(c.title).replace(/'/g,"\\'")}','${escapeHtml(c.price).replace(/'/g,"\\'")}')" class="w-full py-3 rounded-full border border-gold text-gold hover:bg-gold hover:text-cream font-medium text-sm transition-colors">Купить сертификат</button>
       </div>
     </div>
   `).join('');
@@ -647,6 +731,7 @@ function renderContacts() {
   document.getElementById('footer-address').textContent = c.addressShort; document.getElementById('footer-hours').textContent = c.hours;
   document.getElementById('footer-vk').href = c.vk; document.getElementById('footer-tg').href = c.telegram;
   document.getElementById('menu-vk').href = c.vk; document.getElementById('menu-tg').href = c.telegram;
+  document.getElementById('float-vk').href = c.vk; document.getElementById('float-tg').href = c.telegram;
   const mapUrl = 'https://yandex.ru/maps/?text=' + encodeURIComponent(c.addressFull);
   document.getElementById('footer-address').href = mapUrl; document.getElementById('footer-map-link').href = mapUrl;
   document.getElementById('map-iframe').src = 'https://yandex.ru/map-widget/v1/?text=' + encodeURIComponent(c.addressFull) + '&z=16';
@@ -745,7 +830,7 @@ function renderAdminContent() {
     const c = DATA.contacts;
     el.innerHTML = `
       <h3 class="text-xl font-serif mb-4 text-gold">Контакты и соцсети</h3>
-      <div class="grid md:grid-cols-2 gap-4 max-w-2xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
         <div><label class="admin-label">Телефон</label><input class="admin-input" id="c-phone" value="${escapeHtml(c.phone)}"></div>
         <div><label class="admin-label">Телефон (tel:)</label><input class="admin-input" id="c-phoneRaw" value="${escapeHtml(c.phoneRaw)}"></div>
         <div><label class="admin-label">Адрес (короткий)</label><input class="admin-input" id="c-addressShort" value="${escapeHtml(c.addressShort)}"></div>
@@ -768,15 +853,15 @@ function renderAdminContent() {
     </div>
     <div class="space-y-3">
       ${list.map(item => `
-        <div class="bg-zen-bg/50 border border-zen-light/20 rounded-lg p-4 flex justify-between items-center gap-4 hover:border-gold/30 transition-colors">
+        <div class="bg-zen-bg/50 border border-zen-light/20 rounded-lg p-4 flex flex-col md:flex-row justify-between md:items-center gap-4 hover:border-gold/30 transition-colors">
           <div class="flex-1 min-w-0">
             <p class="text-sm text-cream truncate">${escapeHtml(item[titleField])} ${item.price ? `<span class="text-gold/70 ml-2">${escapeHtml(item.price)}</span>` : ''}</p>
             ${item.desc ? `<p class="text-xs text-cream/50 truncate mt-1">${escapeHtml(item.desc)}</p>` : ''}
             ${item.text ? `<p class="text-xs text-cream/50 truncate mt-1">${escapeHtml(item.text)}</p>` : ''}
           </div>
           <div class="flex gap-2 shrink-0">
-            <button onclick='startEdit("${adminTab}", "${item.id}")' class="text-xs text-gold border border-gold/30 hover:border-gold px-3 py-1.5 rounded-full">Изменить</button>
-            <button onclick='deleteItem("${adminTab}", "${item.id}")' class="text-xs text-red-400 border border-red-400/30 hover:border-red-400 px-3 py-1.5 rounded-full">Удалить</button>
+            <button onclick='startEdit("${adminTab}", "${item.id}")' class="text-xs text-gold border border-gold/30 hover:border-gold px-3 py-1.5 rounded-full flex-1 md:flex-none text-center">Изменить</button>
+            <button onclick='deleteItem("${adminTab}", "${item.id}")' class="text-xs text-red-400 border border-red-400/30 hover:border-red-400 px-3 py-1.5 rounded-full flex-1 md:flex-none text-center">Удалить</button>
           </div>
         </div>
       `).join('')}
@@ -813,8 +898,8 @@ function renderEditFields() {
     container.innerHTML = `
       <div><label class="admin-label">Категория</label><input class="admin-input" id="e-tag" value="${escapeHtml(d.tag)}"></div>
       <div><label class="admin-label">Название</label><input class="admin-input" id="e-title" value="${escapeHtml(d.title)}"></div>
-      <div class="md:col-span-2"><label class="admin-label">Описание</label><textarea class="admin-input" id="e-desc" rows="2">${escapeHtml(d.desc)}</textarea></div>
-      <div class="md:col-span-2"><label class="admin-label">Что входит (по пункту на строку)</label><textarea class="admin-input" id="e-features" rows="3">${escapeHtml((d.features||[]).join('\n'))}</textarea></div>
+      <div class="md:col-span-2"><label class="admin-label">Краткое описание (видно сразу)</label><textarea class="admin-input" id="e-desc" rows="2">${escapeHtml(d.desc)}</textarea></div>
+      <div class="md:col-span-2"><label class="admin-label">Что входит (по пункту на строку - откроется при клике)</label><textarea class="admin-input" id="e-features" rows="3">${escapeHtml((d.features||[]).join('\n'))}</textarea></div>
       ${type === 'services' ? `<div><label class="admin-label">Длительность</label><input class="admin-input" id="e-duration" value="${escapeHtml(d.duration||'')}"></div>` : ''}
       ${type === 'subscriptions' ? `<div><label class="admin-label">Выгода</label><input class="admin-input" id="e-benefit" value="${escapeHtml(d.benefit||'')}"></div>` : ''}
       ${type === 'subscriptions' ? `<div><label class="admin-label">Бейдж</label><input class="admin-input" id="e-badge" value="${escapeHtml(d.badge||'')}"></div>` : ''}
@@ -878,7 +963,7 @@ window.addEventListener('load', () => { if (!localStorage.getItem('nagi_cookies_
   }
 })();
 
-// Плавающее меню
+// Плавающее меню (верхнее)
 let lastScrollY = window.scrollY; const floatingNav = document.getElementById('floating-nav');
 if (floatingNav) {
     window.addEventListener('scroll', () => {
